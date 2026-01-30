@@ -98,5 +98,15 @@
       "Recommendations for Today"
     ]
   },
-  "lastUpdated": "2026-01-30T23:49:00+10:30"
+  "completedToday": [
+    {
+      "title": "Dashboard redesign",
+      "time": "11:30 PM"
+    },
+    {
+      "title": "Content planner updates",
+      "time": "11:45 PM"
+    }
+  ],
+  "lastUpdated": "2026-01-31T00:25:00+10:30"
 }

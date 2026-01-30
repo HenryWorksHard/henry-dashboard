@@ -627,6 +627,70 @@
       resize: vertical;
     }
 
+    .toggle-group {
+      display: flex;
+      gap: 0;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #30363d;
+    }
+
+    .toggle-btn {
+      flex: 1;
+      padding: 0.5rem;
+      background: #0d1117;
+      border: none;
+      color: #8b949e;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .toggle-btn:first-child {
+      border-right: 1px solid #30363d;
+    }
+
+    .toggle-btn.active {
+      background: #238636;
+      color: #fff;
+    }
+
+    .toggle-btn:hover:not(.active) {
+      background: #21262d;
+    }
+
+    /* Completed List */
+    .completed-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .completed-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: rgba(63, 185, 80, 0.1);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: #c9d1d9;
+    }
+
+    .completed-item svg {
+      width: 14px;
+      height: 14px;
+      color: #3fb950;
+      flex-shrink: 0;
+    }
+
+    .completed-time {
+      margin-left: auto;
+      font-size: 0.7rem;
+      color: #8b949e;
+    }
+
     .submit-btn {
       width: 100%;
       background: #238636;
@@ -797,12 +861,14 @@
         </div>
       </div>
 
-      <!-- Workload -->
+      <!-- Completed Today -->
       <div class="card">
         <div class="card-header">
-          <span class="card-title">Workload</span>
+          <span class="card-title">Completed Today</span>
         </div>
-        <div class="progress-list" id="workloadList"></div>
+        <div class="completed-list" id="completedList">
+          <p class="no-current-task" style="font-size: 0.8rem;">Nothing completed yet</p>
+        </div>
       </div>
 
       <!-- Recommendations -->
@@ -874,8 +940,16 @@
               <option value="low">Low</option>
             </select>
           </div>
-          <button type="submit" class="submit-btn">Assign Task</button>
-          <div class="success-msg" id="successMsg">Task assigned successfully</div>
+          <div class="form-group">
+            <label>When</label>
+            <div class="toggle-group">
+              <button type="button" class="toggle-btn active" id="toggleNow" onclick="setSchedule('now')">Now</button>
+              <button type="button" class="toggle-btn" id="toggleScheduled" onclick="setSchedule('scheduled')">Scheduled</button>
+            </div>
+            <input type="hidden" id="taskSchedule" value="now">
+          </div>
+          <button type="submit" class="submit-btn">Send to Henry</button>
+          <div class="success-msg" id="successMsg">Opening Telegram...</div>
         </form>
       </div>
     </div>
@@ -964,35 +1038,22 @@
           }
         }
 
-        // Workload (by priority)
-        const highCount = allTasks.filter(t => t.priority === 'high' && t.status !== 'completed').length;
-        const medCount = allTasks.filter(t => t.priority === 'medium' && t.status !== 'completed').length;
-        const lowCount = allTasks.filter(t => t.priority === 'low' && t.status !== 'completed').length;
-        const maxCount = Math.max(highCount, medCount, lowCount, 1);
-
-        document.getElementById('workloadList').innerHTML = `
-          <div class="progress-row">
-            <span class="progress-label">High</span>
-            <span class="progress-percent">${highCount}</span>
-            <div class="progress-bar">
-              <div class="progress-fill pink" style="width: ${(highCount/maxCount)*100}%"></div>
+        // Completed Today
+        const completedList = document.getElementById('completedList');
+        const completedToday = tasks.completedToday || [];
+        if (completedToday.length > 0) {
+          completedList.innerHTML = completedToday.map(item => `
+            <div class="completed-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>${item.title}</span>
+              <span class="completed-time">${item.time}</span>
             </div>
-          </div>
-          <div class="progress-row">
-            <span class="progress-label">Medium</span>
-            <span class="progress-percent">${medCount}</span>
-            <div class="progress-bar">
-              <div class="progress-fill yellow" style="width: ${(medCount/maxCount)*100}%"></div>
-            </div>
-          </div>
-          <div class="progress-row">
-            <span class="progress-label">Low</span>
-            <span class="progress-percent">${lowCount}</span>
-            <div class="progress-bar">
-              <div class="progress-fill green" style="width: ${(lowCount/maxCount)*100}%"></div>
-            </div>
-          </div>
-        `;
+          `).join('');
+        } else {
+          completedList.innerHTML = '<p class="no-current-task" style="font-size: 0.8rem;">Nothing completed yet</p>';
+        }
 
         // Recommendations
         const recsList = document.getElementById('recsList');
@@ -1044,21 +1105,37 @@
       }
     }
 
+    // Schedule toggle
+    function setSchedule(value) {
+      document.getElementById('taskSchedule').value = value;
+      document.getElementById('toggleNow').classList.toggle('active', value === 'now');
+      document.getElementById('toggleScheduled').classList.toggle('active', value === 'scheduled');
+    }
+
     document.getElementById('assignForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const form = e.target;
-      const data = {
-        id: 'assign-' + Date.now(),
-        title: form.title.value,
-        description: form.description.value,
-        priority: form.priority.value,
-        submitted: new Date().toISOString(),
-        status: 'pending'
-      };
+      const title = form.title.value;
+      const desc = form.description.value;
+      const priority = form.priority.value;
+      const schedule = document.getElementById('taskSchedule').value;
       
-      localStorage.setItem('henry-pending-' + data.id, JSON.stringify(data));
+      // Build message for Henry
+      const scheduleText = schedule === 'now' ? '⚡ NOW (after current task)' : '📅 Scheduled';
+      const priorityEmoji = priority === 'high' ? '🔴' : priority === 'medium' ? '🟡' : '🟢';
+      const message = `📋 NEW TASK\n\nTitle: ${title}\nPriority: ${priorityEmoji} ${priority}\nWhen: ${scheduleText}${desc ? '\n\nDetails: ' + desc : ''}`;
+      
+      // Open Telegram with pre-filled message
+      const telegramUrl = `https://t.me/claborbot?text=${encodeURIComponent(message)}`;
+      
       document.getElementById('successMsg').classList.add('show');
+      
+      // Open Telegram
+      window.open(telegramUrl, '_blank');
+      
       form.reset();
+      setSchedule('now');
+      
       setTimeout(() => {
         document.getElementById('successMsg').classList.remove('show');
       }, 3000);
