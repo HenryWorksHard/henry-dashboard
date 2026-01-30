@@ -1,5 +1,5 @@
 // Version - update this to force cache refresh
-const VERSION = 'v2.0.0';
+const VERSION = 'v2.0.1';
 const CACHE_NAME = `henry-dashboard-${VERSION}`;
 
 // Only cache essential offline files, not HTML
