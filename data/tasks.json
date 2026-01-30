@@ -1,13 +1,5 @@
 {
-  "inProgress": {
-    "id": "task-system-setup",
-    "title": "Task Management System Setup",
-    "description": "Setting up Google Calendar + Dashboard workflow so tasks don't get missed",
-    "status": "in_progress",
-    "priority": "high",
-    "created": "2026-01-31",
-    "progress": "AGENTS.md ✓ | WORKFLOW.md ✓ | Calendar events pending"
-  },
+  "inProgress": null,
   "nextTask": {
     "title": "IG Follow Session",
     "description": "Follow target accounts in fitness niche",
@@ -19,15 +11,15 @@
       "id": "task-system",
       "title": "Task Management System",
       "description": "Google Calendar as schedule, Dashboard as status",
-      "status": "in_progress",
+      "status": "completed",
       "priority": "high",
       "created": "2026-01-31",
       "subtasks": [
         { "title": "Fix cron jobs (wakeMode: now)", "done": true },
         { "title": "Create WORKFLOW.md", "done": true },
         { "title": "Update AGENTS.md with calendar scanning", "done": true },
-        { "title": "Add recurring events to Google Calendar", "done": false },
-        { "title": "Test full workflow", "done": false }
+        { "title": "Add recurring events to Google Calendar", "done": true },
+        { "title": "Add calendar completion step", "done": true }
       ]
     },
     {
@@ -37,39 +29,18 @@
       "status": "in_progress",
       "priority": "medium",
       "created": "2026-01-30",
-      "progress": "34/260 (13%)",
-      "subtasks": [
-        { "title": "Generate unfollow list", "done": true },
-        { "title": "Automated batches running", "done": true },
-        { "title": "Complete all 260", "done": false }
-      ]
-    },
-    {
-      "id": "task-001",
-      "title": "EddyTrains Fitness Apps",
-      "description": "Client and Admin portals for the fitness business",
-      "status": "completed",
-      "priority": "high",
-      "created": "2026-01-31"
-    },
-    {
-      "id": "task-002",
-      "title": "Content Ideas Scalped",
-      "description": "8 viral fitness content templates added to Content Planner",
-      "status": "completed",
-      "priority": "medium",
-      "created": "2026-01-31"
+      "progress": "34/260 (13%)"
     }
   ],
   "completedToday": [
+    { "title": "Task Management System Setup", "time": "9:28 AM" },
+    { "title": "Google Calendar recurring events", "time": "9:27 AM" },
     { "title": "Fixed cron jobs", "time": "9:02 AM" },
     { "title": "Created WORKFLOW.md", "time": "9:05 AM" },
     { "title": "Updated AGENTS.md", "time": "9:15 AM" },
     { "title": "Unfollowed 34 accounts", "time": "9:00 AM" },
-    { "title": "Updated Content Planner", "time": "8:58 AM" },
-    { "title": "Built Client Fitness App", "time": "2:05 AM" },
-    { "title": "Built Admin Fitness App", "time": "1:55 AM" }
+    { "title": "Updated Content Planner", "time": "8:58 AM" }
   ],
-  "weeklyCompleted": 20,
-  "lastUpdated": "2026-01-31T09:20:00+10:30"
+  "weeklyCompleted": 22,
+  "lastUpdated": "2026-01-31T09:28:00+10:30"
 }
