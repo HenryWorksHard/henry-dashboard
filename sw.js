@@ -1,28 +1,18 @@
 // Version - update this to force cache refresh
-const VERSION = 'v1.0.14';
+const VERSION = 'v2.0.0';
 const CACHE_NAME = `henry-dashboard-${VERSION}`;
 
-// Files to cache
+// Only cache essential offline files, not HTML
 const urlsToCache = [
-  '/henry-dashboard/',
-  '/henry-dashboard/index.html',
-  '/henry-dashboard/data/tasks.json',
-  '/henry-dashboard/data/recommendations.json'
+  '/henry-dashboard/assets/henry-avatar.jpg'
 ];
 
-// Install - cache files
+// Install - skip waiting immediately
 self.addEventListener('install', event => {
-  // Skip waiting to activate immediately
   self.skipWaiting();
-  
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(urlsToCache);
-    })
-  );
 });
 
-// Activate - clean old caches
+// Activate - clean ALL old caches and take control
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -34,30 +24,38 @@ self.addEventListener('activate', event => {
         })
       );
     }).then(() => {
-      // Take control of all pages immediately
       return self.clients.claim();
+    }).then(() => {
+      // Notify all clients to reload
+      return self.clients.matchAll().then(clients => {
+        clients.forEach(client => client.postMessage({ type: 'CACHE_UPDATED' }));
+      });
     })
   );
 });
 
-// Fetch - network first, fallback to cache
+// Fetch - ALWAYS network first for HTML/JSON, cache for assets only
 self.addEventListener('fetch', event => {
+  const url = new URL(event.request.url);
+  
+  // Always fetch HTML and JSON from network (no cache)
+  if (event.request.destination === 'document' || url.pathname.endsWith('.json') || url.pathname.endsWith('.html')) {
+    event.respondWith(
+      fetch(event.request).catch(() => caches.match(event.request))
+    );
+    return;
+  }
+  
+  // For other assets, network first with cache fallback
   event.respondWith(
     fetch(event.request)
       .then(response => {
-        // Clone the response
         const responseClone = response.clone();
-        
-        // Update cache with fresh response
         caches.open(CACHE_NAME).then(cache => {
           cache.put(event.request, responseClone);
         });
-        
         return response;
       })
-      .catch(() => {
-        // Network failed, try cache
-        return caches.match(event.request);
-      })
+      .catch(() => caches.match(event.request))
   );
 });
