@@ -567,50 +567,87 @@
     .progress-fill.yellow { background: #d29922; }
     .progress-fill.purple { background: #a371f7; }
 
-    /* Apps Grid */
-    .apps-grid {
+    /* Apps Row */
+    .apps-row {
       display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.75rem;
+      justify-content: flex-start;
     }
 
-    .app-link {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.75rem;
+    .app-icon-link {
+      width: 40px;
+      height: 40px;
       background: #21262d;
       border: 1px solid #30363d;
-      border-radius: 6px;
-      text-decoration: none;
-      color: #c9d1d9;
-      transition: all 0.2s;
-    }
-
-    .app-link:hover {
-      background: #30363d;
-      border-color: #8b949e;
-    }
-
-    .app-icon {
-      width: 32px;
-      height: 32px;
-      background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
-      border-radius: 6px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
+      text-decoration: none;
+      transition: all 0.2s;
     }
 
-    .app-icon svg {
-      width: 18px;
-      height: 18px;
+    .app-icon-link:hover {
+      background: #30363d;
+      border-color: #58a6ff;
+      transform: translateY(-2px);
+    }
+
+    .app-icon-link svg {
+      width: 20px;
+      height: 20px;
+      color: #8b949e;
+    }
+
+    .app-icon-link:hover svg {
+      color: #58a6ff;
+    }
+
+    /* Floating Add Button */
+    .fab-btn {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(35, 134, 54, 0.4);
+      transition: all 0.2s;
+      z-index: 50;
+    }
+
+    .fab-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(35, 134, 54, 0.5);
+    }
+
+    .fab-btn:active {
+      transform: scale(0.95);
+    }
+
+    .fab-btn svg {
+      width: 28px;
+      height: 28px;
       color: #fff;
     }
 
-    .app-name {
-      font-size: 0.875rem;
-      font-weight: 500;
+    @media (max-width: 768px) {
+      .fab-btn {
+        bottom: 1rem;
+        right: 1rem;
+        width: 48px;
+        height: 48px;
+      }
+      .fab-btn svg {
+        width: 24px;
+        height: 24px;
+      }
     }
 
     /* Form */
@@ -1081,26 +1118,20 @@
         <div class="card-header">
           <span class="card-title">Apps</span>
         </div>
-        <div class="apps-grid">
-          <a href="https://henryworkshard.github.io/eddytrains-content-planner/" target="_blank" class="app-link">
-            <div class="app-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2"/>
-                <path d="M16 2v4M8 2v4M3 10h18"/>
-              </svg>
-            </div>
-            <span class="app-name">Content Planner</span>
+        <div class="apps-row">
+          <a href="https://henryworkshard.github.io/eddytrains-content-planner/" target="_blank" class="app-icon-link" title="Content Planner">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <path d="M16 2v4M8 2v4M3 10h18"/>
+            </svg>
           </a>
-          <a href="https://henryworkshard.github.io/henry-dashboard/" target="_blank" class="app-link">
-            <div class="app-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="3" width="7" height="7" rx="1"/>
-                <rect x="14" y="3" width="7" height="7" rx="1"/>
-                <rect x="3" y="14" width="7" height="7" rx="1"/>
-                <rect x="14" y="14" width="7" height="7" rx="1"/>
-              </svg>
-            </div>
-            <span class="app-name">Dashboard</span>
+          <a href="https://henryworkshard.github.io/henry-dashboard/" target="_blank" class="app-icon-link" title="Dashboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7" rx="1"/>
+              <rect x="14" y="3" width="7" height="7" rx="1"/>
+              <rect x="3" y="14" width="7" height="7" rx="1"/>
+              <rect x="14" y="14" width="7" height="7" rx="1"/>
+            </svg>
           </a>
         </div>
       </div>
@@ -1142,6 +1173,13 @@
       </div>
     </div>
   </main>
+
+  <!-- Floating Add Button -->
+  <button class="fab-btn" onclick="scrollToAssignTask()" title="Assign New Task">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path d="M12 5v14M5 12h14"/>
+    </svg>
+  </button>
 
   <!-- Task Detail Modal -->
   <div class="task-modal-overlay" id="taskModal">
@@ -1319,7 +1357,14 @@
       }
     }
 
-    // Schedule toggle
+    // Floating button scroll function
+    function scrollToAssignTask() {
+      const form = document.getElementById('assignForm');
+      const input = document.getElementById('taskTitle');
+      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => input.focus(), 400);
+    }
+
     // Task Modal Functions
     let currentModalTask = null;
 
