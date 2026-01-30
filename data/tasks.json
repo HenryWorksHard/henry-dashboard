@@ -8,7 +8,9 @@
     "created": "2026-01-30",
     "due": "2026-01-31",
     "progress": "1/260 complete (arthur_lprte ✓)",
-    "nextBatch": "11 accounts at midnight"
+    "nextBatch": "11 accounts at midnight",
+    "paused": true,
+    "pausedReason": "Working with Louis"
   },
   "tasks": [
     {
