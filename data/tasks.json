@@ -67,6 +67,14 @@
       "icon": "📸"
     },
     {
+      "id": "recurring-004",
+      "title": "Unfollow Non-Followers",
+      "description": "Unfollowing 260 accounts that don't follow back (11 per hour over 24h)",
+      "frequency": "Every hour",
+      "lastRun": "2026-01-30T23:44",
+      "icon": "🧹"
+    },
+    {
       "id": "recurring-002",
       "title": "Dashboard Assignment Check",
       "description": "Scan for new task assignments from Louis",
