@@ -647,6 +647,14 @@
       transition: all 0.2s;
     }
 
+    .toggle-group.three .toggle-btn {
+      border-right: 1px solid #30363d;
+    }
+
+    .toggle-group.three .toggle-btn:last-child {
+      border-right: none;
+    }
+
     .toggle-btn:first-child {
       border-right: 1px solid #30363d;
     }
@@ -654,6 +662,10 @@
     .toggle-btn.active {
       background: #238636;
       color: #fff;
+    }
+
+    .toggle-btn#toggleUrgent.active {
+      background: #f85149;
     }
 
     .toggle-btn:hover:not(.active) {
@@ -942,11 +954,12 @@
           </div>
           <div class="form-group">
             <label>When</label>
-            <div class="toggle-group">
-              <button type="button" class="toggle-btn active" id="toggleNow" onclick="setSchedule('now')">Now</button>
+            <div class="toggle-group three">
+              <button type="button" class="toggle-btn active" id="toggleNext" onclick="setSchedule('next')">Next</button>
+              <button type="button" class="toggle-btn" id="toggleUrgent" onclick="setSchedule('urgent')">Urgent</button>
               <button type="button" class="toggle-btn" id="toggleScheduled" onclick="setSchedule('scheduled')">Scheduled</button>
             </div>
-            <input type="hidden" id="taskSchedule" value="now">
+            <input type="hidden" id="taskSchedule" value="next">
           </div>
           <button type="submit" class="submit-btn">Send to Henry</button>
           <div class="success-msg" id="successMsg">Opening Telegram...</div>
@@ -1108,7 +1121,8 @@
     // Schedule toggle
     function setSchedule(value) {
       document.getElementById('taskSchedule').value = value;
-      document.getElementById('toggleNow').classList.toggle('active', value === 'now');
+      document.getElementById('toggleNext').classList.toggle('active', value === 'next');
+      document.getElementById('toggleUrgent').classList.toggle('active', value === 'urgent');
       document.getElementById('toggleScheduled').classList.toggle('active', value === 'scheduled');
     }
 
@@ -1121,9 +1135,21 @@
       const schedule = document.getElementById('taskSchedule').value;
       
       // Build message for Henry
-      const scheduleText = schedule === 'now' ? '⚡ NOW (after current task)' : '📅 Scheduled';
+      let scheduleText;
+      let scheduleEmoji;
+      if (schedule === 'urgent') {
+        scheduleText = 'URGENT - Interrupt current task';
+        scheduleEmoji = '🚨';
+      } else if (schedule === 'next') {
+        scheduleText = 'Next - After current task';
+        scheduleEmoji = '⏭️';
+      } else {
+        scheduleText = 'Scheduled - Add to queue';
+        scheduleEmoji = '📅';
+      }
+      
       const priorityEmoji = priority === 'high' ? '🔴' : priority === 'medium' ? '🟡' : '🟢';
-      const message = `📋 NEW TASK\n\nTitle: ${title}\nPriority: ${priorityEmoji} ${priority}\nWhen: ${scheduleText}${desc ? '\n\nDetails: ' + desc : ''}`;
+      const message = `📋 NEW TASK\n\n${scheduleEmoji} ${scheduleText}\n\nTitle: ${title}\nPriority: ${priorityEmoji} ${priority}${desc ? '\n\nDetails: ' + desc : ''}`;
       
       // Open Telegram with pre-filled message
       const telegramUrl = `https://t.me/claborbot?text=${encodeURIComponent(message)}`;
@@ -1134,7 +1160,7 @@
       window.open(telegramUrl, '_blank');
       
       form.reset();
-      setSchedule('now');
+      setSchedule('next');
       
       setTimeout(() => {
         document.getElementById('successMsg').classList.remove('show');
