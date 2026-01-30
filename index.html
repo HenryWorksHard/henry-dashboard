@@ -674,27 +674,38 @@
         </div>
       </div>
 
-      <!-- Health Stats -->
+      <!-- Recurring Tasks -->
       <div class="card">
         <div class="card-header">
-          <span class="card-title">Health</span>
+          <span class="card-title">Recurring Tasks</span>
         </div>
-        <div class="health-list">
-          <div class="health-row">
-            <span class="health-label">Active</span>
-            <span class="health-value" id="activeTasks">--</span>
+        <div class="recurring-list">
+          <div class="recurring-item">
+            <div class="recurring-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div class="recurring-info">
+              <div class="recurring-title">Morning Report</div>
+              <div class="recurring-desc">Daily briefing for Louis</div>
+            </div>
+            <div class="recurring-badge">Daily</div>
           </div>
-          <div class="health-row">
-            <span class="health-label">Completed</span>
-            <span class="health-value positive" id="completedToday">--</span>
-          </div>
-          <div class="health-row">
-            <span class="health-label">Overdue</span>
-            <span class="health-value" id="overdueTasks">--</span>
-          </div>
-          <div class="health-row">
-            <span class="health-label">Progress</span>
-            <span class="health-value positive" id="progressPercent">--</span>
+          <div class="recurring-item">
+            <div class="recurring-icon" style="background: rgba(236, 72, 153, 0.15);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="18" cy="6" r="1.5" fill="#ec4899"/>
+              </svg>
+            </div>
+            <div class="recurring-info">
+              <div class="recurring-title">Instagram Follow Session</div>
+              <div class="recurring-desc">Follow target accounts for eddytrains</div>
+            </div>
+            <div class="recurring-badge">2x Daily</div>
           </div>
         </div>
       </div>
@@ -705,16 +716,6 @@
           <span class="card-title">Workload</span>
         </div>
         <div class="progress-list" id="workloadList"></div>
-      </div>
-
-      <!-- Recurring Tasks -->
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">Recurring Tasks</span>
-        </div>
-        <div class="recurring-list" id="recurringList">
-          <p class="no-current-task" style="font-size: 0.8rem;">No recurring tasks</p>
-        </div>
       </div>
 
       <!-- Recommendations -->
@@ -850,13 +851,6 @@
           nextTaskContent.innerHTML = '<p class="no-current-task" style="font-size: 0.8rem;">No pending tasks</p>';
         }
 
-        // Health stats
-        document.getElementById('activeTasks').textContent = inProgress + pending;
-        document.getElementById('completedToday').textContent = completed;
-        document.getElementById('overdueTasks').textContent = overdue;
-        document.getElementById('overdueTasks').className = 'health-value ' + (overdue > 0 ? 'negative' : 'positive');
-        document.getElementById('progressPercent').textContent = total > 0 ? Math.round((completed / total) * 100) + '%' : '0%';
-
         // Workload (by priority)
         const highCount = allTasks.filter(t => t.priority === 'high' && t.status !== 'completed').length;
         const medCount = allTasks.filter(t => t.priority === 'medium' && t.status !== 'completed').length;
@@ -886,29 +880,6 @@
             </div>
           </div>
         `;
-
-        // Recurring Tasks
-        const recurringList = document.getElementById('recurringList');
-        const recurringTasks = tasks.recurringTasks || [];
-        if (recurringTasks.length > 0) {
-          recurringList.innerHTML = recurringTasks.map(task => `
-            <div class="recurring-item">
-              <div class="recurring-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M23 4v6h-6M1 20v-6h6"/>
-                  <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
-                </svg>
-              </div>
-              <div class="recurring-info">
-                <div class="recurring-title">${task.title}</div>
-                <div class="recurring-desc">${task.description || ''}</div>
-              </div>
-              <div class="recurring-badge">${task.frequency}</div>
-            </div>
-          `).join('');
-        } else {
-          recurringList.innerHTML = '<p class="no-current-task" style="font-size: 0.8rem;">No recurring tasks</p>';
-        }
 
         // Recommendations
         const recsList = document.getElementById('recsList');
