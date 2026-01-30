@@ -416,6 +416,51 @@
     .task-priority.medium { background: rgba(210, 153, 34, 0.15); color: #d29922; }
     .task-priority.low { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
 
+    /* All Tasks Button */
+    .all-tasks-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      margin-top: 0.75rem;
+      padding: 0.625rem;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      color: #8b949e;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .all-tasks-btn:hover {
+      background: #30363d;
+      color: #c9d1d9;
+    }
+
+    .all-tasks-btn svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s;
+    }
+
+    .all-tasks-btn.expanded svg {
+      transform: rotate(180deg);
+    }
+
+    .all-tasks-panel {
+      display: none;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #30363d;
+    }
+
+    .all-tasks-panel.show {
+      display: block;
+    }
+
     /* Progress Bars */
     .progress-list {
       display: flex;
@@ -708,6 +753,15 @@
             <div class="recurring-badge">2x Daily</div>
           </div>
         </div>
+        <button class="all-tasks-btn" id="allTasksBtn" onclick="toggleAllTasks()">
+          <span>All Tasks</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="allTasksArrow">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="all-tasks-panel" id="allTasksPanel">
+          <div class="task-list" id="allTasksList"></div>
+        </div>
       </div>
 
       <!-- Workload -->
@@ -896,7 +950,7 @@
           recsList.innerHTML = '<p class="no-current-task" style="font-size: 0.8rem;">No recommendations</p>';
         }
 
-        // Task list
+        // Task list (recent)
         const taskList = document.getElementById('taskList');
         if (allTasks.length > 0) {
           taskList.innerHTML = allTasks.slice(0, 6).map(task => `
@@ -908,6 +962,20 @@
           `).join('');
         } else {
           taskList.innerHTML = '<p class="no-current-task" style="font-size: 0.8rem;">No tasks</p>';
+        }
+
+        // All Tasks list (for expandable panel)
+        const allTasksList = document.getElementById('allTasksList');
+        if (allTasks.length > 0) {
+          allTasksList.innerHTML = allTasks.map(task => `
+            <div class="task-item">
+              <div class="task-status ${task.status}"></div>
+              <span class="task-name">${task.title}</span>
+              <span class="task-priority ${task.priority}">${task.priority}</span>
+            </div>
+          `).join('');
+        } else {
+          allTasksList.innerHTML = '<p class="no-current-task" style="font-size: 0.8rem;">No tasks assigned yet</p>';
         }
         
         document.getElementById('lastUpdated').textContent = 
@@ -936,6 +1004,14 @@
         document.getElementById('successMsg').classList.remove('show');
       }, 3000);
     });
+
+    // Toggle All Tasks panel
+    function toggleAllTasks() {
+      const btn = document.getElementById('allTasksBtn');
+      const panel = document.getElementById('allTasksPanel');
+      btn.classList.toggle('expanded');
+      panel.classList.toggle('show');
+    }
 
     loadData();
     setInterval(loadData, 60000);
