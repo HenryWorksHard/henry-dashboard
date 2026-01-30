@@ -283,6 +283,15 @@
       padding: 1rem;
     }
 
+    .next-task-item.clickable {
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .next-task-item.clickable:hover {
+      background: #30363d;
+    }
+
     .next-task-title {
       font-weight: 500;
       color: #f0f6fc;
@@ -1183,6 +1192,8 @@
         }
         
         if (tasks.inProgress) {
+          currentTaskBanner.style.cursor = 'pointer';
+          currentTaskBanner.onclick = () => openTaskModal('inProgress');
           currentTaskContent.innerHTML = `
             <div class="current-task-title">${tasks.inProgress.title}</div>
             <div class="current-task-desc">${tasks.inProgress.description}</div>
@@ -1191,11 +1202,15 @@
         } else {
           const inProgressTask = allTasks.find(t => t.status === 'in_progress');
           if (inProgressTask) {
+            currentTaskBanner.style.cursor = 'pointer';
+            currentTaskBanner.onclick = () => openTaskModal(inProgressTask.id);
             currentTaskContent.innerHTML = `
               <div class="current-task-title">${inProgressTask.title}</div>
               <div class="current-task-desc">${inProgressTask.description || ''}</div>
             `;
           } else {
+            currentTaskBanner.style.cursor = 'default';
+            currentTaskBanner.onclick = null;
             currentTaskContent.innerHTML = '<p class="no-current-task">No task in progress</p>';
           }
         }
@@ -1204,7 +1219,7 @@
         const nextTaskContent = document.getElementById('nextTaskContent');
         if (tasks.nextTask) {
           nextTaskContent.innerHTML = `
-            <div class="next-task-item">
+            <div class="next-task-item clickable" onclick="openTaskModal('nextTask')">
               <div class="next-task-title">${tasks.nextTask.title}</div>
               <div class="next-task-desc">${tasks.nextTask.description || ''}</div>
               <div class="next-task-meta">
@@ -1218,7 +1233,7 @@
           const pendingTask = allTasks.find(t => t.status === 'pending');
           if (pendingTask) {
             nextTaskContent.innerHTML = `
-              <div class="next-task-item">
+              <div class="next-task-item clickable" onclick="openTaskModal('${pendingTask.id}')">
                 <div class="next-task-title">${pendingTask.title}</div>
                 <div class="next-task-desc">${pendingTask.description || ''}</div>
                 <div class="next-task-meta">
@@ -1292,7 +1307,17 @@
     let currentModalTask = null;
 
     function openTaskModal(taskId) {
-      const task = globalTasksData.tasks.find(t => t.id === taskId);
+      let task;
+      
+      // Handle special task IDs
+      if (taskId === 'inProgress') {
+        task = globalTasksData.inProgress;
+      } else if (taskId === 'nextTask') {
+        task = globalTasksData.nextTask;
+      } else {
+        task = globalTasksData.tasks.find(t => t.id === taskId);
+      }
+      
       if (!task) return;
       
       currentModalTask = task;
