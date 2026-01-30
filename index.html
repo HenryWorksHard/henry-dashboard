@@ -370,6 +370,49 @@
 
     .app-icon { font-size: 1.25rem; }
     .app-name { font-weight: 500; font-size: 0.9rem; }
+
+    /* Morning Report */
+    .report-status {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .report-next {
+      color: #4ade80;
+      font-weight: 500;
+    }
+
+    .report-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .report-section-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      background: rgba(255,255,255,0.02);
+      border-radius: 8px;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    .report-section-item::before {
+      content: '📋';
+      font-size: 0.8rem;
+    }
+
+    /* Progress indicator for recurring */
+    .recurring-progress {
+      font-size: 0.7rem;
+      color: #4ade80;
+      margin-top: 0.25rem;
+    }
   </style>
 </head>
 <body>
@@ -411,6 +454,20 @@
             <h2>Recurring Tasks</h2>
           </div>
           <div id="recurringList"></div>
+        </div>
+
+        <!-- Morning Report -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-icon">📊</span>
+            <h2>Morning Report</h2>
+          </div>
+          <div id="morningReport">
+            <div class="report-status">
+              <div class="report-next">Next report: <span id="nextReportTime">--</span></div>
+            </div>
+            <div class="report-sections" id="reportSections"></div>
+          </div>
         </div>
       </div>
 
@@ -497,6 +554,7 @@
         
         renderTasks(tasks.tasks);
         renderRecurring(tasks.recurringTasks || []);
+        renderMorningReport(tasks.morningReport);
         renderRecs(recs.recommendations);
         
         document.getElementById('lastUpdated').textContent = 
@@ -542,10 +600,24 @@
           <div class="recurring-info">
             <div class="recurring-title">${task.title}</div>
             <div class="recurring-desc">${task.description}</div>
+            ${task.progress ? `<div class="recurring-progress">Progress: ${task.progress}</div>` : ''}
           </div>
           <div class="recurring-badge">${task.frequency}</div>
         </div>
       `).join('');
+    }
+
+    function renderMorningReport(report) {
+      if (!report) return;
+      document.getElementById('nextReportTime').textContent = 
+        report.nextScheduled ? new Date(report.nextScheduled).toLocaleString() : 'Not scheduled';
+      
+      const sectionsContainer = document.getElementById('reportSections');
+      if (report.sections) {
+        sectionsContainer.innerHTML = report.sections.map(section => `
+          <div class="report-section-item">${section}</div>
+        `).join('');
+      }
     }
 
     function renderRecs(recs) {

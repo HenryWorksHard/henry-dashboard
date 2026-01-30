@@ -1,13 +1,14 @@
 {
   "inProgress": {
     "id": "task-active",
-    "title": "Instagram Follower Cleanup",
-    "description": "Analyzing eddytrains account - identifying accounts that don't follow back",
+    "title": "Unfollowing Non-Followers",
+    "description": "Unfollowing 260 accounts that don't follow back on @eddytrains",
     "status": "in_progress",
     "priority": "high",
     "created": "2026-01-30",
-    "due": null,
-    "progress": "Filtered list ready - 263 accounts identified"
+    "due": "2026-01-31",
+    "progress": "1/260 complete (arthur_lprte ✓)",
+    "nextBatch": "11 accounts at midnight"
   },
   "tasks": [
     {
@@ -44,7 +45,7 @@
       "id": "task-003",
       "title": "Henry Dashboard Development",
       "description": "Build and maintain the task management dashboard",
-      "status": "in_progress",
+      "status": "completed",
       "priority": "medium",
       "created": "2026-01-30",
       "due": null,
@@ -53,43 +54,41 @@
         { "title": "Initial build", "done": true },
         { "title": "Deploy to GitHub Pages", "done": true },
         { "title": "Add task assignment form", "done": true },
-        { "title": "Set up hourly check cron", "done": true }
+        { "title": "Set up hourly check cron", "done": true },
+        { "title": "Add app bubbles", "done": true }
       ]
     }
   ],
   "recurringTasks": [
     {
       "id": "recurring-001",
-      "title": "Instagram Follower Analysis",
-      "description": "Check eddytrains for accounts not following back, filter by verified/follower count",
-      "frequency": "On request",
-      "lastRun": "2026-01-30",
-      "icon": "📸"
-    },
-    {
-      "id": "recurring-004",
       "title": "Unfollow Non-Followers",
-      "description": "Unfollowing 260 accounts that don't follow back (11 per hour over 24h)",
+      "description": "Unfollowing 260 accounts over 24h (11 per hour)",
       "frequency": "Every hour",
-      "lastRun": "2026-01-30T23:44",
-      "icon": "🧹"
+      "lastRun": "2026-01-30T23:50",
+      "nextRun": "2026-01-31T00:00",
+      "icon": "🧹",
+      "progress": "1/260"
     },
     {
       "id": "recurring-002",
-      "title": "Dashboard Assignment Check",
-      "description": "Scan for new task assignments from Louis",
-      "frequency": "Every hour",
-      "lastRun": "2026-01-30T23:00",
-      "icon": "📋"
-    },
-    {
-      "id": "recurring-003",
-      "title": "Heartbeat Check",
-      "description": "Periodic check for emails, calendar, weather, mentions",
-      "frequency": "Every 30 min",
+      "title": "Morning Report",
+      "description": "Daily report on yesterday's activity + recommendations for @eddytrains",
+      "frequency": "8:00 AM daily",
       "lastRun": null,
-      "icon": "💓"
+      "nextRun": "2026-01-31T08:00",
+      "icon": "📊"
     }
   ],
-  "lastUpdated": "2026-01-30T23:17:00+10:30"
+  "morningReport": {
+    "lastGenerated": null,
+    "nextScheduled": "2026-01-31T08:00",
+    "sections": [
+      "Yesterday's Activity Summary",
+      "Follower/Following Changes",
+      "Engagement Stats",
+      "Recommendations for Today"
+    ]
+  },
+  "lastUpdated": "2026-01-30T23:49:00+10:30"
 }
