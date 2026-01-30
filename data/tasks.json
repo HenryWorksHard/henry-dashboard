@@ -1,15 +1,12 @@
 {
   "inProgress": {
-    "id": "task-active",
-    "title": "Unfollowing Non-Followers",
-    "description": "Unfollowing 260 accounts that don't follow back on @eddytrains",
+    "id": "task-system-setup",
+    "title": "Task Management System Setup",
+    "description": "Setting up Google Calendar + Dashboard workflow so tasks don't get missed",
     "status": "in_progress",
     "priority": "high",
-    "created": "2026-01-30",
-    "due": "2026-01-31",
-    "progress": "20/260 complete",
-    "nextBatch": "Sub-agent running",
-    "paused": false
+    "created": "2026-01-31",
+    "progress": "AGENTS.md ✓ | WORKFLOW.md ✓ | Calendar events pending"
   },
   "nextTask": {
     "title": "IG Follow Session",
@@ -19,23 +16,41 @@
   },
   "tasks": [
     {
+      "id": "task-system",
+      "title": "Task Management System",
+      "description": "Google Calendar as schedule, Dashboard as status",
+      "status": "in_progress",
+      "priority": "high",
+      "created": "2026-01-31",
+      "subtasks": [
+        { "title": "Fix cron jobs (wakeMode: now)", "done": true },
+        { "title": "Create WORKFLOW.md", "done": true },
+        { "title": "Update AGENTS.md with calendar scanning", "done": true },
+        { "title": "Add recurring events to Google Calendar", "done": false },
+        { "title": "Test full workflow", "done": false }
+      ]
+    },
+    {
+      "id": "task-unfollow",
+      "title": "Unfollowing Non-Followers",
+      "description": "Unfollowing 260 accounts that don't follow back",
+      "status": "in_progress",
+      "priority": "medium",
+      "created": "2026-01-30",
+      "progress": "34/260 (13%)",
+      "subtasks": [
+        { "title": "Generate unfollow list", "done": true },
+        { "title": "Automated batches running", "done": true },
+        { "title": "Complete all 260", "done": false }
+      ]
+    },
+    {
       "id": "task-001",
       "title": "EddyTrains Fitness Apps",
       "description": "Client and Admin portals for the fitness business",
       "status": "completed",
       "priority": "high",
-      "created": "2026-01-31",
-      "due": null,
-      "recurring": false,
-      "subtasks": [
-        { "title": "Client App (workouts, nutrition, progress)", "done": true },
-        { "title": "Admin App (client management, programs)", "done": true },
-        { "title": "Deploy to GitHub Pages", "done": true }
-      ],
-      "links": {
-        "client": "https://henryworkshard.github.io/eddytrains-fitness-app/",
-        "admin": "https://henryworkshard.github.io/eddytrains-admin-app/"
-      }
+      "created": "2026-01-31"
     },
     {
       "id": "task-002",
@@ -43,59 +58,18 @@
       "description": "8 viral fitness content templates added to Content Planner",
       "status": "completed",
       "priority": "medium",
-      "created": "2026-01-31",
-      "due": null,
-      "recurring": false,
-      "subtasks": [
-        { "title": "Research viral fitness reels", "done": true },
-        { "title": "Extract hooks and formats", "done": true },
-        { "title": "Add to Content Planner", "done": true }
-      ]
-    },
-    {
-      "id": "task-003",
-      "title": "Build Compound Website",
-      "description": "Refine design and prepare for deployment",
-      "status": "in_progress",
-      "priority": "medium",
-      "created": "2026-01-30",
-      "due": null,
-      "recurring": false,
-      "subtasks": [
-        { "title": "Fix hero section spacing", "done": true },
-        { "title": "Add mobile responsiveness", "done": true },
-        { "title": "Connect domain", "done": false }
-      ]
-    }
-  ],
-  "recurringTasks": [
-    {
-      "id": "recurring-001",
-      "title": "Unfollow Non-Followers",
-      "description": "Unfollowing 260 accounts (safe pace ~15/hour)",
-      "frequency": "Batches throughout day",
-      "lastRun": "2026-01-31T08:45",
-      "nextRun": "Ongoing",
-      "icon": "🧹",
-      "progress": "20/260"
-    },
-    {
-      "id": "recurring-002",
-      "title": "Follow Target Accounts",
-      "description": "Follow fitness accounts in target niche",
-      "frequency": "12:00 PM daily",
-      "lastRun": null,
-      "nextRun": "2026-01-31T12:00",
-      "icon": "➕"
+      "created": "2026-01-31"
     }
   ],
   "completedToday": [
+    { "title": "Fixed cron jobs", "time": "9:02 AM" },
+    { "title": "Created WORKFLOW.md", "time": "9:05 AM" },
+    { "title": "Updated AGENTS.md", "time": "9:15 AM" },
+    { "title": "Unfollowed 34 accounts", "time": "9:00 AM" },
+    { "title": "Updated Content Planner", "time": "8:58 AM" },
     { "title": "Built Client Fitness App", "time": "2:05 AM" },
-    { "title": "Built Admin Fitness App", "time": "1:55 AM" },
-    { "title": "Scalped 8 content ideas", "time": "1:45 AM" },
-    { "title": "Unfollowed 20 accounts", "time": "8:50 AM" },
-    { "title": "Updated Content Planner with viral templates", "time": "8:40 AM" }
+    { "title": "Built Admin Fitness App", "time": "1:55 AM" }
   ],
-  "weeklyCompleted": 16,
-  "lastUpdated": "2026-01-31T08:45:00+10:30"
+  "weeklyCompleted": 20,
+  "lastUpdated": "2026-01-31T09:20:00+10:30"
 }
