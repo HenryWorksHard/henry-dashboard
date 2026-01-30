@@ -7,96 +7,64 @@
     "priority": "high",
     "created": "2026-01-30",
     "due": "2026-01-31",
-    "progress": "1/260 complete (arthur_lprte ✓)",
-    "nextBatch": "11 accounts at midnight",
-    "paused": true,
-    "pausedReason": "Working with Louis"
+    "progress": "10/260 complete",
+    "nextBatch": "Continuing now",
+    "paused": false
   },
   "nextTask": {
-    "title": "Morning Report",
-    "description": "Daily briefing for Louis",
-    "scheduledTime": "8:00 AM",
+    "title": "IG Follow Session",
+    "description": "Follow target accounts in fitness niche",
+    "scheduledTime": "12:00 PM",
     "type": "recurring"
   },
   "tasks": [
     {
       "id": "task-001",
-      "title": "Build Compound Website",
-      "description": "Refine design and prepare for deployment",
-      "status": "in_progress",
+      "title": "EddyTrains Fitness Apps",
+      "description": "Client and Admin portals for the fitness business",
+      "status": "completed",
       "priority": "high",
-      "created": "2026-01-30",
+      "created": "2026-01-31",
       "due": null,
       "recurring": false,
       "subtasks": [
-        {
-          "title": "Fix hero section spacing",
-          "done": true
-        },
-        {
-          "title": "Add mobile responsiveness",
-          "done": true
-        },
-        {
-          "title": "Connect domain",
-          "done": false
-        }
-      ]
+        { "title": "Client App (workouts, nutrition, progress)", "done": true },
+        { "title": "Admin App (client management, programs)", "done": true },
+        { "title": "Deploy to GitHub Pages", "done": true }
+      ],
+      "links": {
+        "client": "https://henryworkshard.github.io/eddytrains-fitness-app/",
+        "admin": "https://henryworkshard.github.io/eddytrains-admin-app/"
+      }
     },
     {
       "id": "task-002",
-      "title": "Set up Second Brain System",
-      "description": "Organize workspace files and memory structure",
-      "status": "ongoing",
+      "title": "Content Ideas Scalped",
+      "description": "8 viral fitness content templates from Instagram research",
+      "status": "completed",
       "priority": "medium",
-      "created": "2026-01-30",
+      "created": "2026-01-31",
       "due": null,
       "recurring": false,
       "subtasks": [
-        {
-          "title": "Create MEMORY.md structure",
-          "done": true
-        },
-        {
-          "title": "Set up daily notes",
-          "done": true
-        },
-        {
-          "title": "Document workflows",
-          "done": false
-        }
+        { "title": "Research viral fitness reels", "done": true },
+        { "title": "Extract hooks and formats", "done": true },
+        { "title": "Add to Content Planner", "done": false }
       ]
     },
     {
       "id": "task-003",
-      "title": "Henry Dashboard Development",
-      "description": "Build and maintain the task management dashboard",
-      "status": "completed",
+      "title": "Build Compound Website",
+      "description": "Refine design and prepare for deployment",
+      "status": "in_progress",
       "priority": "medium",
       "created": "2026-01-30",
       "due": null,
       "recurring": false,
       "subtasks": [
-        {
-          "title": "Initial build",
-          "done": true
-        },
-        {
-          "title": "Deploy to GitHub Pages",
-          "done": true
-        },
-        {
-          "title": "Add task assignment form",
-          "done": true
-        },
-        {
-          "title": "Set up hourly check cron",
-          "done": true
-        },
-        {
-          "title": "Add app bubbles",
-          "done": true
-        }
+        { "title": "Fix hero section spacing", "done": true },
+        { "title": "Add mobile responsiveness", "done": true },
+        { "title": "Connect domain", "done": false }
       ]
     }
   ],
@@ -104,47 +72,29 @@
     {
       "id": "recurring-001",
       "title": "Unfollow Non-Followers",
-      "description": "Unfollowing 260 accounts over 24h (11 per hour)",
-      "frequency": "Every hour",
-      "lastRun": "2026-01-30T23:50",
-      "nextRun": "2026-01-31T00:00",
+      "description": "Unfollowing 260 accounts (safe pace ~15/hour)",
+      "frequency": "Batches throughout day",
+      "lastRun": "2026-01-31T02:00",
+      "nextRun": "Now",
       "icon": "🧹",
-      "progress": "1/260"
+      "progress": "10/260"
     },
     {
       "id": "recurring-002",
-      "title": "Morning Report",
-      "description": "Daily report on yesterday's activity + recommendations for @eddytrains",
-      "frequency": "8:00 AM daily",
+      "title": "Follow Target Accounts",
+      "description": "Follow fitness accounts in target niche",
+      "frequency": "12:00 PM daily",
       "lastRun": null,
-      "nextRun": "2026-01-31T08:00",
-      "icon": "📊"
+      "nextRun": "2026-01-31T12:00",
+      "icon": "➕"
     }
   ],
-  "morningReport": {
-    "lastGenerated": null,
-    "nextScheduled": "2026-01-31T08:00",
-    "sections": [
-      "Yesterday's Activity Summary",
-      "Follower/Following Changes",
-      "Engagement Stats",
-      "Recommendations for Today"
-    ]
-  },
   "completedToday": [
-    {
-      "title": "Tested helper script",
-      "time": "12:32 AM"
-    },
-    {
-      "title": "Dashboard redesign",
-      "time": "11:30 PM"
-    },
-    {
-      "title": "Content planner updates",
-      "time": "11:45 PM"
-    }
+    { "title": "Built Client Fitness App", "time": "2:05 AM" },
+    { "title": "Built Admin Fitness App", "time": "1:55 AM" },
+    { "title": "Scalped 8 content ideas", "time": "1:45 AM" },
+    { "title": "Unfollowed 10 accounts", "time": "2:00 AM" }
   ],
-  "weeklyCompleted": 5,
-  "lastUpdated": "2026-01-31T00:54:00+10:30"
+  "weeklyCompleted": 14,
+  "lastUpdated": "2026-01-31T08:40:00+10:30"
 }
