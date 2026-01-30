@@ -337,6 +337,21 @@
       border-radius: 6px;
     }
 
+    .recurring-item.clickable {
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .recurring-item.clickable:hover {
+      background: #30363d;
+    }
+
+    .recurring-period {
+      font-size: 0.7rem;
+      color: #58a6ff;
+      margin-top: 0.25rem;
+    }
+
     .recurring-icon {
       width: 36px;
       height: 36px;
@@ -1000,7 +1015,7 @@
           <span class="card-title">Recurring Tasks</span>
         </div>
         <div class="recurring-list">
-          <div class="recurring-item">
+          <div class="recurring-item clickable" onclick="openTaskModal('recurring-morning')">
             <div class="recurring-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"/>
@@ -1010,10 +1025,11 @@
             <div class="recurring-info">
               <div class="recurring-title">Morning Report</div>
               <div class="recurring-desc">Daily briefing for Louis</div>
+              <div class="recurring-period">Every day at 8:00 AM</div>
             </div>
             <div class="recurring-badge">Daily</div>
           </div>
-          <div class="recurring-item">
+          <div class="recurring-item clickable" onclick="openTaskModal('recurring-follow')">
             <div class="recurring-icon" style="background: rgba(236, 72, 153, 0.15);">
               <svg viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2">
                 <rect x="2" y="2" width="20" height="20" rx="5"/>
@@ -1024,6 +1040,7 @@
             <div class="recurring-info">
               <div class="recurring-title">Instagram Follow Session</div>
               <div class="recurring-desc">Follow target accounts for eddytrains</div>
+              <div class="recurring-period">12:00 PM and 6:00 PM</div>
             </div>
             <div class="recurring-badge">2x Daily</div>
           </div>
@@ -1306,6 +1323,28 @@
     // Task Modal Functions
     let currentModalTask = null;
 
+    // Recurring tasks data (hardcoded since they're static)
+    const recurringTasksData = {
+      'recurring-morning': {
+        id: 'recurring-morning',
+        title: 'Morning Report',
+        description: 'Daily briefing for Louis with yesterday\'s activity summary, follower changes, and recommendations for the day.',
+        status: 'recurring',
+        frequency: 'Daily',
+        scheduledTime: '8:00 AM',
+        type: 'recurring'
+      },
+      'recurring-follow': {
+        id: 'recurring-follow',
+        title: 'Instagram Follow Session',
+        description: 'Follow target accounts for eddytrains growth. Focus on fitness/gym niche accounts with engaged audiences.',
+        status: 'recurring',
+        frequency: '2x Daily',
+        scheduledTime: '12:00 PM and 6:00 PM',
+        type: 'recurring'
+      }
+    };
+
     function openTaskModal(taskId) {
       let task;
       
@@ -1314,6 +1353,8 @@
         task = globalTasksData.inProgress;
       } else if (taskId === 'nextTask') {
         task = globalTasksData.nextTask;
+      } else if (taskId.startsWith('recurring-')) {
+        task = recurringTasksData[taskId];
       } else {
         task = globalTasksData.tasks.find(t => t.id === taskId);
       }
@@ -1331,21 +1372,50 @@
         'overdue': '#f85149'
       };
       
-      let content = `
-        <div class="task-detail-row">
-          <div class="task-detail-label">Status</div>
-          <div class="task-detail-value">
-            <span style="display:inline-flex;align-items:center;gap:6px;">
-              <span style="width:8px;height:8px;border-radius:50%;background:${statusColors[task.status] || '#8b949e'}"></span>
-              ${task.status.replace('_', ' ')}
-            </span>
+      let content = '';
+      
+      // Handle recurring tasks differently
+      if (task.status === 'recurring') {
+        content += `
+          <div class="task-detail-row">
+            <div class="task-detail-label">Type</div>
+            <div class="task-detail-value">
+              <span style="display:inline-flex;align-items:center;gap:6px;">
+                <span style="width:8px;height:8px;border-radius:50%;background:#a371f7"></span>
+                Recurring Task
+              </span>
+            </div>
           </div>
-        </div>
-        <div class="task-detail-row">
-          <div class="task-detail-label">Priority</div>
-          <div class="task-detail-value">${task.priority}</div>
-        </div>
-      `;
+          <div class="task-detail-row">
+            <div class="task-detail-label">Frequency</div>
+            <div class="task-detail-value">${task.frequency}</div>
+          </div>
+          <div class="task-detail-row">
+            <div class="task-detail-label">Scheduled Time</div>
+            <div class="task-detail-value">${task.scheduledTime}</div>
+          </div>
+        `;
+      } else {
+        content += `
+          <div class="task-detail-row">
+            <div class="task-detail-label">Status</div>
+            <div class="task-detail-value">
+              <span style="display:inline-flex;align-items:center;gap:6px;">
+                <span style="width:8px;height:8px;border-radius:50%;background:${statusColors[task.status] || '#8b949e'}"></span>
+                ${(task.status || 'pending').replace('_', ' ')}
+              </span>
+            </div>
+          </div>
+        `;
+        if (task.priority) {
+          content += `
+            <div class="task-detail-row">
+              <div class="task-detail-label">Priority</div>
+              <div class="task-detail-value">${task.priority}</div>
+            </div>
+          `;
+        }
+      }
       
       if (task.description) {
         content += `
