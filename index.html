@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Henry Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+      min-height: 100vh;
+      color: #fff;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .logo {
+      font-size: 3rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: #888;
+      font-size: 1rem;
+      margin-top: 0.25rem;
+    }
+
+    .last-updated {
+      margin-left: auto;
+      color: #666;
+      font-size: 0.875rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 1.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-header h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .card-icon {
+      font-size: 1.5rem;
+    }
+
+    /* Tasks */
+    .task {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      transition: all 0.2s;
+    }
+
+    .task:hover {
+      border-color: rgba(102, 126, 234, 0.3);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .task-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .task-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .task-status {
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .status-in_progress {
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+    }
+
+    .status-ongoing {
+      background: rgba(168, 85, 247, 0.2);
+      color: #c084fc;
+    }
+
+    .status-completed {
+      background: rgba(34, 197, 94, 0.2);
+      color: #4ade80;
+    }
+
+    .status-pending {
+      background: rgba(234, 179, 8, 0.2);
+      color: #fbbf24;
+    }
+
+    .task-desc {
+      color: #999;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .task-meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .priority-high {
+      color: #f87171;
+    }
+
+    .priority-medium {
+      color: #fbbf24;
+    }
+
+    .priority-low {
+      color: #4ade80;
+    }
+
+    .subtasks {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 1rem;
+    }
+
+    .subtask {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .subtask.done {
+      color: #666;
+      text-decoration: line-through;
+    }
+
+    .subtask-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 2px solid #444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+    }
+
+    .subtask.done .subtask-check {
+      background: #4ade80;
+      border-color: #4ade80;
+      color: #000;
+    }
+
+    /* Recommendations */
+    .rec {
+      padding: 1rem;
+      border-left: 3px solid #667eea;
+      background: rgba(102, 126, 234, 0.05);
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 1rem;
+    }
+
+    .rec-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .rec-desc {
+      color: #999;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    .rec-category {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.2rem 0.5rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: 4px;
+      font-size: 0.7rem;
+      color: #888;
+      text-transform: uppercase;
+    }
+
+    /* Assignment Form */
+    .assign-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: 0.875rem;
+      color: #888;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: #fff;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #667eea;
+      background: rgba(102, 126, 234, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      border-radius: 8px;
+      padding: 1rem;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .success-msg {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 8px;
+      padding: 1rem;
+      color: #4ade80;
+      text-align: center;
+      display: none;
+    }
+
+    .success-msg.show {
+      display: block;
+    }
+
+    .pending-assignments {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .pending-title {
+      font-size: 0.875rem;
+      color: #888;
+      margin-bottom: 1rem;
+    }
+
+    .pending-item {
+      background: rgba(234, 179, 8, 0.1);
+      border: 1px solid rgba(234, 179, 8, 0.2);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pending-item-title {
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    .pending-item-time {
+      font-size: 0.75rem;
+      color: #888;
+      margin-top: 0.25rem;
+    }
+
+    .right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="logo">👟</span>
+      <div>
+        <h1>Henry Dashboard</h1>
+        <p class="subtitle">Your AI right-hand command centre</p>
+      </div>
+      <div class="last-updated" id="lastUpdated">Last updated: --</div>
+    </header>
+
+    <div class="grid">
+      <div class="left-col">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-icon">📋</span>
+            <h2>Current Tasks</h2>
+          </div>
+          <div id="tasksList"></div>
+        </div>
+      </div>
+
+      <div class="right-col">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-icon">✨</span>
+            <h2>Assign Me a Task</h2>
+          </div>
+          <form class="assign-form" id="assignForm">
+            <div class="form-group">
+              <label for="taskTitle">Task Title</label>
+              <input type="text" id="taskTitle" name="title" placeholder="What do you need?" required>
+            </div>
+            <div class="form-group">
+              <label for="taskDesc">Description</label>
+              <textarea id="taskDesc" name="description" placeholder="Any details..."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="taskPriority">Priority</label>
+              <select id="taskPriority" name="priority">
+                <option value="high">🔴 High</option>
+                <option value="medium" selected>🟡 Medium</option>
+                <option value="low">🟢 Low</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="taskDue">Due Date (optional)</label>
+              <input type="date" id="taskDue" name="due">
+            </div>
+            <button type="submit" class="submit-btn">Assign to Henry 👟</button>
+            <div class="success-msg" id="successMsg">
+              ✅ Task assigned! Henry will pick this up within the hour.
+            </div>
+          </form>
+          <div class="pending-assignments" id="pendingSection" style="display: none;">
+            <div class="pending-title">⏳ Pending Assignments</div>
+            <div id="pendingList"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-icon">💡</span>
+            <h2>What Else I Can Do</h2>
+          </div>
+          <div id="recsList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Load data from JSON files
+    async function loadData() {
+      try {
+        const [tasksRes, recsRes, assignRes] = await Promise.all([
+          fetch('data/tasks.json'),
+          fetch('data/recommendations.json'),
+          fetch('data/assignments.json')
+        ]);
+        
+        const tasks = await tasksRes.json();
+        const recs = await recsRes.json();
+        const assigns = await assignRes.json();
+        
+        renderTasks(tasks.tasks);
+        renderRecs(recs.recommendations);
+        renderPending(assigns.assignments);
+        
+        document.getElementById('lastUpdated').textContent = 
+          'Last updated: ' + new Date(tasks.lastUpdated).toLocaleString();
+      } catch (err) {
+        console.error('Error loading data:', err);
+      }
+    }
+
+    function renderTasks(tasks) {
+      const container = document.getElementById('tasksList');
+      container.innerHTML = tasks.map(task => `
+        <div class="task">
+          <div class="task-header">
+            <span class="task-title">${task.title}</span>
+            <span class="task-status status-${task.status}">${task.status.replace('_', ' ')}</span>
+          </div>
+          <div class="task-desc">${task.description}</div>
+          <div class="task-meta">
+            <span class="priority-${task.priority}">● ${task.priority} priority</span>
+            <span>Created: ${task.created}</span>
+            ${task.due ? `<span>Due: ${task.due}</span>` : ''}
+          </div>
+          ${task.subtasks ? `
+            <div class="subtasks">
+              ${task.subtasks.map(st => `
+                <div class="subtask ${st.done ? 'done' : ''}">
+                  <span class="subtask-check">${st.done ? '✓' : ''}</span>
+                  <span>${st.title}</span>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+        </div>
+      `).join('');
+    }
+
+    function renderRecs(recs) {
+      const container = document.getElementById('recsList');
+      container.innerHTML = recs.map(rec => `
+        <div class="rec">
+          <div class="rec-title">${rec.title}</div>
+          <div class="rec-desc">${rec.description}</div>
+          <span class="rec-category">${rec.category}</span>
+        </div>
+      `).join('');
+    }
+
+    function renderPending(assignments) {
+      const section = document.getElementById('pendingSection');
+      const container = document.getElementById('pendingList');
+      
+      const pending = assignments.filter(a => a.status === 'pending');
+      
+      if (pending.length === 0) {
+        section.style.display = 'none';
+        return;
+      }
+      
+      section.style.display = 'block';
+      container.innerHTML = pending.map(a => `
+        <div class="pending-item">
+          <div class="pending-item-title">${a.title}</div>
+          <div class="pending-item-time">Submitted: ${new Date(a.submitted).toLocaleString()}</div>
+        </div>
+      `).join('');
+    }
+
+    // Handle form submission
+    document.getElementById('assignForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const form = e.target;
+      const data = {
+        id: 'assign-' + Date.now(),
+        title: form.title.value,
+        description: form.description.value,
+        priority: form.priority.value,
+        due: form.due.value || null,
+        submitted: new Date().toISOString(),
+        status: 'pending'
+      };
+      
+      try {
+        // Load current assignments
+        const res = await fetch('data/assignments.json');
+        const assigns = await res.json();
+        assigns.assignments.push(data);
+        
+        // Save back (this requires server-side handling in production)
+        // For now, we'll store in localStorage and the cron job will pick it up
+        localStorage.setItem('henry-pending-assignments', JSON.stringify(assigns.assignments));
+        
+        // Also try to write to file (will work if served with write capability)
+        try {
+          await fetch('data/assignments.json', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(assigns)
+          });
+        } catch (writeErr) {
+          // Expected to fail with static file serving, localStorage backup is used
+        }
+        
+        // Show success
+        document.getElementById('successMsg').classList.add('show');
+        form.reset();
+        
+        // Render pending
+        renderPending(assigns.assignments);
+        
+        // Hide success after 3s
+        setTimeout(() => {
+          document.getElementById('successMsg').classList.remove('show');
+        }, 3000);
+        
+      } catch (err) {
+        console.error('Error submitting:', err);
+        alert('Error submitting task. Please try again.');
+      }
+    });
+
+    // Initial load
+    loadData();
+    
+    // Refresh every minute
+    setInterval(loadData, 60000);
+  </script>
+</body>
+</html>

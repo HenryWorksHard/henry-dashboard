@@ -1,0 +1,34 @@
+{
+  "recommendations": [
+    {
+      "id": "rec-001",
+      "title": "Email Management",
+      "description": "I can check your inbox periodically and flag urgent messages, draft responses, or summarize what needs attention.",
+      "category": "productivity"
+    },
+    {
+      "id": "rec-002",
+      "title": "Calendar Integration",
+      "description": "Set up calendar monitoring so I can remind you of upcoming events and help with scheduling.",
+      "category": "productivity"
+    },
+    {
+      "id": "rec-003",
+      "title": "Fitness Business PA Tasks",
+      "description": "Client follow-ups, scheduling, content ideas for eddytrains — I can handle the admin side.",
+      "category": "business"
+    },
+    {
+      "id": "rec-004",
+      "title": "Market Research Automation",
+      "description": "Set up alerts or periodic scans for memecoin trends, news, or whatever intel you need.",
+      "category": "trading"
+    },
+    {
+      "id": "rec-005",
+      "title": "AI Automation Consulting Support",
+      "description": "Help prep client proposals, research tools, or build demo automations for the consulting business.",
+      "category": "business"
+    }
+  ]
+}

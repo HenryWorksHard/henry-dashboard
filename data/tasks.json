@@ -1,0 +1,33 @@
+{
+  "tasks": [
+    {
+      "id": "task-001",
+      "title": "Build Compound Website",
+      "description": "Refine design and prepare for deployment",
+      "status": "in_progress",
+      "priority": "high",
+      "created": "2026-01-30",
+      "due": null,
+      "subtasks": [
+        { "title": "Fix hero section spacing", "done": true },
+        { "title": "Add mobile responsiveness", "done": true },
+        { "title": "Connect domain", "done": false }
+      ]
+    },
+    {
+      "id": "task-002",
+      "title": "Set up Second Brain System",
+      "description": "Organize workspace files and memory structure",
+      "status": "ongoing",
+      "priority": "medium",
+      "created": "2026-01-30",
+      "due": null,
+      "subtasks": [
+        { "title": "Create MEMORY.md structure", "done": true },
+        { "title": "Set up daily notes", "done": true },
+        { "title": "Document workflows", "done": false }
+      ]
+    }
+  ],
+  "lastUpdated": "2026-01-30T21:53:00+10:30"
+}
