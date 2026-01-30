@@ -32,6 +32,10 @@
       align-items: center;
       padding: 1rem 0;
       gap: 1.5rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
     }
 
     .sidebar-logo {
@@ -81,6 +85,7 @@
       flex: 1;
       padding: 1.5rem 2rem;
       overflow-y: auto;
+      margin-left: 60px;
     }
 
     .header {
@@ -118,6 +123,63 @@
       font-size: 0.875rem;
     }
 
+    /* Current Task Banner */
+    .current-task-banner {
+      background: linear-gradient(135deg, rgba(88, 166, 255, 0.1) 0%, rgba(56, 139, 253, 0.1) 100%);
+      border: 1px solid rgba(88, 166, 255, 0.4);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .current-task-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #58a6ff, #388bfd);
+    }
+
+    .current-task-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #58a6ff;
+      margin-bottom: 0.5rem;
+    }
+
+    .current-task-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #f0f6fc;
+      margin-bottom: 0.25rem;
+    }
+
+    .current-task-desc {
+      font-size: 0.875rem;
+      color: #8b949e;
+      margin-bottom: 0.75rem;
+    }
+
+    .current-task-progress {
+      font-size: 0.8rem;
+      color: #58a6ff;
+      background: rgba(88, 166, 255, 0.1);
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .no-current-task {
+      color: #8b949e;
+      font-size: 0.875rem;
+    }
+
     /* Grid Layout */
     .grid {
       display: grid;
@@ -132,6 +194,7 @@
     @media (max-width: 768px) {
       .grid { grid-template-columns: 1fr; }
       .sidebar { display: none; }
+      .main { margin-left: 0; }
     }
 
     /* Cards */
@@ -150,7 +213,7 @@
     }
 
     .card-title {
-      font-size: 1rem;
+      font-size: 0.875rem;
       font-weight: 600;
       color: #f0f6fc;
     }
@@ -172,140 +235,136 @@
       color: #c9d1d9;
     }
 
-    /* Health Stats */
-    .health-list {
+    /* Next Task Card */
+    .next-task-item {
+      background: #21262d;
+      border-radius: 6px;
+      padding: 1rem;
+    }
+
+    .next-task-title {
+      font-weight: 500;
+      color: #f0f6fc;
+      margin-bottom: 0.25rem;
+    }
+
+    .next-task-desc {
+      font-size: 0.8rem;
+      color: #8b949e;
+      margin-bottom: 0.5rem;
+    }
+
+    .next-task-meta {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+    }
+
+    .meta-tag {
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(139, 148, 158, 0.1);
+      color: #8b949e;
+    }
+
+    .meta-tag.high { background: rgba(248, 81, 73, 0.15); color: #f85149; }
+    .meta-tag.medium { background: rgba(210, 153, 34, 0.15); color: #d29922; }
+    .meta-tag.low { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
+
+    /* Recurring Tasks */
+    .recurring-list {
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
     }
 
-    .health-row {
+    .recurring-item {
       display: flex;
-      justify-content: space-between;
-      font-size: 0.875rem;
-    }
-
-    .health-label { color: #8b949e; }
-    .health-value { color: #c9d1d9; }
-    .health-value.positive { color: #3fb950; }
-    .health-value.warning { color: #d29922; }
-    .health-value.negative { color: #f85149; }
-
-    /* Donut Chart */
-    .donut-container {
-      display: flex;
-      flex-direction: column;
       align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      background: #21262d;
+      border-radius: 6px;
     }
 
-    .donut-chart {
-      position: relative;
-      width: 140px;
-      height: 140px;
+    .recurring-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      background: rgba(136, 46, 224, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .donut-chart svg {
-      transform: rotate(-90deg);
+    .recurring-icon svg {
+      width: 18px;
+      height: 18px;
+      color: #a371f7;
     }
 
-    .donut-chart circle {
-      fill: none;
-      stroke-width: 12;
+    .recurring-info {
+      flex: 1;
     }
 
-    .donut-bg { stroke: #21262d; }
-    .donut-complete { stroke: #3fb950; }
-    .donut-progress { stroke: #58a6ff; }
-    .donut-pending { stroke: #8b949e; }
-
-    .donut-center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-    }
-
-    .donut-number {
-      font-size: 1.5rem;
-      font-weight: 600;
+    .recurring-title {
+      font-size: 0.875rem;
+      font-weight: 500;
       color: #f0f6fc;
     }
 
-    .donut-label {
+    .recurring-desc {
       font-size: 0.75rem;
       color: #8b949e;
     }
 
-    .donut-legend {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-      font-size: 0.75rem;
+    .recurring-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      background: rgba(163, 113, 247, 0.15);
+      color: #a371f7;
     }
 
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .legend-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
-
-    .legend-dot.not-started { background: #8b949e; }
-    .legend-dot.complete { background: #3fb950; }
-    .legend-dot.in-progress { background: #58a6ff; }
-
-    /* Progress Bars */
-    .progress-list {
+    /* Recommendations */
+    .rec-list {
       display: flex;
       flex-direction: column;
-      gap: 0.875rem;
-    }
-
-    .progress-row {
-      display: flex;
-      align-items: center;
       gap: 0.75rem;
     }
 
-    .progress-label {
-      width: 100px;
+    .rec-item {
+      padding: 0.875rem;
+      border-left: 3px solid #58a6ff;
+      background: rgba(88, 166, 255, 0.05);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .rec-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #f0f6fc;
+      margin-bottom: 0.25rem;
+    }
+
+    .rec-desc {
       font-size: 0.8rem;
       color: #8b949e;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      line-height: 1.4;
     }
 
-    .progress-percent {
-      width: 40px;
-      font-size: 0.8rem;
-      color: #c9d1d9;
+    .rec-category {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      background: rgba(139, 148, 158, 0.1);
+      color: #8b949e;
     }
-
-    .progress-bar {
-      flex: 1;
-      height: 8px;
-      background: #21262d;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      border-radius: 4px;
-      transition: width 0.3s;
-    }
-
-    .progress-fill.green { background: #3fb950; }
-    .progress-fill.blue { background: #58a6ff; }
-    .progress-fill.pink { background: #f778ba; }
-    .progress-fill.yellow { background: #d29922; }
 
     /* Task List */
     .task-list {
@@ -328,10 +387,11 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
+      flex-shrink: 0;
     }
 
-    .task-status.complete { background: #3fb950; }
-    .task-status.in-progress { background: #58a6ff; }
+    .task-status.completed { background: #3fb950; }
+    .task-status.in_progress, .task-status.in-progress { background: #58a6ff; }
     .task-status.pending { background: #8b949e; }
     .task-status.overdue { background: #f85149; }
 
@@ -348,18 +408,67 @@
     .task-priority.medium { background: rgba(210, 153, 34, 0.15); color: #d29922; }
     .task-priority.low { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
 
+    /* Progress Bars */
+    .progress-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .progress-label {
+      width: 90px;
+      font-size: 0.8rem;
+      color: #8b949e;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .progress-percent {
+      width: 36px;
+      font-size: 0.8rem;
+      color: #c9d1d9;
+      text-align: right;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 6px;
+      background: #21262d;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.3s;
+    }
+
+    .progress-fill.green { background: #3fb950; }
+    .progress-fill.blue { background: #58a6ff; }
+    .progress-fill.pink { background: #f778ba; }
+    .progress-fill.yellow { background: #d29922; }
+    .progress-fill.purple { background: #a371f7; }
+
     /* Apps Grid */
     .apps-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
 
     .app-link {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      padding: 0.875rem;
+      padding: 0.75rem;
       background: #21262d;
       border: 1px solid #30363d;
       border-radius: 6px;
@@ -396,14 +505,14 @@
 
     /* Form */
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: 0.875rem;
     }
 
     .form-group label {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: #8b949e;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.375rem;
     }
 
     .form-group input,
@@ -413,7 +522,7 @@
       background: #0d1117;
       border: 1px solid #30363d;
       border-radius: 6px;
-      padding: 0.625rem 0.75rem;
+      padding: 0.5rem 0.75rem;
       color: #c9d1d9;
       font-size: 0.875rem;
       font-family: inherit;
@@ -428,7 +537,7 @@
     }
 
     .form-group textarea {
-      min-height: 80px;
+      min-height: 60px;
       resize: vertical;
     }
 
@@ -437,7 +546,7 @@
       background: #238636;
       border: none;
       border-radius: 6px;
-      padding: 0.75rem;
+      padding: 0.625rem;
       color: #fff;
       font-size: 0.875rem;
       font-weight: 500;
@@ -453,62 +562,43 @@
       background: rgba(63, 185, 80, 0.1);
       border: 1px solid rgba(63, 185, 80, 0.3);
       border-radius: 6px;
-      padding: 0.75rem;
+      padding: 0.625rem;
       color: #3fb950;
-      font-size: 0.875rem;
+      font-size: 0.8rem;
       text-align: center;
-      margin-top: 1rem;
+      margin-top: 0.75rem;
       display: none;
     }
 
     .success-msg.show { display: block; }
 
-    /* Span full width */
+    /* Span classes */
     .span-2 { grid-column: span 2; }
+    .span-3 { grid-column: span 3; }
 
     @media (max-width: 1200px) {
-      .span-2 { grid-column: span 1; }
+      .span-2, .span-3 { grid-column: span 1; }
     }
 
-    /* Bar Chart */
-    .bar-chart {
-      display: flex;
-      align-items: flex-end;
-      gap: 0.5rem;
-      height: 120px;
-      padding-top: 1rem;
-    }
-
-    .bar-group {
-      flex: 1;
+    /* Health Stats */
+    .health-list {
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 0.5rem;
     }
 
-    .bar {
-      width: 100%;
-      max-width: 40px;
-      border-radius: 4px 4px 0 0;
-      transition: height 0.3s;
-    }
-
-    .bar.actual { background: #3fb950; }
-    .bar.planned { background: #58a6ff; }
-    .bar.budget { background: #8b949e; }
-
-    .bar-label {
-      font-size: 0.7rem;
-      color: #8b949e;
-    }
-
-    .chart-legend {
+    .health-row {
       display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-      font-size: 0.75rem;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      padding: 0.25rem 0;
     }
+
+    .health-label { color: #8b949e; }
+    .health-value { color: #c9d1d9; font-weight: 500; }
+    .health-value.positive { color: #3fb950; }
+    .health-value.warning { color: #d29922; }
+    .health-value.negative { color: #f85149; }
   </style>
 </head>
 <body>
@@ -539,7 +629,7 @@
       <div class="nav-item" title="Settings">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="3"/>
-          <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
         </svg>
       </div>
     </div>
@@ -555,25 +645,37 @@
       <div class="header-right" id="lastUpdated">Last updated: --</div>
     </header>
 
+    <!-- Current Task Banner -->
+    <div class="current-task-banner" id="currentTaskBanner">
+      <div class="current-task-label">Current Task</div>
+      <div id="currentTaskContent">
+        <p class="no-current-task">No task in progress</p>
+      </div>
+    </div>
+
     <div class="grid">
-      <!-- Health -->
+      <!-- Next Task -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Next Task</span>
+        </div>
+        <div id="nextTaskContent">
+          <p class="no-current-task" style="font-size: 0.8rem;">No pending tasks</p>
+        </div>
+      </div>
+
+      <!-- Health Stats -->
       <div class="card">
         <div class="card-header">
           <span class="card-title">Health</span>
-          <div class="card-actions">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 16v-4M12 8h.01"/>
-            </svg>
-          </div>
         </div>
-        <div class="health-list" id="healthList">
+        <div class="health-list">
           <div class="health-row">
-            <span class="health-label">Active Tasks</span>
+            <span class="health-label">Active</span>
             <span class="health-value" id="activeTasks">--</span>
           </div>
           <div class="health-row">
-            <span class="health-label">Completed Today</span>
+            <span class="health-label">Completed</span>
             <span class="health-value positive" id="completedToday">--</span>
           </div>
           <div class="health-row">
@@ -587,90 +689,32 @@
         </div>
       </div>
 
-      <!-- Tasks Donut -->
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">Tasks</span>
-          <div class="card-actions">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 16v-4M12 8h.01"/>
-            </svg>
-          </div>
-        </div>
-        <div class="donut-container">
-          <div class="donut-chart">
-            <svg width="140" height="140" viewBox="0 0 140 140">
-              <circle class="donut-bg" cx="70" cy="70" r="54"/>
-              <circle class="donut-pending" cx="70" cy="70" r="54" 
-                stroke-dasharray="0 339.3" id="donutPending"/>
-              <circle class="donut-progress" cx="70" cy="70" r="54" 
-                stroke-dasharray="0 339.3" id="donutProgress"/>
-              <circle class="donut-complete" cx="70" cy="70" r="54" 
-                stroke-dasharray="0 339.3" id="donutComplete"/>
-            </svg>
-            <div class="donut-center">
-              <div class="donut-number" id="totalTasks">0</div>
-              <div class="donut-label">Total</div>
-            </div>
-          </div>
-          <div class="donut-legend">
-            <div class="legend-item">
-              <div class="legend-dot not-started"></div>
-              <span>Not Started (<span id="notStartedCount">0</span>)</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-dot complete"></div>
-              <span>Complete (<span id="completeCount">0</span>)</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-dot in-progress"></div>
-              <span>In Progress (<span id="inProgressCount">0</span>)</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Progress -->
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">Progress</span>
-          <div class="card-actions">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 16v-4M12 8h.01"/>
-            </svg>
-          </div>
-        </div>
-        <div class="progress-list" id="progressList"></div>
-      </div>
-
-      <!-- Recent Tasks -->
-      <div class="card span-2">
-        <div class="card-header">
-          <span class="card-title">Recent Tasks</span>
-          <div class="card-actions">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 16v-4M12 8h.01"/>
-            </svg>
-          </div>
-        </div>
-        <div class="task-list" id="taskList"></div>
-      </div>
-
       <!-- Workload -->
       <div class="card">
         <div class="card-header">
           <span class="card-title">Workload</span>
-          <div class="card-actions">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 16v-4M12 8h.01"/>
-            </svg>
-          </div>
         </div>
         <div class="progress-list" id="workloadList"></div>
+      </div>
+
+      <!-- Recurring Tasks -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Recurring Tasks</span>
+        </div>
+        <div class="recurring-list" id="recurringList">
+          <p class="no-current-task" style="font-size: 0.8rem;">No recurring tasks</p>
+        </div>
+      </div>
+
+      <!-- Recommendations -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Recommended Actions</span>
+        </div>
+        <div class="rec-list" id="recsList">
+          <p class="no-current-task" style="font-size: 0.8rem;">No recommendations</p>
+        </div>
       </div>
 
       <!-- Apps -->
@@ -700,6 +744,14 @@
             <span class="app-name">Dashboard</span>
           </a>
         </div>
+      </div>
+
+      <!-- All Tasks -->
+      <div class="card span-2">
+        <div class="card-header">
+          <span class="card-title">All Tasks</span>
+        </div>
+        <div class="task-list" id="taskList"></div>
       </div>
 
       <!-- Assign Task -->
@@ -750,68 +802,50 @@
         const overdue = allTasks.filter(t => t.status === 'overdue').length;
         const total = allTasks.length;
 
+        // Current Task
+        const currentTaskContent = document.getElementById('currentTaskContent');
+        if (tasks.inProgress) {
+          currentTaskContent.innerHTML = `
+            <div class="current-task-title">${tasks.inProgress.title}</div>
+            <div class="current-task-desc">${tasks.inProgress.description}</div>
+            <div class="current-task-progress">${tasks.inProgress.progress}</div>
+          `;
+        } else {
+          const inProgressTask = allTasks.find(t => t.status === 'in_progress');
+          if (inProgressTask) {
+            currentTaskContent.innerHTML = `
+              <div class="current-task-title">${inProgressTask.title}</div>
+              <div class="current-task-desc">${inProgressTask.description || ''}</div>
+            `;
+          } else {
+            currentTaskContent.innerHTML = '<p class="no-current-task">No task in progress</p>';
+          }
+        }
+
+        // Next Task
+        const nextTaskContent = document.getElementById('nextTaskContent');
+        const nextTask = allTasks.find(t => t.status === 'pending');
+        if (nextTask) {
+          nextTaskContent.innerHTML = `
+            <div class="next-task-item">
+              <div class="next-task-title">${nextTask.title}</div>
+              <div class="next-task-desc">${nextTask.description || ''}</div>
+              <div class="next-task-meta">
+                <span class="meta-tag ${nextTask.priority}">${nextTask.priority}</span>
+                ${nextTask.due ? `<span class="meta-tag">Due: ${nextTask.due}</span>` : ''}
+              </div>
+            </div>
+          `;
+        } else {
+          nextTaskContent.innerHTML = '<p class="no-current-task" style="font-size: 0.8rem;">No pending tasks</p>';
+        }
+
         // Health stats
         document.getElementById('activeTasks').textContent = inProgress + pending;
         document.getElementById('completedToday').textContent = completed;
         document.getElementById('overdueTasks').textContent = overdue;
         document.getElementById('overdueTasks').className = 'health-value ' + (overdue > 0 ? 'negative' : 'positive');
         document.getElementById('progressPercent').textContent = total > 0 ? Math.round((completed / total) * 100) + '%' : '0%';
-
-        // Donut chart
-        const circumference = 339.3;
-        const completePct = total > 0 ? completed / total : 0;
-        const progressPct = total > 0 ? inProgress / total : 0;
-        const pendingPct = total > 0 ? pending / total : 0;
-
-        document.getElementById('donutComplete').setAttribute('stroke-dasharray', 
-          `${completePct * circumference} ${circumference}`);
-        document.getElementById('donutProgress').setAttribute('stroke-dasharray', 
-          `${progressPct * circumference} ${circumference}`);
-        document.getElementById('donutProgress').setAttribute('stroke-dashoffset', 
-          `-${completePct * circumference}`);
-        document.getElementById('donutPending').setAttribute('stroke-dasharray', 
-          `${pendingPct * circumference} ${circumference}`);
-        document.getElementById('donutPending').setAttribute('stroke-dashoffset', 
-          `-${(completePct + progressPct) * circumference}`);
-
-        document.getElementById('totalTasks').textContent = total;
-        document.getElementById('notStartedCount').textContent = pending;
-        document.getElementById('completeCount').textContent = completed;
-        document.getElementById('inProgressCount').textContent = inProgress;
-
-        // Progress bars
-        const categories = {};
-        allTasks.forEach(t => {
-          const cat = t.category || 'General';
-          if (!categories[cat]) categories[cat] = { total: 0, done: 0 };
-          categories[cat].total++;
-          if (t.status === 'completed') categories[cat].done++;
-        });
-
-        const colors = ['green', 'blue', 'pink', 'yellow'];
-        const progressList = document.getElementById('progressList');
-        progressList.innerHTML = Object.entries(categories).map(([name, data], i) => {
-          const pct = Math.round((data.done / data.total) * 100);
-          return `
-            <div class="progress-row">
-              <span class="progress-label">${name}</span>
-              <span class="progress-percent">${pct}%</span>
-              <div class="progress-bar">
-                <div class="progress-fill ${colors[i % colors.length]}" style="width: ${pct}%"></div>
-              </div>
-            </div>
-          `;
-        }).join('');
-
-        // Task list
-        const taskList = document.getElementById('taskList');
-        taskList.innerHTML = allTasks.slice(0, 5).map(task => `
-          <div class="task-item">
-            <div class="task-status ${task.status.replace('_', '-')}"></div>
-            <span class="task-name">${task.title}</span>
-            <span class="task-priority ${task.priority}">${task.priority}</span>
-          </div>
-        `).join('');
 
         // Workload (by priority)
         const highCount = allTasks.filter(t => t.priority === 'high' && t.status !== 'completed').length;
@@ -821,7 +855,7 @@
 
         document.getElementById('workloadList').innerHTML = `
           <div class="progress-row">
-            <span class="progress-label">High Priority</span>
+            <span class="progress-label">High</span>
             <span class="progress-percent">${highCount}</span>
             <div class="progress-bar">
               <div class="progress-fill pink" style="width: ${(highCount/maxCount)*100}%"></div>
@@ -842,6 +876,58 @@
             </div>
           </div>
         `;
+
+        // Recurring Tasks
+        const recurringList = document.getElementById('recurringList');
+        const recurringTasks = tasks.recurringTasks || [];
+        if (recurringTasks.length > 0) {
+          recurringList.innerHTML = recurringTasks.map(task => `
+            <div class="recurring-item">
+              <div class="recurring-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M23 4v6h-6M1 20v-6h6"/>
+                  <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+                </svg>
+              </div>
+              <div class="recurring-info">
+                <div class="recurring-title">${task.title}</div>
+                <div class="recurring-desc">${task.description || ''}</div>
+              </div>
+              <div class="recurring-badge">${task.frequency}</div>
+            </div>
+          `).join('');
+        } else {
+          recurringList.innerHTML = '<p class="no-current-task" style="font-size: 0.8rem;">No recurring tasks</p>';
+        }
+
+        // Recommendations
+        const recsList = document.getElementById('recsList');
+        const recommendations = recs.recommendations || [];
+        if (recommendations.length > 0) {
+          recsList.innerHTML = recommendations.slice(0, 3).map(rec => `
+            <div class="rec-item">
+              <div class="rec-title">${rec.title}</div>
+              <div class="rec-desc">${rec.description}</div>
+              <span class="rec-category">${rec.category}</span>
+            </div>
+          `).join('');
+        } else {
+          recsList.innerHTML = '<p class="no-current-task" style="font-size: 0.8rem;">No recommendations</p>';
+        }
+
+        // Task list
+        const taskList = document.getElementById('taskList');
+        if (allTasks.length > 0) {
+          taskList.innerHTML = allTasks.slice(0, 6).map(task => `
+            <div class="task-item">
+              <div class="task-status ${task.status}"></div>
+              <span class="task-name">${task.title}</span>
+              <span class="task-priority ${task.priority}">${task.priority}</span>
+            </div>
+          `).join('');
+        } else {
+          taskList.innerHTML = '<p class="no-current-task" style="font-size: 0.8rem;">No tasks</p>';
+        }
         
         document.getElementById('lastUpdated').textContent = 
           'Last updated: ' + new Date(tasks.lastUpdated).toLocaleString();
@@ -876,22 +962,17 @@
     // Service Worker for auto-updates
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').then(reg => {
-        // Check for updates every time page loads
         reg.update();
-        
-        // Listen for new service worker
         reg.addEventListener('updatefound', () => {
           const newWorker = reg.installing;
           newWorker.addEventListener('statechange', () => {
             if (newWorker.state === 'activated') {
-              // New version available, reload
               window.location.reload();
             }
           });
         });
       });
       
-      // Also check for updates on visibility change (when app comes back to foreground)
       document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible') {
           navigator.serviceWorker.getRegistration().then(reg => {
