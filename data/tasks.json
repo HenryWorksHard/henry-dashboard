@@ -1,4 +1,14 @@
 {
+  "inProgress": {
+    "id": "task-active",
+    "title": "Instagram Follower Cleanup",
+    "description": "Analyzing eddytrains account - identifying accounts that don't follow back",
+    "status": "in_progress",
+    "priority": "high",
+    "created": "2026-01-30",
+    "due": null,
+    "progress": "Filtered list ready - 263 accounts identified"
+  },
   "tasks": [
     {
       "id": "task-001",
@@ -8,6 +18,7 @@
       "priority": "high",
       "created": "2026-01-30",
       "due": null,
+      "recurring": false,
       "subtasks": [
         { "title": "Fix hero section spacing", "done": true },
         { "title": "Add mobile responsiveness", "done": true },
@@ -22,12 +33,55 @@
       "priority": "medium",
       "created": "2026-01-30",
       "due": null,
+      "recurring": false,
       "subtasks": [
         { "title": "Create MEMORY.md structure", "done": true },
         { "title": "Set up daily notes", "done": true },
         { "title": "Document workflows", "done": false }
       ]
+    },
+    {
+      "id": "task-003",
+      "title": "Henry Dashboard Development",
+      "description": "Build and maintain the task management dashboard",
+      "status": "in_progress",
+      "priority": "medium",
+      "created": "2026-01-30",
+      "due": null,
+      "recurring": false,
+      "subtasks": [
+        { "title": "Initial build", "done": true },
+        { "title": "Deploy to GitHub Pages", "done": true },
+        { "title": "Add task assignment form", "done": true },
+        { "title": "Set up hourly check cron", "done": true }
+      ]
     }
   ],
-  "lastUpdated": "2026-01-30T21:53:00+10:30"
+  "recurringTasks": [
+    {
+      "id": "recurring-001",
+      "title": "Instagram Follower Analysis",
+      "description": "Check eddytrains for accounts not following back, filter by verified/follower count",
+      "frequency": "On request",
+      "lastRun": "2026-01-30",
+      "icon": "📸"
+    },
+    {
+      "id": "recurring-002",
+      "title": "Dashboard Assignment Check",
+      "description": "Scan for new task assignments from Louis",
+      "frequency": "Every hour",
+      "lastRun": "2026-01-30T23:00",
+      "icon": "📋"
+    },
+    {
+      "id": "recurring-003",
+      "title": "Heartbeat Check",
+      "description": "Periodic check for emails, calendar, weather, mentions",
+      "frequency": "Every 30 min",
+      "lastRun": null,
+      "icon": "💓"
+    }
+  ],
+  "lastUpdated": "2026-01-30T23:17:00+10:30"
 }

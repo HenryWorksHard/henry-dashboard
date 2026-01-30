@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Henry Dashboard</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -19,23 +15,18 @@
       padding: 2rem;
     }
 
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+    .container { max-width: 1400px; margin: 0 auto; }
 
     header {
       display: flex;
       align-items: center;
       gap: 1rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
       padding-bottom: 1.5rem;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    .logo {
-      font-size: 3rem;
-    }
+    .logo { font-size: 3rem; }
 
     h1 {
       font-size: 2.5rem;
@@ -46,16 +37,68 @@
       background-clip: text;
     }
 
-    .subtitle {
-      color: #888;
-      font-size: 1rem;
-      margin-top: 0.25rem;
+    .subtitle { color: #888; font-size: 1rem; margin-top: 0.25rem; }
+    .last-updated { margin-left: auto; color: #666; font-size: 0.875rem; }
+
+    /* In Progress Section */
+    .in-progress-section {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+      border: 2px solid rgba(102, 126, 234, 0.4);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    .last-updated {
-      margin-left: auto;
-      color: #666;
-      font-size: 0.875rem;
+    .in-progress-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+      background-size: 200% 100%;
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .in-progress-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .in-progress-badge {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .in-progress-title { font-size: 1.5rem; font-weight: 700; }
+    .in-progress-desc { color: #aaa; margin-bottom: 1rem; }
+    .in-progress-progress {
+      background: rgba(102, 126, 234, 0.2);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      color: #a5b4fc;
+      font-size: 0.9rem;
     }
 
     .grid {
@@ -65,9 +108,7 @@
     }
 
     @media (max-width: 1024px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
+      .grid { grid-template-columns: 1fr; }
     }
 
     .card {
@@ -76,6 +117,7 @@
       border-radius: 16px;
       padding: 1.5rem;
       backdrop-filter: blur(10px);
+      margin-bottom: 1.5rem;
     }
 
     .card-header {
@@ -85,14 +127,8 @@
       margin-bottom: 1.5rem;
     }
 
-    .card-header h2 {
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-
-    .card-icon {
-      font-size: 1.5rem;
-    }
+    .card-header h2 { font-size: 1.25rem; font-weight: 600; }
+    .card-icon { font-size: 1.5rem; }
 
     /* Tasks */
     .task {
@@ -116,10 +152,7 @@
       margin-bottom: 0.75rem;
     }
 
-    .task-title {
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
+    .task-title { font-weight: 600; font-size: 1.1rem; }
 
     .task-status {
       padding: 0.25rem 0.75rem;
@@ -129,31 +162,12 @@
       text-transform: uppercase;
     }
 
-    .status-in_progress {
-      background: rgba(59, 130, 246, 0.2);
-      color: #60a5fa;
-    }
+    .status-in_progress { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+    .status-ongoing { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
+    .status-completed { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+    .status-pending { background: rgba(234, 179, 8, 0.2); color: #fbbf24; }
 
-    .status-ongoing {
-      background: rgba(168, 85, 247, 0.2);
-      color: #c084fc;
-    }
-
-    .status-completed {
-      background: rgba(34, 197, 94, 0.2);
-      color: #4ade80;
-    }
-
-    .status-pending {
-      background: rgba(234, 179, 8, 0.2);
-      color: #fbbf24;
-    }
-
-    .task-desc {
-      color: #999;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
+    .task-desc { color: #999; font-size: 0.9rem; margin-bottom: 1rem; }
 
     .task-meta {
       display: flex;
@@ -163,17 +177,9 @@
       margin-bottom: 1rem;
     }
 
-    .priority-high {
-      color: #f87171;
-    }
-
-    .priority-medium {
-      color: #fbbf24;
-    }
-
-    .priority-low {
-      color: #4ade80;
-    }
+    .priority-high { color: #f87171; }
+    .priority-medium { color: #fbbf24; }
+    .priority-low { color: #4ade80; }
 
     .subtasks {
       border-top: 1px solid rgba(255,255,255,0.05);
@@ -189,10 +195,7 @@
       color: #aaa;
     }
 
-    .subtask.done {
-      color: #666;
-      text-decoration: line-through;
-    }
+    .subtask.done { color: #666; text-decoration: line-through; }
 
     .subtask-check {
       width: 18px;
@@ -211,6 +214,50 @@
       color: #000;
     }
 
+    /* Recurring Tasks */
+    .recurring-task {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(168, 85, 247, 0.05);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 12px;
+      margin-bottom: 0.75rem;
+    }
+
+    .recurring-icon {
+      font-size: 1.5rem;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(168, 85, 247, 0.1);
+      border-radius: 12px;
+    }
+
+    .recurring-info { flex: 1; }
+    .recurring-title { font-weight: 600; margin-bottom: 0.25rem; }
+    .recurring-desc { font-size: 0.8rem; color: #888; }
+
+    .recurring-badge {
+      background: rgba(168, 85, 247, 0.2);
+      color: #c084fc;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .recurring-badge::before {
+      content: '🔄';
+      font-size: 0.6rem;
+    }
+
     /* Recommendations */
     .rec {
       padding: 1rem;
@@ -220,16 +267,8 @@
       margin-bottom: 1rem;
     }
 
-    .rec-title {
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .rec-desc {
-      color: #999;
-      font-size: 0.875rem;
-      line-height: 1.5;
-    }
+    .rec-title { font-weight: 600; margin-bottom: 0.5rem; }
+    .rec-desc { color: #999; font-size: 0.875rem; line-height: 1.5; }
 
     .rec-category {
       display: inline-block;
@@ -243,22 +282,10 @@
     }
 
     /* Assignment Form */
-    .assign-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+    .assign-form { display: flex; flex-direction: column; gap: 1rem; }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .form-group label {
-      font-size: 0.875rem;
-      color: #888;
-    }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-group label { font-size: 0.875rem; color: #888; }
 
     .form-group input,
     .form-group textarea,
@@ -281,10 +308,7 @@
       background: rgba(102, 126, 234, 0.1);
     }
 
-    .form-group textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
+    .form-group textarea { min-height: 100px; resize: vertical; }
 
     .submit-btn {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -303,10 +327,6 @@
       box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
     }
 
-    .submit-btn:active {
-      transform: translateY(0);
-    }
-
     .success-msg {
       background: rgba(34, 197, 94, 0.1);
       border: 1px solid rgba(34, 197, 94, 0.3);
@@ -317,46 +337,9 @@
       display: none;
     }
 
-    .success-msg.show {
-      display: block;
-    }
+    .success-msg.show { display: block; }
 
-    .pending-assignments {
-      margin-top: 1.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .pending-title {
-      font-size: 0.875rem;
-      color: #888;
-      margin-bottom: 1rem;
-    }
-
-    .pending-item {
-      background: rgba(234, 179, 8, 0.1);
-      border: 1px solid rgba(234, 179, 8, 0.2);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .pending-item-title {
-      font-weight: 600;
-      color: #fbbf24;
-    }
-
-    .pending-item-time {
-      font-size: 0.75rem;
-      color: #888;
-      margin-top: 0.25rem;
-    }
-
-    .right-col {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
+    .right-col { display: flex; flex-direction: column; gap: 1.5rem; }
   </style>
 </head>
 <body>
@@ -370,14 +353,34 @@
       <div class="last-updated" id="lastUpdated">Last updated: --</div>
     </header>
 
+    <!-- Current Task In Progress -->
+    <div class="in-progress-section" id="inProgressSection" style="display: none;">
+      <div class="in-progress-header">
+        <span class="in-progress-badge">🔥 In Progress</span>
+      </div>
+      <div class="in-progress-title" id="inProgressTitle"></div>
+      <div class="in-progress-desc" id="inProgressDesc"></div>
+      <div class="in-progress-progress" id="inProgressProgress"></div>
+    </div>
+
     <div class="grid">
       <div class="left-col">
+        <!-- Regular Tasks -->
         <div class="card">
           <div class="card-header">
             <span class="card-icon">📋</span>
-            <h2>Current Tasks</h2>
+            <h2>Tasks</h2>
           </div>
           <div id="tasksList"></div>
+        </div>
+
+        <!-- Recurring Tasks -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-icon">🔄</span>
+            <h2>Recurring Tasks</h2>
+          </div>
+          <div id="recurringList"></div>
         </div>
       </div>
 
@@ -413,10 +416,6 @@
               ✅ Task assigned! Henry will pick this up within the hour.
             </div>
           </form>
-          <div class="pending-assignments" id="pendingSection" style="display: none;">
-            <div class="pending-title">⏳ Pending Assignments</div>
-            <div id="pendingList"></div>
-          </div>
         </div>
 
         <div class="card">
@@ -431,22 +430,27 @@
   </div>
 
   <script>
-    // Load data from JSON files
     async function loadData() {
       try {
-        const [tasksRes, recsRes, assignRes] = await Promise.all([
+        const [tasksRes, recsRes] = await Promise.all([
           fetch('data/tasks.json'),
-          fetch('data/recommendations.json'),
-          fetch('data/assignments.json')
+          fetch('data/recommendations.json')
         ]);
         
         const tasks = await tasksRes.json();
         const recs = await recsRes.json();
-        const assigns = await assignRes.json();
+        
+        // Render in progress
+        if (tasks.inProgress) {
+          document.getElementById('inProgressSection').style.display = 'block';
+          document.getElementById('inProgressTitle').textContent = tasks.inProgress.title;
+          document.getElementById('inProgressDesc').textContent = tasks.inProgress.description;
+          document.getElementById('inProgressProgress').textContent = '📍 ' + tasks.inProgress.progress;
+        }
         
         renderTasks(tasks.tasks);
+        renderRecurring(tasks.recurringTasks || []);
         renderRecs(recs.recommendations);
-        renderPending(assigns.assignments);
         
         document.getElementById('lastUpdated').textContent = 
           'Last updated: ' + new Date(tasks.lastUpdated).toLocaleString();
@@ -483,6 +487,20 @@
       `).join('');
     }
 
+    function renderRecurring(tasks) {
+      const container = document.getElementById('recurringList');
+      container.innerHTML = tasks.map(task => `
+        <div class="recurring-task">
+          <div class="recurring-icon">${task.icon}</div>
+          <div class="recurring-info">
+            <div class="recurring-title">${task.title}</div>
+            <div class="recurring-desc">${task.description}</div>
+          </div>
+          <div class="recurring-badge">${task.frequency}</div>
+        </div>
+      `).join('');
+    }
+
     function renderRecs(recs) {
       const container = document.getElementById('recsList');
       container.innerHTML = recs.map(rec => `
@@ -494,30 +512,8 @@
       `).join('');
     }
 
-    function renderPending(assignments) {
-      const section = document.getElementById('pendingSection');
-      const container = document.getElementById('pendingList');
-      
-      const pending = assignments.filter(a => a.status === 'pending');
-      
-      if (pending.length === 0) {
-        section.style.display = 'none';
-        return;
-      }
-      
-      section.style.display = 'block';
-      container.innerHTML = pending.map(a => `
-        <div class="pending-item">
-          <div class="pending-item-title">${a.title}</div>
-          <div class="pending-item-time">Submitted: ${new Date(a.submitted).toLocaleString()}</div>
-        </div>
-      `).join('');
-    }
-
-    // Handle form submission
     document.getElementById('assignForm').addEventListener('submit', async (e) => {
       e.preventDefault();
-      
       const form = e.target;
       const data = {
         id: 'assign-' + Date.now(),
@@ -529,49 +525,15 @@
         status: 'pending'
       };
       
-      try {
-        // Load current assignments
-        const res = await fetch('data/assignments.json');
-        const assigns = await res.json();
-        assigns.assignments.push(data);
-        
-        // Save back (this requires server-side handling in production)
-        // For now, we'll store in localStorage and the cron job will pick it up
-        localStorage.setItem('henry-pending-assignments', JSON.stringify(assigns.assignments));
-        
-        // Also try to write to file (will work if served with write capability)
-        try {
-          await fetch('data/assignments.json', {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(assigns)
-          });
-        } catch (writeErr) {
-          // Expected to fail with static file serving, localStorage backup is used
-        }
-        
-        // Show success
-        document.getElementById('successMsg').classList.add('show');
-        form.reset();
-        
-        // Render pending
-        renderPending(assigns.assignments);
-        
-        // Hide success after 3s
-        setTimeout(() => {
-          document.getElementById('successMsg').classList.remove('show');
-        }, 3000);
-        
-      } catch (err) {
-        console.error('Error submitting:', err);
-        alert('Error submitting task. Please try again.');
-      }
+      localStorage.setItem('henry-pending-' + data.id, JSON.stringify(data));
+      document.getElementById('successMsg').classList.add('show');
+      form.reset();
+      setTimeout(() => {
+        document.getElementById('successMsg').classList.remove('show');
+      }, 3000);
     });
 
-    // Initial load
     loadData();
-    
-    // Refresh every minute
     setInterval(loadData, 60000);
   </script>
 </body>
