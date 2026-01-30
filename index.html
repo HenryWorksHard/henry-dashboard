@@ -1079,14 +1079,6 @@
         </div>
       </div>
 
-      <!-- All Tasks -->
-      <div class="card span-2">
-        <div class="card-header">
-          <span class="card-title">All Tasks</span>
-        </div>
-        <div class="task-list" id="taskList"></div>
-      </div>
-
       <!-- Assign Task -->
       <div class="card">
         <div class="card-header">
@@ -1269,23 +1261,6 @@
           `).join('');
         } else {
           recsList.innerHTML = '<p class="no-current-task" style="font-size: 0.8rem;">No recommendations</p>';
-        }
-
-        // Task list (recent)
-        const taskList = document.getElementById('taskList');
-        if (allTasks.length > 0) {
-          taskList.innerHTML = allTasks.slice(0, 6).map((task, i) => `
-            <div class="task-item clickable" onclick="openTaskModal('${task.id}')">
-              <div class="task-status ${task.status}"></div>
-              <span class="task-name">${task.title}</span>
-              <span class="task-priority ${task.priority}">${task.priority}</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8b949e" stroke-width="2" style="flex-shrink:0;">
-                <polyline points="9 18 15 12 9 6"/>
-              </svg>
-            </div>
-          `).join('');
-        } else {
-          taskList.innerHTML = '<p class="no-current-task" style="font-size: 0.8rem;">No tasks</p>';
         }
 
         // All Tasks list (for expandable panel)
