@@ -7,7 +7,7 @@
     "priority": "high",
     "created": "2026-01-30",
     "due": "2026-01-31",
-    "progress": "12/260 complete (+8 in progress)",
+    "progress": "20/260 complete",
     "nextBatch": "Sub-agent running",
     "paused": false
   },
@@ -77,7 +77,7 @@
       "lastRun": "2026-01-31T08:45",
       "nextRun": "Ongoing",
       "icon": "🧹",
-      "progress": "12/260 (+8 pending)"
+      "progress": "20/260"
     },
     {
       "id": "recurring-002",
@@ -93,7 +93,7 @@
     { "title": "Built Client Fitness App", "time": "2:05 AM" },
     { "title": "Built Admin Fitness App", "time": "1:55 AM" },
     { "title": "Scalped 8 content ideas", "time": "1:45 AM" },
-    { "title": "Unfollowed 12 accounts", "time": "8:45 AM" },
+    { "title": "Unfollowed 20 accounts", "time": "8:50 AM" },
     { "title": "Updated Content Planner with viral templates", "time": "8:40 AM" }
   ],
   "weeklyCompleted": 16,
