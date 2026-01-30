@@ -734,6 +734,163 @@
 
     .success-msg.show { display: block; }
 
+    /* Task Detail Modal */
+    .task-modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .task-modal-overlay.show {
+      display: flex;
+    }
+
+    .task-modal {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .task-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .task-modal-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f0f6fc;
+    }
+
+    .task-modal-close {
+      background: none;
+      border: none;
+      color: #8b949e;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+
+    .task-modal-close:hover {
+      color: #f0f6fc;
+    }
+
+    .task-modal-body {
+      padding: 1rem;
+    }
+
+    .task-detail-row {
+      margin-bottom: 1rem;
+    }
+
+    .task-detail-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #8b949e;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.375rem;
+    }
+
+    .task-detail-value {
+      font-size: 0.875rem;
+      color: #c9d1d9;
+    }
+
+    .task-subtasks {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .task-subtask {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: #c9d1d9;
+    }
+
+    .task-subtask.done {
+      color: #8b949e;
+      text-decoration: line-through;
+    }
+
+    .task-subtask-check {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      border: 1px solid #30363d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .task-subtask.done .task-subtask-check {
+      background: #238636;
+      border-color: #238636;
+    }
+
+    .task-subtask-check svg {
+      width: 10px;
+      height: 10px;
+      color: #fff;
+    }
+
+    .task-modal-divider {
+      height: 1px;
+      background: #30363d;
+      margin: 1rem 0;
+    }
+
+    .task-change-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .task-change-form textarea {
+      width: 100%;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 0.625rem;
+      color: #c9d1d9;
+      font-size: 0.875rem;
+      font-family: inherit;
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .task-change-form textarea:focus {
+      outline: none;
+      border-color: #58a6ff;
+    }
+
+    .task-item.clickable {
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .task-item.clickable:hover {
+      background: #30363d;
+    }
+
     /* Span classes */
     .span-2 { grid-column: span 2; }
     .span-3 { grid-column: span 3; }
@@ -968,7 +1125,35 @@
     </div>
   </main>
 
+  <!-- Task Detail Modal -->
+  <div class="task-modal-overlay" id="taskModal">
+    <div class="task-modal">
+      <div class="task-modal-header">
+        <span class="task-modal-title" id="modalTaskTitle">Task Details</span>
+        <button class="task-modal-close" onclick="closeTaskModal()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="task-modal-body">
+        <div id="modalTaskContent"></div>
+        
+        <div class="task-modal-divider"></div>
+        
+        <div class="task-detail-label">Request Changes</div>
+        <form class="task-change-form" id="taskChangeForm">
+          <textarea id="taskChangeRequest" placeholder="Describe what you want changed, added, or removed..."></textarea>
+          <button type="submit" class="submit-btn">Send to Henry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Global tasks data for modal access
+    let globalTasksData = { tasks: [], inProgress: null };
+
     async function loadData() {
       try {
         const [tasksRes, recsRes] = await Promise.all([
@@ -978,6 +1163,9 @@
         
         const tasks = await tasksRes.json();
         const recs = await recsRes.json();
+        
+        // Store globally for modal access
+        globalTasksData = tasks;
         
         // Calculate stats
         const allTasks = tasks.tasks || [];
@@ -1086,11 +1274,14 @@
         // Task list (recent)
         const taskList = document.getElementById('taskList');
         if (allTasks.length > 0) {
-          taskList.innerHTML = allTasks.slice(0, 6).map(task => `
-            <div class="task-item">
+          taskList.innerHTML = allTasks.slice(0, 6).map((task, i) => `
+            <div class="task-item clickable" onclick="openTaskModal('${task.id}')">
               <div class="task-status ${task.status}"></div>
               <span class="task-name">${task.title}</span>
               <span class="task-priority ${task.priority}">${task.priority}</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8b949e" stroke-width="2" style="flex-shrink:0;">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
             </div>
           `).join('');
         } else {
@@ -1100,11 +1291,14 @@
         // All Tasks list (for expandable panel)
         const allTasksList = document.getElementById('allTasksList');
         if (allTasks.length > 0) {
-          allTasksList.innerHTML = allTasks.map(task => `
-            <div class="task-item">
+          allTasksList.innerHTML = allTasks.map((task, i) => `
+            <div class="task-item clickable" onclick="openTaskModal('${task.id}')">
               <div class="task-status ${task.status}"></div>
               <span class="task-name">${task.title}</span>
               <span class="task-priority ${task.priority}">${task.priority}</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8b949e" stroke-width="2" style="flex-shrink:0;">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
             </div>
           `).join('');
         } else {
@@ -1119,6 +1313,107 @@
     }
 
     // Schedule toggle
+    // Task Modal Functions
+    let currentModalTask = null;
+
+    function openTaskModal(taskId) {
+      const task = globalTasksData.tasks.find(t => t.id === taskId);
+      if (!task) return;
+      
+      currentModalTask = task;
+      document.getElementById('modalTaskTitle').textContent = task.title;
+      
+      const statusColors = {
+        'completed': '#3fb950',
+        'in_progress': '#58a6ff',
+        'pending': '#8b949e',
+        'ongoing': '#a371f7',
+        'overdue': '#f85149'
+      };
+      
+      let content = `
+        <div class="task-detail-row">
+          <div class="task-detail-label">Status</div>
+          <div class="task-detail-value">
+            <span style="display:inline-flex;align-items:center;gap:6px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:${statusColors[task.status] || '#8b949e'}"></span>
+              ${task.status.replace('_', ' ')}
+            </span>
+          </div>
+        </div>
+        <div class="task-detail-row">
+          <div class="task-detail-label">Priority</div>
+          <div class="task-detail-value">${task.priority}</div>
+        </div>
+      `;
+      
+      if (task.description) {
+        content += `
+          <div class="task-detail-row">
+            <div class="task-detail-label">Description</div>
+            <div class="task-detail-value">${task.description}</div>
+          </div>
+        `;
+      }
+      
+      if (task.due) {
+        content += `
+          <div class="task-detail-row">
+            <div class="task-detail-label">Due Date</div>
+            <div class="task-detail-value">${task.due}</div>
+          </div>
+        `;
+      }
+      
+      if (task.subtasks && task.subtasks.length > 0) {
+        content += `
+          <div class="task-detail-row">
+            <div class="task-detail-label">Requirements / Subtasks</div>
+            <div class="task-subtasks">
+              ${task.subtasks.map(st => `
+                <div class="task-subtask ${st.done ? 'done' : ''}">
+                  <div class="task-subtask-check">
+                    ${st.done ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>' : ''}
+                  </div>
+                  <span>${st.title}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+      
+      document.getElementById('modalTaskContent').innerHTML = content;
+      document.getElementById('taskModal').classList.add('show');
+      document.getElementById('taskChangeRequest').value = '';
+    }
+
+    function closeTaskModal() {
+      document.getElementById('taskModal').classList.remove('show');
+      currentModalTask = null;
+    }
+
+    // Close modal on overlay click
+    document.getElementById('taskModal').addEventListener('click', (e) => {
+      if (e.target.id === 'taskModal') closeTaskModal();
+    });
+
+    // Task change request form
+    document.getElementById('taskChangeForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!currentModalTask) return;
+      
+      const changeRequest = document.getElementById('taskChangeRequest').value;
+      if (!changeRequest.trim()) return;
+      
+      const message = `📝 TASK CHANGE REQUEST\n\nTask: ${currentModalTask.title}\nStatus: ${currentModalTask.status}\nPriority: ${currentModalTask.priority}\n\nRequested Changes:\n${changeRequest}`;
+      
+      const telegramUrl = `https://t.me/claborbot?text=${encodeURIComponent(message)}`;
+      window.open(telegramUrl, '_blank');
+      
+      closeTaskModal();
+    });
+
     function setSchedule(value) {
       document.getElementById('taskSchedule').value = value;
       document.getElementById('toggleNext').classList.toggle('active', value === 'next');
