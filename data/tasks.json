@@ -12,6 +12,12 @@
     "paused": true,
     "pausedReason": "Working with Louis"
   },
+  "nextTask": {
+    "title": "Morning Report",
+    "description": "Daily briefing for Louis",
+    "scheduledTime": "8:00 AM",
+    "type": "recurring"
+  },
   "tasks": [
     {
       "id": "task-001",

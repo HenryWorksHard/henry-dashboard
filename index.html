@@ -935,20 +935,33 @@
 
         // Next Task
         const nextTaskContent = document.getElementById('nextTaskContent');
-        const nextTask = allTasks.find(t => t.status === 'pending');
-        if (nextTask) {
+        if (tasks.nextTask) {
           nextTaskContent.innerHTML = `
             <div class="next-task-item">
-              <div class="next-task-title">${nextTask.title}</div>
-              <div class="next-task-desc">${nextTask.description || ''}</div>
+              <div class="next-task-title">${tasks.nextTask.title}</div>
+              <div class="next-task-desc">${tasks.nextTask.description || ''}</div>
               <div class="next-task-meta">
-                <span class="meta-tag ${nextTask.priority}">${nextTask.priority}</span>
-                ${nextTask.due ? `<span class="meta-tag">Due: ${nextTask.due}</span>` : ''}
+                ${tasks.nextTask.scheduledTime ? `<span class="meta-tag">${tasks.nextTask.scheduledTime}</span>` : ''}
+                ${tasks.nextTask.type ? `<span class="meta-tag">${tasks.nextTask.type}</span>` : ''}
               </div>
             </div>
           `;
         } else {
-          nextTaskContent.innerHTML = '<p class="no-current-task" style="font-size: 0.8rem;">No pending tasks</p>';
+          // Fallback to pending tasks
+          const pendingTask = allTasks.find(t => t.status === 'pending');
+          if (pendingTask) {
+            nextTaskContent.innerHTML = `
+              <div class="next-task-item">
+                <div class="next-task-title">${pendingTask.title}</div>
+                <div class="next-task-desc">${pendingTask.description || ''}</div>
+                <div class="next-task-meta">
+                  <span class="meta-tag ${pendingTask.priority}">${pendingTask.priority}</span>
+                </div>
+              </div>
+            `;
+          } else {
+            nextTaskContent.innerHTML = '<p class="no-current-task" style="font-size: 0.8rem;">No upcoming tasks</p>';
+          }
         }
 
         // Workload (by priority)
