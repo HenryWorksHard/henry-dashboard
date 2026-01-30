@@ -639,14 +639,95 @@
 
     @media (max-width: 768px) {
       .fab-btn {
-        bottom: 1rem;
-        right: 1rem;
-        width: 48px;
-        height: 48px;
+        display: none;
       }
-      .fab-btn svg {
-        width: 24px;
-        height: 24px;
+    }
+
+    /* Sticky Top Bar */
+    .sticky-bar {
+      position: fixed;
+      top: 0;
+      left: 60px;
+      right: 0;
+      height: 56px;
+      background: rgba(22, 27, 34, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #30363d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0 1rem;
+      z-index: 90;
+    }
+
+    .sticky-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid #30363d;
+      background: #21262d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .sticky-btn:hover {
+      border-color: #58a6ff;
+      transform: scale(1.05);
+    }
+
+    .sticky-btn svg {
+      width: 20px;
+      height: 20px;
+      color: #8b949e;
+    }
+
+    .sticky-btn:hover svg {
+      color: #58a6ff;
+    }
+
+    .sticky-btn.primary {
+      background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+      border-color: #238636;
+      width: 48px;
+      height: 48px;
+    }
+
+    .sticky-btn.primary svg {
+      width: 24px;
+      height: 24px;
+      color: #fff;
+    }
+
+    .sticky-btn.primary:hover {
+      border-color: #3fb950;
+    }
+
+    .sticky-btn.avatar {
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(135deg, #58a6ff 0%, #388bfd 100%);
+    }
+
+    .sticky-btn.avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .sticky-btn.avatar .avatar-letter {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .sticky-bar {
+        left: 0;
       }
     }
 
@@ -1015,8 +1096,26 @@
     </div>
   </nav>
 
+  <!-- Sticky Top Bar -->
+  <div class="sticky-bar">
+    <a href="https://henryworkshard.github.io/eddytrains-content-planner/" target="_blank" class="sticky-btn" title="Content Planner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="4" width="18" height="18" rx="2"/>
+        <path d="M16 2v4M8 2v4M3 10h18"/>
+      </svg>
+    </a>
+    <button class="sticky-btn primary" onclick="scrollToAssignTask()" title="Assign New Task">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M12 5v14M5 12h14"/>
+      </svg>
+    </button>
+    <a href="https://t.me/claborbot" target="_blank" class="sticky-btn avatar" title="Chat with Henry">
+      <span class="avatar-letter">H</span>
+    </a>
+  </div>
+
   <!-- Main Content -->
-  <main class="main">
+  <main class="main" style="padding-top: 4.5rem;">
     <header class="header">
       <div class="header-top">
         <div class="header-left">
