@@ -7,8 +7,8 @@
     "priority": "high",
     "created": "2026-01-30",
     "due": "2026-01-31",
-    "progress": "10/260 complete",
-    "nextBatch": "Continuing now",
+    "progress": "12/260 complete (+8 in progress)",
+    "nextBatch": "Sub-agent running",
     "paused": false
   },
   "nextTask": {
@@ -40,7 +40,7 @@
     {
       "id": "task-002",
       "title": "Content Ideas Scalped",
-      "description": "8 viral fitness content templates from Instagram research",
+      "description": "8 viral fitness content templates added to Content Planner",
       "status": "completed",
       "priority": "medium",
       "created": "2026-01-31",
@@ -49,7 +49,7 @@
       "subtasks": [
         { "title": "Research viral fitness reels", "done": true },
         { "title": "Extract hooks and formats", "done": true },
-        { "title": "Add to Content Planner", "done": false }
+        { "title": "Add to Content Planner", "done": true }
       ]
     },
     {
@@ -74,10 +74,10 @@
       "title": "Unfollow Non-Followers",
       "description": "Unfollowing 260 accounts (safe pace ~15/hour)",
       "frequency": "Batches throughout day",
-      "lastRun": "2026-01-31T02:00",
-      "nextRun": "Now",
+      "lastRun": "2026-01-31T08:45",
+      "nextRun": "Ongoing",
       "icon": "🧹",
-      "progress": "10/260"
+      "progress": "12/260 (+8 pending)"
     },
     {
       "id": "recurring-002",
@@ -93,8 +93,9 @@
     { "title": "Built Client Fitness App", "time": "2:05 AM" },
     { "title": "Built Admin Fitness App", "time": "1:55 AM" },
     { "title": "Scalped 8 content ideas", "time": "1:45 AM" },
-    { "title": "Unfollowed 10 accounts", "time": "2:00 AM" }
+    { "title": "Unfollowed 12 accounts", "time": "8:45 AM" },
+    { "title": "Updated Content Planner with viral templates", "time": "8:40 AM" }
   ],
-  "weeklyCompleted": 14,
-  "lastUpdated": "2026-01-31T08:40:00+10:30"
+  "weeklyCompleted": 16,
+  "lastUpdated": "2026-01-31T08:45:00+10:30"
 }
