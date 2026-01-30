@@ -9,529 +9,720 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+      background: #0d1117;
       min-height: 100vh;
-      color: #fff;
-      padding: 2rem;
+      color: #c9d1d9;
+      display: flex;
     }
 
-    .container { max-width: 1400px; margin: 0 auto; }
+    /* Sidebar */
+    .sidebar {
+      width: 60px;
+      background: #161b22;
+      border-right: 1px solid #30363d;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 0;
+      gap: 1.5rem;
+    }
 
-    header {
+    .sidebar-logo {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+      border-radius: 8px;
       display: flex;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .logo { font-size: 3rem; }
-
-    h1 {
-      font-size: 2.5rem;
+      justify-content: center;
       font-weight: 700;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: #fff;
+      font-size: 1rem;
     }
 
-    .subtitle { color: #888; font-size: 1rem; margin-top: 0.25rem; }
-    .last-updated { margin-left: auto; color: #666; font-size: 0.875rem; }
-
-    /* In Progress Section */
-    .in-progress-section {
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
-      border: 2px solid rgba(102, 126, 234, 0.4);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      position: relative;
-      overflow: hidden;
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
     }
 
-    .in-progress-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
-      background-size: 200% 100%;
-      animation: shimmer 2s infinite;
+    .nav-item {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8b949e;
+      cursor: pointer;
+      transition: all 0.2s;
     }
 
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
+    .nav-item:hover, .nav-item.active {
+      background: #21262d;
+      color: #c9d1d9;
     }
 
-    .in-progress-header {
+    .nav-item svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Main Content */
+    .main {
+      flex: 1;
+      padding: 1.5rem 2rem;
+      overflow-y: auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .header-left {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      margin-bottom: 1rem;
     }
 
-    .in-progress-badge {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      padding: 0.5rem 1rem;
+    .header h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #f0f6fc;
+    }
+
+    .status-badge {
+      background: #238636;
+      color: #fff;
+      padding: 0.25rem 0.75rem;
       border-radius: 20px;
       font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      animation: pulse 2s infinite;
+      font-weight: 500;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
+    .header-right {
+      color: #8b949e;
+      font-size: 0.875rem;
     }
 
-    .in-progress-title { font-size: 1.5rem; font-weight: 700; }
-    .in-progress-desc { color: #aaa; margin-bottom: 1rem; }
-    .in-progress-progress {
-      background: rgba(102, 126, 234, 0.2);
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      color: #a5b4fc;
-      font-size: 0.9rem;
-    }
-
+    /* Grid Layout */
     .grid {
       display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 2rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
       .grid { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
     }
 
+    /* Cards */
     .card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 1.5rem;
-      backdrop-filter: blur(10px);
-      margin-bottom: 1.5rem;
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 1.25rem;
     }
 
     .card-header {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
+      justify-content: space-between;
+      margin-bottom: 1rem;
     }
 
-    .card-header h2 { font-size: 1.25rem; font-weight: 600; }
-    .card-icon { font-size: 1.5rem; }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f0f6fc;
+    }
 
-    /* Tasks */
-    .task {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 12px;
-      padding: 1.25rem;
-      margin-bottom: 1rem;
+    .card-actions {
+      display: flex;
+      gap: 0.5rem;
+      color: #8b949e;
+    }
+
+    .card-actions svg {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .card-actions svg:hover {
+      color: #c9d1d9;
+    }
+
+    /* Health Stats */
+    .health-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .health-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.875rem;
+    }
+
+    .health-label { color: #8b949e; }
+    .health-value { color: #c9d1d9; }
+    .health-value.positive { color: #3fb950; }
+    .health-value.warning { color: #d29922; }
+    .health-value.negative { color: #f85149; }
+
+    /* Donut Chart */
+    .donut-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .donut-chart {
+      position: relative;
+      width: 140px;
+      height: 140px;
+    }
+
+    .donut-chart svg {
+      transform: rotate(-90deg);
+    }
+
+    .donut-chart circle {
+      fill: none;
+      stroke-width: 12;
+    }
+
+    .donut-bg { stroke: #21262d; }
+    .donut-complete { stroke: #3fb950; }
+    .donut-progress { stroke: #58a6ff; }
+    .donut-pending { stroke: #8b949e; }
+
+    .donut-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .donut-number {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #f0f6fc;
+    }
+
+    .donut-label {
+      font-size: 0.75rem;
+      color: #8b949e;
+    }
+
+    .donut-legend {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .legend-dot.not-started { background: #8b949e; }
+    .legend-dot.complete { background: #3fb950; }
+    .legend-dot.in-progress { background: #58a6ff; }
+
+    /* Progress Bars */
+    .progress-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .progress-label {
+      width: 100px;
+      font-size: 0.8rem;
+      color: #8b949e;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .progress-percent {
+      width: 40px;
+      font-size: 0.8rem;
+      color: #c9d1d9;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 8px;
+      background: #21262d;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.3s;
+    }
+
+    .progress-fill.green { background: #3fb950; }
+    .progress-fill.blue { background: #58a6ff; }
+    .progress-fill.pink { background: #f778ba; }
+    .progress-fill.yellow { background: #d29922; }
+
+    /* Task List */
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .task-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      background: #21262d;
+      border-radius: 6px;
+      font-size: 0.875rem;
+    }
+
+    .task-status {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .task-status.complete { background: #3fb950; }
+    .task-status.in-progress { background: #58a6ff; }
+    .task-status.pending { background: #8b949e; }
+    .task-status.overdue { background: #f85149; }
+
+    .task-name { flex: 1; color: #c9d1d9; }
+
+    .task-priority {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 10px;
+      text-transform: uppercase;
+    }
+
+    .task-priority.high { background: rgba(248, 81, 73, 0.15); color: #f85149; }
+    .task-priority.medium { background: rgba(210, 153, 34, 0.15); color: #d29922; }
+    .task-priority.low { background: rgba(63, 185, 80, 0.15); color: #3fb950; }
+
+    /* Apps Grid */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .app-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      text-decoration: none;
+      color: #c9d1d9;
       transition: all 0.2s;
     }
 
-    .task:hover {
-      border-color: rgba(102, 126, 234, 0.3);
-      background: rgba(255,255,255,0.04);
+    .app-link:hover {
+      background: #30363d;
+      border-color: #8b949e;
     }
 
-    .task-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 0.75rem;
-    }
-
-    .task-title { font-weight: 600; font-size: 1.1rem; }
-
-    .task-status {
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      text-transform: uppercase;
-    }
-
-    .status-in_progress { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
-    .status-ongoing { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
-    .status-completed { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
-    .status-pending { background: rgba(234, 179, 8, 0.2); color: #fbbf24; }
-
-    .task-desc { color: #999; font-size: 0.9rem; margin-bottom: 1rem; }
-
-    .task-meta {
-      display: flex;
-      gap: 1rem;
-      font-size: 0.8rem;
-      color: #666;
-      margin-bottom: 1rem;
-    }
-
-    .priority-high { color: #f87171; }
-    .priority-medium { color: #fbbf24; }
-    .priority-low { color: #4ade80; }
-
-    .subtasks {
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding-top: 1rem;
-    }
-
-    .subtask {
+    .app-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+      border-radius: 6px;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 0;
-      font-size: 0.9rem;
-      color: #aaa;
+      justify-content: center;
     }
 
-    .subtask.done { color: #666; text-decoration: line-through; }
-
-    .subtask-check {
+    .app-icon svg {
       width: 18px;
       height: 18px;
-      border-radius: 4px;
-      border: 2px solid #444;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
+      color: #fff;
     }
 
-    .subtask.done .subtask-check {
-      background: #4ade80;
-      border-color: #4ade80;
-      color: #000;
+    .app-name {
+      font-size: 0.875rem;
+      font-weight: 500;
     }
 
-    /* Recurring Tasks */
-    .recurring-task {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-      background: rgba(168, 85, 247, 0.05);
-      border: 1px solid rgba(168, 85, 247, 0.2);
-      border-radius: 12px;
-      margin-bottom: 0.75rem;
-    }
-
-    .recurring-icon {
-      font-size: 1.5rem;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(168, 85, 247, 0.1);
-      border-radius: 12px;
-    }
-
-    .recurring-info { flex: 1; }
-    .recurring-title { font-weight: 600; margin-bottom: 0.25rem; }
-    .recurring-desc { font-size: 0.8rem; color: #888; }
-
-    .recurring-badge {
-      background: rgba(168, 85, 247, 0.2);
-      color: #c084fc;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-
-    .recurring-badge::before {
-      content: '🔄';
-      font-size: 0.6rem;
-    }
-
-    /* Recommendations */
-    .rec {
-      padding: 1rem;
-      border-left: 3px solid #667eea;
-      background: rgba(102, 126, 234, 0.05);
-      border-radius: 0 8px 8px 0;
+    /* Form */
+    .form-group {
       margin-bottom: 1rem;
     }
 
-    .rec-title { font-weight: 600; margin-bottom: 0.5rem; }
-    .rec-desc { color: #999; font-size: 0.875rem; line-height: 1.5; }
-
-    .rec-category {
-      display: inline-block;
-      margin-top: 0.5rem;
-      padding: 0.2rem 0.5rem;
-      background: rgba(255,255,255,0.05);
-      border-radius: 4px;
-      font-size: 0.7rem;
-      color: #888;
-      text-transform: uppercase;
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      color: #8b949e;
+      margin-bottom: 0.5rem;
     }
-
-    /* Assignment Form */
-    .assign-form { display: flex; flex-direction: column; gap: 1rem; }
-
-    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-    .form-group label { font-size: 0.875rem; color: #888; }
 
     .form-group input,
     .form-group textarea,
     .form-group select {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      color: #fff;
-      font-size: 1rem;
+      width: 100%;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 0.625rem 0.75rem;
+      color: #c9d1d9;
+      font-size: 0.875rem;
       font-family: inherit;
-      transition: all 0.2s;
+      transition: border-color 0.2s;
     }
 
     .form-group input:focus,
     .form-group textarea:focus,
     .form-group select:focus {
       outline: none;
-      border-color: #667eea;
-      background: rgba(102, 126, 234, 0.1);
+      border-color: #58a6ff;
     }
 
-    .form-group textarea { min-height: 100px; resize: vertical; }
+    .form-group textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
 
     .submit-btn {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      width: 100%;
+      background: #238636;
       border: none;
-      border-radius: 8px;
-      padding: 1rem;
+      border-radius: 6px;
+      padding: 0.75rem;
       color: #fff;
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 0.875rem;
+      font-weight: 500;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: background 0.2s;
     }
 
     .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+      background: #2ea043;
     }
 
     .success-msg {
-      background: rgba(34, 197, 94, 0.1);
-      border: 1px solid rgba(34, 197, 94, 0.3);
-      border-radius: 8px;
-      padding: 1rem;
-      color: #4ade80;
+      background: rgba(63, 185, 80, 0.1);
+      border: 1px solid rgba(63, 185, 80, 0.3);
+      border-radius: 6px;
+      padding: 0.75rem;
+      color: #3fb950;
+      font-size: 0.875rem;
       text-align: center;
+      margin-top: 1rem;
       display: none;
     }
 
     .success-msg.show { display: block; }
 
-    .right-col { display: flex; flex-direction: column; gap: 1.5rem; }
+    /* Span full width */
+    .span-2 { grid-column: span 2; }
 
-    /* App Bubbles */
-    .app-bubbles {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
+    @media (max-width: 1200px) {
+      .span-2 { grid-column: span 1; }
     }
 
-    .app-bubble {
+    /* Bar Chart */
+    .bar-chart {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       gap: 0.5rem;
-      padding: 0.75rem 1.25rem;
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
-      border: 1px solid rgba(102, 126, 234, 0.3);
-      border-radius: 50px;
-      text-decoration: none;
-      color: #fff;
-      transition: all 0.2s;
+      height: 120px;
+      padding-top: 1rem;
     }
 
-    .app-bubble:hover {
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.25) 0%, rgba(118, 75, 162, 0.25) 100%);
-      border-color: rgba(102, 126, 234, 0.5);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
-    }
-
-    .app-icon { font-size: 1.25rem; }
-    .app-name { font-weight: 500; font-size: 0.9rem; }
-
-    /* Morning Report */
-    .report-status {
-      background: rgba(34, 197, 94, 0.1);
-      border: 1px solid rgba(34, 197, 94, 0.2);
-      border-radius: 12px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .report-next {
-      color: #4ade80;
-      font-weight: 500;
-    }
-
-    .report-sections {
+    .bar-group {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .report-section-item {
-      display: flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.75rem;
-      background: rgba(255,255,255,0.02);
-      border-radius: 8px;
-      color: #888;
-      font-size: 0.9rem;
     }
 
-    .report-section-item::before {
-      content: '📋';
-      font-size: 0.8rem;
+    .bar {
+      width: 100%;
+      max-width: 40px;
+      border-radius: 4px 4px 0 0;
+      transition: height 0.3s;
     }
 
-    /* Progress indicator for recurring */
-    .recurring-progress {
+    .bar.actual { background: #3fb950; }
+    .bar.planned { background: #58a6ff; }
+    .bar.budget { background: #8b949e; }
+
+    .bar-label {
       font-size: 0.7rem;
-      color: #4ade80;
-      margin-top: 0.25rem;
+      color: #8b949e;
+    }
+
+    .chart-legend {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      font-size: 0.75rem;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <span class="logo">👟</span>
-      <div>
-        <h1>Henry Dashboard</h1>
-        <p class="subtitle">Your AI right-hand command centre</p>
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-logo">H</div>
+    <div class="sidebar-nav">
+      <div class="nav-item active" title="Dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/>
+          <rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
       </div>
-      <div class="last-updated" id="lastUpdated">Last updated: --</div>
+      <div class="nav-item" title="Tasks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 11l3 3L22 4"/>
+          <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+        </svg>
+      </div>
+      <div class="nav-item" title="Apps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <path d="M8 21h8M12 17v4"/>
+        </svg>
+      </div>
+      <div class="nav-item" title="Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+        </svg>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main">
+    <header class="header">
+      <div class="header-left">
+        <h1>Henry Dashboard</h1>
+        <span class="status-badge">Online</span>
+      </div>
+      <div class="header-right" id="lastUpdated">Last updated: --</div>
     </header>
 
-    <!-- Current Task In Progress -->
-    <div class="in-progress-section" id="inProgressSection" style="display: none;">
-      <div class="in-progress-header">
-        <span class="in-progress-badge">🔥 In Progress</span>
-      </div>
-      <div class="in-progress-title" id="inProgressTitle"></div>
-      <div class="in-progress-desc" id="inProgressDesc"></div>
-      <div class="in-progress-progress" id="inProgressProgress"></div>
-    </div>
-
     <div class="grid">
-      <div class="left-col">
-        <!-- Regular Tasks -->
-        <div class="card">
-          <div class="card-header">
-            <span class="card-icon">📋</span>
-            <h2>Tasks</h2>
+      <!-- Health -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Health</span>
+          <div class="card-actions">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 16v-4M12 8h.01"/>
+            </svg>
           </div>
-          <div id="tasksList"></div>
         </div>
-
-        <!-- Recurring Tasks -->
-        <div class="card">
-          <div class="card-header">
-            <span class="card-icon">🔄</span>
-            <h2>Recurring Tasks</h2>
+        <div class="health-list" id="healthList">
+          <div class="health-row">
+            <span class="health-label">Active Tasks</span>
+            <span class="health-value" id="activeTasks">--</span>
           </div>
-          <div id="recurringList"></div>
-        </div>
-
-        <!-- Morning Report -->
-        <div class="card">
-          <div class="card-header">
-            <span class="card-icon">📊</span>
-            <h2>Morning Report</h2>
+          <div class="health-row">
+            <span class="health-label">Completed Today</span>
+            <span class="health-value positive" id="completedToday">--</span>
           </div>
-          <div id="morningReport">
-            <div class="report-status">
-              <div class="report-next">Next report: <span id="nextReportTime">--</span></div>
-            </div>
-            <div class="report-sections" id="reportSections"></div>
+          <div class="health-row">
+            <span class="health-label">Overdue</span>
+            <span class="health-value" id="overdueTasks">--</span>
+          </div>
+          <div class="health-row">
+            <span class="health-label">Progress</span>
+            <span class="health-value positive" id="progressPercent">--</span>
           </div>
         </div>
       </div>
 
-      <div class="right-col">
-        <div class="card">
-          <div class="card-header">
-            <span class="card-icon">✨</span>
-            <h2>Assign Me a Task</h2>
+      <!-- Tasks Donut -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Tasks</span>
+          <div class="card-actions">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 16v-4M12 8h.01"/>
+            </svg>
           </div>
-          <form class="assign-form" id="assignForm">
-            <div class="form-group">
-              <label for="taskTitle">Task Title</label>
-              <input type="text" id="taskTitle" name="title" placeholder="What do you need?" required>
-            </div>
-            <div class="form-group">
-              <label for="taskDesc">Description</label>
-              <textarea id="taskDesc" name="description" placeholder="Any details..."></textarea>
-            </div>
-            <div class="form-group">
-              <label for="taskPriority">Priority</label>
-              <select id="taskPriority" name="priority">
-                <option value="high">🔴 High</option>
-                <option value="medium" selected>🟡 Medium</option>
-                <option value="low">🟢 Low</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="taskDue">Due Date (optional)</label>
-              <input type="date" id="taskDue" name="due">
-            </div>
-            <button type="submit" class="submit-btn">Assign to Henry 👟</button>
-            <div class="success-msg" id="successMsg">
-              ✅ Task assigned! Henry will pick this up within the hour.
-            </div>
-          </form>
         </div>
+        <div class="donut-container">
+          <div class="donut-chart">
+            <svg width="140" height="140" viewBox="0 0 140 140">
+              <circle class="donut-bg" cx="70" cy="70" r="54"/>
+              <circle class="donut-pending" cx="70" cy="70" r="54" 
+                stroke-dasharray="0 339.3" id="donutPending"/>
+              <circle class="donut-progress" cx="70" cy="70" r="54" 
+                stroke-dasharray="0 339.3" id="donutProgress"/>
+              <circle class="donut-complete" cx="70" cy="70" r="54" 
+                stroke-dasharray="0 339.3" id="donutComplete"/>
+            </svg>
+            <div class="donut-center">
+              <div class="donut-number" id="totalTasks">0</div>
+              <div class="donut-label">Total</div>
+            </div>
+          </div>
+          <div class="donut-legend">
+            <div class="legend-item">
+              <div class="legend-dot not-started"></div>
+              <span>Not Started (<span id="notStartedCount">0</span>)</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot complete"></div>
+              <span>Complete (<span id="completeCount">0</span>)</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot in-progress"></div>
+              <span>In Progress (<span id="inProgressCount">0</span>)</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <div class="card">
-          <div class="card-header">
-            <span class="card-icon">🚀</span>
-            <h2>Apps I've Built</h2>
-          </div>
-          <div class="app-bubbles">
-            <a href="https://henryworkshard.github.io/eddytrains-content-planner/" target="_blank" class="app-bubble">
-              <span class="app-icon">📱</span>
-              <span class="app-name">Eddytrains Content Planner</span>
-            </a>
-            <a href="https://henryworkshard.github.io/henry-dashboard/" target="_blank" class="app-bubble">
-              <span class="app-icon">👟</span>
-              <span class="app-name">Henry Dashboard</span>
-            </a>
+      <!-- Progress -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Progress</span>
+          <div class="card-actions">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 16v-4M12 8h.01"/>
+            </svg>
           </div>
         </div>
+        <div class="progress-list" id="progressList"></div>
+      </div>
 
-        <div class="card">
-          <div class="card-header">
-            <span class="card-icon">💡</span>
-            <h2>What Else I Can Do</h2>
+      <!-- Recent Tasks -->
+      <div class="card span-2">
+        <div class="card-header">
+          <span class="card-title">Recent Tasks</span>
+          <div class="card-actions">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 16v-4M12 8h.01"/>
+            </svg>
           </div>
-          <div id="recsList"></div>
         </div>
+        <div class="task-list" id="taskList"></div>
+      </div>
+
+      <!-- Workload -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Workload</span>
+          <div class="card-actions">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 16v-4M12 8h.01"/>
+            </svg>
+          </div>
+        </div>
+        <div class="progress-list" id="workloadList"></div>
+      </div>
+
+      <!-- Apps -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Apps</span>
+        </div>
+        <div class="apps-grid">
+          <a href="https://henryworkshard.github.io/eddytrains-content-planner/" target="_blank" class="app-link">
+            <div class="app-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2"/>
+                <path d="M16 2v4M8 2v4M3 10h18"/>
+              </svg>
+            </div>
+            <span class="app-name">Content Planner</span>
+          </a>
+          <a href="https://henryworkshard.github.io/henry-dashboard/" target="_blank" class="app-link">
+            <div class="app-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7" rx="1"/>
+                <rect x="14" y="3" width="7" height="7" rx="1"/>
+                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                <rect x="14" y="14" width="7" height="7" rx="1"/>
+              </svg>
+            </div>
+            <span class="app-name">Dashboard</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Assign Task -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Assign Task</span>
+        </div>
+        <form id="assignForm">
+          <div class="form-group">
+            <label for="taskTitle">Title</label>
+            <input type="text" id="taskTitle" name="title" placeholder="Task name" required>
+          </div>
+          <div class="form-group">
+            <label for="taskDesc">Description</label>
+            <textarea id="taskDesc" name="description" placeholder="Details..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="taskPriority">Priority</label>
+            <select id="taskPriority" name="priority">
+              <option value="high">High</option>
+              <option value="medium" selected>Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+          <button type="submit" class="submit-btn">Assign Task</button>
+          <div class="success-msg" id="successMsg">Task assigned successfully</div>
+        </form>
       </div>
     </div>
-  </div>
+  </main>
 
   <script>
     async function loadData() {
@@ -544,91 +735,112 @@
         const tasks = await tasksRes.json();
         const recs = await recsRes.json();
         
-        // Render in progress
-        if (tasks.inProgress) {
-          document.getElementById('inProgressSection').style.display = 'block';
-          document.getElementById('inProgressTitle').textContent = tasks.inProgress.title;
-          document.getElementById('inProgressDesc').textContent = tasks.inProgress.description;
-          document.getElementById('inProgressProgress').textContent = '📍 ' + tasks.inProgress.progress;
-        }
-        
-        renderTasks(tasks.tasks);
-        renderRecurring(tasks.recurringTasks || []);
-        renderMorningReport(tasks.morningReport);
-        renderRecs(recs.recommendations);
+        // Calculate stats
+        const allTasks = tasks.tasks || [];
+        const completed = allTasks.filter(t => t.status === 'completed').length;
+        const inProgress = allTasks.filter(t => t.status === 'in_progress').length;
+        const pending = allTasks.filter(t => t.status === 'pending').length;
+        const overdue = allTasks.filter(t => t.status === 'overdue').length;
+        const total = allTasks.length;
+
+        // Health stats
+        document.getElementById('activeTasks').textContent = inProgress + pending;
+        document.getElementById('completedToday').textContent = completed;
+        document.getElementById('overdueTasks').textContent = overdue;
+        document.getElementById('overdueTasks').className = 'health-value ' + (overdue > 0 ? 'negative' : 'positive');
+        document.getElementById('progressPercent').textContent = total > 0 ? Math.round((completed / total) * 100) + '%' : '0%';
+
+        // Donut chart
+        const circumference = 339.3;
+        const completePct = total > 0 ? completed / total : 0;
+        const progressPct = total > 0 ? inProgress / total : 0;
+        const pendingPct = total > 0 ? pending / total : 0;
+
+        document.getElementById('donutComplete').setAttribute('stroke-dasharray', 
+          `${completePct * circumference} ${circumference}`);
+        document.getElementById('donutProgress').setAttribute('stroke-dasharray', 
+          `${progressPct * circumference} ${circumference}`);
+        document.getElementById('donutProgress').setAttribute('stroke-dashoffset', 
+          `-${completePct * circumference}`);
+        document.getElementById('donutPending').setAttribute('stroke-dasharray', 
+          `${pendingPct * circumference} ${circumference}`);
+        document.getElementById('donutPending').setAttribute('stroke-dashoffset', 
+          `-${(completePct + progressPct) * circumference}`);
+
+        document.getElementById('totalTasks').textContent = total;
+        document.getElementById('notStartedCount').textContent = pending;
+        document.getElementById('completeCount').textContent = completed;
+        document.getElementById('inProgressCount').textContent = inProgress;
+
+        // Progress bars
+        const categories = {};
+        allTasks.forEach(t => {
+          const cat = t.category || 'General';
+          if (!categories[cat]) categories[cat] = { total: 0, done: 0 };
+          categories[cat].total++;
+          if (t.status === 'completed') categories[cat].done++;
+        });
+
+        const colors = ['green', 'blue', 'pink', 'yellow'];
+        const progressList = document.getElementById('progressList');
+        progressList.innerHTML = Object.entries(categories).map(([name, data], i) => {
+          const pct = Math.round((data.done / data.total) * 100);
+          return `
+            <div class="progress-row">
+              <span class="progress-label">${name}</span>
+              <span class="progress-percent">${pct}%</span>
+              <div class="progress-bar">
+                <div class="progress-fill ${colors[i % colors.length]}" style="width: ${pct}%"></div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        // Task list
+        const taskList = document.getElementById('taskList');
+        taskList.innerHTML = allTasks.slice(0, 5).map(task => `
+          <div class="task-item">
+            <div class="task-status ${task.status.replace('_', '-')}"></div>
+            <span class="task-name">${task.title}</span>
+            <span class="task-priority ${task.priority}">${task.priority}</span>
+          </div>
+        `).join('');
+
+        // Workload (by priority)
+        const highCount = allTasks.filter(t => t.priority === 'high' && t.status !== 'completed').length;
+        const medCount = allTasks.filter(t => t.priority === 'medium' && t.status !== 'completed').length;
+        const lowCount = allTasks.filter(t => t.priority === 'low' && t.status !== 'completed').length;
+        const maxCount = Math.max(highCount, medCount, lowCount, 1);
+
+        document.getElementById('workloadList').innerHTML = `
+          <div class="progress-row">
+            <span class="progress-label">High Priority</span>
+            <span class="progress-percent">${highCount}</span>
+            <div class="progress-bar">
+              <div class="progress-fill pink" style="width: ${(highCount/maxCount)*100}%"></div>
+            </div>
+          </div>
+          <div class="progress-row">
+            <span class="progress-label">Medium</span>
+            <span class="progress-percent">${medCount}</span>
+            <div class="progress-bar">
+              <div class="progress-fill yellow" style="width: ${(medCount/maxCount)*100}%"></div>
+            </div>
+          </div>
+          <div class="progress-row">
+            <span class="progress-label">Low</span>
+            <span class="progress-percent">${lowCount}</span>
+            <div class="progress-bar">
+              <div class="progress-fill green" style="width: ${(lowCount/maxCount)*100}%"></div>
+            </div>
+          </div>
+        `;
         
         document.getElementById('lastUpdated').textContent = 
           'Last updated: ' + new Date(tasks.lastUpdated).toLocaleString();
       } catch (err) {
         console.error('Error loading data:', err);
       }
-    }
-
-    function renderTasks(tasks) {
-      const container = document.getElementById('tasksList');
-      container.innerHTML = tasks.map(task => `
-        <div class="task">
-          <div class="task-header">
-            <span class="task-title">${task.title}</span>
-            <span class="task-status status-${task.status}">${task.status.replace('_', ' ')}</span>
-          </div>
-          <div class="task-desc">${task.description}</div>
-          <div class="task-meta">
-            <span class="priority-${task.priority}">● ${task.priority} priority</span>
-            <span>Created: ${task.created}</span>
-            ${task.due ? `<span>Due: ${task.due}</span>` : ''}
-          </div>
-          ${task.subtasks ? `
-            <div class="subtasks">
-              ${task.subtasks.map(st => `
-                <div class="subtask ${st.done ? 'done' : ''}">
-                  <span class="subtask-check">${st.done ? '✓' : ''}</span>
-                  <span>${st.title}</span>
-                </div>
-              `).join('')}
-            </div>
-          ` : ''}
-        </div>
-      `).join('');
-    }
-
-    function renderRecurring(tasks) {
-      const container = document.getElementById('recurringList');
-      container.innerHTML = tasks.map(task => `
-        <div class="recurring-task">
-          <div class="recurring-icon">${task.icon}</div>
-          <div class="recurring-info">
-            <div class="recurring-title">${task.title}</div>
-            <div class="recurring-desc">${task.description}</div>
-            ${task.progress ? `<div class="recurring-progress">Progress: ${task.progress}</div>` : ''}
-          </div>
-          <div class="recurring-badge">${task.frequency}</div>
-        </div>
-      `).join('');
-    }
-
-    function renderMorningReport(report) {
-      if (!report) return;
-      document.getElementById('nextReportTime').textContent = 
-        report.nextScheduled ? new Date(report.nextScheduled).toLocaleString() : 'Not scheduled';
-      
-      const sectionsContainer = document.getElementById('reportSections');
-      if (report.sections) {
-        sectionsContainer.innerHTML = report.sections.map(section => `
-          <div class="report-section-item">${section}</div>
-        `).join('');
-      }
-    }
-
-    function renderRecs(recs) {
-      const container = document.getElementById('recsList');
-      container.innerHTML = recs.map(rec => `
-        <div class="rec">
-          <div class="rec-title">${rec.title}</div>
-          <div class="rec-desc">${rec.description}</div>
-          <span class="rec-category">${rec.category}</span>
-        </div>
-      `).join('');
     }
 
     document.getElementById('assignForm').addEventListener('submit', async (e) => {
@@ -639,7 +851,6 @@
         title: form.title.value,
         description: form.description.value,
         priority: form.priority.value,
-        due: form.due.value || null,
         submitted: new Date().toISOString(),
         status: 'pending'
       };
