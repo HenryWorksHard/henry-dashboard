@@ -1,0 +1,9 @@
+{
+  "name": "Henry Dashboard",
+  "short_name": "Henry",
+  "description": "Your AI right-hand command centre",
+  "start_url": "/henry-dashboard/",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#0d1117"
+}
