@@ -1,5 +1,5 @@
 // Version - update this to force cache refresh
-const VERSION = 'v1.0.9';
+const VERSION = 'v1.0.10';
 const CACHE_NAME = `henry-dashboard-${VERSION}`;
 
 // Files to cache

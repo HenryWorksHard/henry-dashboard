@@ -29,9 +29,18 @@
       "due": null,
       "recurring": false,
       "subtasks": [
-        { "title": "Fix hero section spacing", "done": true },
-        { "title": "Add mobile responsiveness", "done": true },
-        { "title": "Connect domain", "done": false }
+        {
+          "title": "Fix hero section spacing",
+          "done": true
+        },
+        {
+          "title": "Add mobile responsiveness",
+          "done": true
+        },
+        {
+          "title": "Connect domain",
+          "done": false
+        }
       ]
     },
     {
@@ -44,9 +53,18 @@
       "due": null,
       "recurring": false,
       "subtasks": [
-        { "title": "Create MEMORY.md structure", "done": true },
-        { "title": "Set up daily notes", "done": true },
-        { "title": "Document workflows", "done": false }
+        {
+          "title": "Create MEMORY.md structure",
+          "done": true
+        },
+        {
+          "title": "Set up daily notes",
+          "done": true
+        },
+        {
+          "title": "Document workflows",
+          "done": false
+        }
       ]
     },
     {
@@ -59,11 +77,26 @@
       "due": null,
       "recurring": false,
       "subtasks": [
-        { "title": "Initial build", "done": true },
-        { "title": "Deploy to GitHub Pages", "done": true },
-        { "title": "Add task assignment form", "done": true },
-        { "title": "Set up hourly check cron", "done": true },
-        { "title": "Add app bubbles", "done": true }
+        {
+          "title": "Initial build",
+          "done": true
+        },
+        {
+          "title": "Deploy to GitHub Pages",
+          "done": true
+        },
+        {
+          "title": "Add task assignment form",
+          "done": true
+        },
+        {
+          "title": "Set up hourly check cron",
+          "done": true
+        },
+        {
+          "title": "Add app bubbles",
+          "done": true
+        }
       ]
     }
   ],
@@ -100,6 +133,10 @@
   },
   "completedToday": [
     {
+      "title": "Tested helper script",
+      "time": "12:32 AM"
+    },
+    {
       "title": "Dashboard redesign",
       "time": "11:30 PM"
     },
@@ -108,5 +145,5 @@
       "time": "11:45 PM"
     }
   ],
-  "lastUpdated": "2026-01-31T00:25:00+10:30"
+  "lastUpdated": "2026-01-30T14:02:51+10:30"
 }
