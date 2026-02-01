@@ -29,10 +29,11 @@
       "status": "in_progress",
       "priority": "medium",
       "created": "2026-01-30",
-      "progress": "36/260 (14%)"
+      "progress": "42/260 (16%)"
     }
   ],
   "completedToday": [
+    { "title": "IG Unfollow Big Push (6 accounts)", "time": "7:00 PM" },
     { "title": "IG Follow Session (6pm)", "time": "6:08 PM" },
     { "title": "IG Unfollow Session (6:15pm)", "time": "6:18 PM" },
     { "title": "IG Follow Session (6pm)", "time": "6:00 PM" },
@@ -46,6 +47,6 @@
     { "title": "Unfollowed 34 accounts", "time": "9:00 AM" },
     { "title": "Updated Content Planner", "time": "8:58 AM" }
   ],
-  "weeklyCompleted": 27,
-  "lastUpdated": "2026-02-01T18:08:00+10:30"
+  "weeklyCompleted": 28,
+  "lastUpdated": "2026-02-01T19:00:00+10:30"
 }
