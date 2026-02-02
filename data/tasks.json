@@ -1,9 +1,9 @@
 {
   "inProgress": null,
   "nextTask": {
-    "title": "IG Unfollow Session (6:15pm)",
-    "description": "Unfollow ~15 non-followers from our list",
-    "scheduledTime": "6:15 PM",
+    "title": "Morning Report (8am)",
+    "description": "Daily eddytrains activity summary",
+    "scheduledTime": "8:00 AM",
     "type": "recurring"
   },
   "tasks": [
@@ -29,13 +29,15 @@
       "status": "in_progress",
       "priority": "medium",
       "created": "2026-01-30",
-      "progress": "91/260 (35%)"
+      "progress": "108/260 (42%)"
     }
   ],
   "completedToday": [
     { "title": "IG Follow Session (12pm)", "time": "12:00 PM", "details": "Followed 12 fitness accounts (10 instant, 2 pending)" },
-    { "title": "IG Follow Session (6pm)", "time": "6:00 PM", "details": "Followed 12 accounts from @zacperna followers (4 instant, 8 pending)" }
+    { "title": "IG Follow Session (6pm)", "time": "6:00 PM", "details": "Followed 12 accounts from @zacperna followers (4 instant, 8 pending)" },
+    { "title": "IG Unfollow Session (12:15pm)", "time": "12:15 PM", "details": "Unfollowed 12 non-followers" },
+    { "title": "IG Unfollow Session (6:15pm)", "time": "6:15 PM", "details": "Unfollowed 10 non-followers" }
   ],
-  "weeklyCompleted": 31,
-  "lastUpdated": "2026-02-02T18:00:00+10:30"
+  "weeklyCompleted": 33,
+  "lastUpdated": "2026-02-02T18:25:00+10:30"
 }
