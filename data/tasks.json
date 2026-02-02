@@ -1,9 +1,9 @@
 {
   "inProgress": null,
   "nextTask": {
-    "title": "Morning Report",
-    "description": "Daily check-in with Louis",
-    "scheduledTime": "8:00 AM",
+    "title": "IG Follow Session (6pm)",
+    "description": "Follow ~12 accounts from fitness influencer followers",
+    "scheduledTime": "6:00 PM",
     "type": "recurring"
   },
   "tasks": [
@@ -29,24 +29,12 @@
       "status": "in_progress",
       "priority": "medium",
       "created": "2026-01-30",
-      "progress": "42/260 (16%)"
+      "progress": "91/260 (35%)"
     }
   ],
   "completedToday": [
-    { "title": "IG Unfollow Big Push (6 accounts)", "time": "7:00 PM" },
-    { "title": "IG Follow Session (6pm)", "time": "6:08 PM" },
-    { "title": "IG Unfollow Session (6:15pm)", "time": "6:18 PM" },
-    { "title": "IG Follow Session (6pm)", "time": "6:00 PM" },
-    { "title": "IG Unfollow Session (12:15pm)", "time": "12:15 PM" },
-    { "title": "IG Follow Session (12pm)", "time": "12:00 PM" },
-    { "title": "Task Management System Setup", "time": "9:28 AM" },
-    { "title": "Google Calendar recurring events", "time": "9:27 AM" },
-    { "title": "Fixed cron jobs", "time": "9:02 AM" },
-    { "title": "Created WORKFLOW.md", "time": "9:05 AM" },
-    { "title": "Updated AGENTS.md", "time": "9:15 AM" },
-    { "title": "Unfollowed 34 accounts", "time": "9:00 AM" },
-    { "title": "Updated Content Planner", "time": "8:58 AM" }
+    { "title": "IG Unfollow Session (12:15pm)", "time": "12:25 PM" }
   ],
-  "weeklyCompleted": 28,
-  "lastUpdated": "2026-02-01T19:00:00+10:30"
+  "weeklyCompleted": 29,
+  "lastUpdated": "2026-02-02T12:25:00+10:30"
 }
