@@ -1,9 +1,9 @@
 {
   "inProgress": null,
   "nextTask": {
-    "title": "IG Unfollow Session (12:15pm)",
+    "title": "IG Unfollow Session (6:15pm)",
     "description": "Unfollow ~15 non-followers from our list",
-    "scheduledTime": "12:15 PM",
+    "scheduledTime": "6:15 PM",
     "type": "recurring"
   },
   "tasks": [
@@ -33,8 +33,9 @@
     }
   ],
   "completedToday": [
-    { "title": "IG Follow Session (12pm)", "time": "12:00 PM", "details": "Followed 12 fitness accounts (10 instant, 2 pending)" }
+    { "title": "IG Follow Session (12pm)", "time": "12:00 PM", "details": "Followed 12 fitness accounts (10 instant, 2 pending)" },
+    { "title": "IG Follow Session (6pm)", "time": "6:00 PM", "details": "Followed 12 accounts from @zacperna followers (4 instant, 8 pending)" }
   ],
-  "weeklyCompleted": 30,
-  "lastUpdated": "2026-02-02T12:00:00+10:30"
+  "weeklyCompleted": 31,
+  "lastUpdated": "2026-02-02T18:00:00+10:30"
 }
