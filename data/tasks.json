@@ -1,9 +1,9 @@
 {
   "inProgress": null,
   "nextTask": {
-    "title": "IG Follow Session (6pm)",
-    "description": "Follow ~12 accounts from fitness influencer followers",
-    "scheduledTime": "6:00 PM",
+    "title": "IG Unfollow Session (12:15pm)",
+    "description": "Unfollow accounts that haven't followed back after 3+ days",
+    "scheduledTime": "12:15 PM",
     "type": "recurring"
   },
   "tasks": [
@@ -23,13 +23,14 @@
     }
   ],
   "completedToday": [
+    { "title": "12pm IG Follow Session", "time": "12:00 PM", "details": "Followed 12 accounts from zacperna's followers (3 instant, 9 pending requests)" },
     { "title": "IG Tracking System Setup", "time": "12:15 PM", "details": "Created tracking infrastructure for follows/unfollows" }
   ],
   "stats": {
-    "following": 314,
+    "following": 326,
     "followers": 192,
-    "ratio": "1.64"
+    "ratio": "1.70"
   },
-  "weeklyCompleted": 1,
-  "lastUpdated": "2026-02-03T12:15:00+10:30"
+  "weeklyCompleted": 2,
+  "lastUpdated": "2026-02-03T12:00:00+10:30"
 }
