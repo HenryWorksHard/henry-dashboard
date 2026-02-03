@@ -1,9 +1,9 @@
 {
   "inProgress": null,
   "nextTask": {
-    "title": "IG Unfollow Session (12:15pm)",
+    "title": "IG Unfollow Session (6:15pm)",
     "description": "Unfollow accounts that haven't followed back after 3+ days",
-    "scheduledTime": "12:15 PM",
+    "scheduledTime": "6:15 PM",
     "type": "recurring"
   },
   "tasks": [
@@ -24,13 +24,14 @@
   ],
   "completedToday": [
     { "title": "12pm IG Follow Session", "time": "12:00 PM", "details": "Followed 12 accounts from zacperna's followers (3 instant, 9 pending requests)" },
-    { "title": "IG Tracking System Setup", "time": "12:15 PM", "details": "Created tracking infrastructure for follows/unfollows" }
+    { "title": "IG Tracking System Setup", "time": "12:15 PM", "details": "Created tracking infrastructure for follows/unfollows" },
+    { "title": "6pm IG Follow Session", "time": "6:00 PM", "details": "Followed 12 accounts from zacperna's followers (1 instant follow, 11 pending requests)" }
   ],
   "stats": {
-    "following": 326,
+    "following": 338,
     "followers": 192,
-    "ratio": "1.70"
+    "ratio": "1.76"
   },
-  "weeklyCompleted": 2,
-  "lastUpdated": "2026-02-03T12:00:00+10:30"
+  "weeklyCompleted": 3,
+  "lastUpdated": "2026-02-03T18:00:00+10:30"
 }
