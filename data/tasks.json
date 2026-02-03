@@ -1,43 +1,35 @@
 {
   "inProgress": null,
   "nextTask": {
-    "title": "Morning Report (8am)",
-    "description": "Daily eddytrains activity summary",
-    "scheduledTime": "8:00 AM",
+    "title": "IG Follow Session (6pm)",
+    "description": "Follow ~12 accounts from fitness influencer followers",
+    "scheduledTime": "6:00 PM",
     "type": "recurring"
   },
   "tasks": [
     {
-      "id": "task-system",
-      "title": "Task Management System",
-      "description": "Google Calendar as schedule, Dashboard as status",
+      "id": "task-ig-tracking",
+      "title": "IG Growth Tracking System",
+      "description": "Track follows with timestamps, unfollow after 3+ days if no follow-back",
       "status": "completed",
       "priority": "high",
-      "created": "2026-01-31",
+      "created": "2026-02-03",
       "subtasks": [
-        { "title": "Fix cron jobs (wakeMode: now)", "done": true },
-        { "title": "Create WORKFLOW.md", "done": true },
-        { "title": "Update AGENTS.md with calendar scanning", "done": true },
-        { "title": "Add recurring events to Google Calendar", "done": true },
-        { "title": "Add calendar completion step", "done": true }
+        { "title": "Create instagram/ directory structure", "done": true },
+        { "title": "Set up follow-log.json", "done": true },
+        { "title": "Set up unfollow-queue.json", "done": true },
+        { "title": "Document system in README.md", "done": true }
       ]
-    },
-    {
-      "id": "task-unfollow",
-      "title": "Unfollowing Non-Followers",
-      "description": "Unfollowing 260 accounts that don't follow back",
-      "status": "in_progress",
-      "priority": "medium",
-      "created": "2026-01-30",
-      "progress": "108/260 (42%)"
     }
   ],
   "completedToday": [
-    { "title": "IG Follow Session (12pm)", "time": "12:00 PM", "details": "Followed 12 fitness accounts (10 instant, 2 pending)" },
-    { "title": "IG Follow Session (6pm)", "time": "6:00 PM", "details": "Followed 12 accounts from @zacperna followers (4 instant, 8 pending)" },
-    { "title": "IG Unfollow Session (12:15pm)", "time": "12:15 PM", "details": "Unfollowed 12 non-followers" },
-    { "title": "IG Unfollow Session (6:15pm)", "time": "6:15 PM", "details": "Unfollowed 10 non-followers" }
+    { "title": "IG Tracking System Setup", "time": "12:15 PM", "details": "Created tracking infrastructure for follows/unfollows" }
   ],
-  "weeklyCompleted": 33,
-  "lastUpdated": "2026-02-02T18:25:00+10:30"
+  "stats": {
+    "following": 314,
+    "followers": 192,
+    "ratio": "1.64"
+  },
+  "weeklyCompleted": 1,
+  "lastUpdated": "2026-02-03T12:15:00+10:30"
 }
