@@ -1,9 +1,9 @@
 {
   "inProgress": null,
   "nextTask": {
-    "title": "IG Follow Session (6pm)",
-    "description": "Follow ~12 accounts from fitness influencer followers",
-    "scheduledTime": "6:00 PM",
+    "title": "IG Unfollow Check (6:15pm)",
+    "description": "Check and unfollow accounts that haven't followed back after 3+ days",
+    "scheduledTime": "6:15 PM",
     "type": "recurring"
   },
   "tasks": [
@@ -25,15 +25,16 @@
   "completedToday": [
     { "title": "12pm IG Follow Session", "time": "12:00 PM", "details": "Followed 12 accounts from zacperna's followers" },
     { "title": "12:15pm IG Unfollow Check", "time": "12:15 PM", "details": "Queue empty - follows need 3+ days before eligible" },
-    { "title": "2pm IG Follow Session", "time": "2:00 PM", "details": "Followed 3 accounts from jeffnippard's followers (many private accounts skipped)" }
+    { "title": "2pm IG Follow Session", "time": "2:00 PM", "details": "Followed 3 accounts from jeffnippard's followers (many private accounts skipped)" },
+    { "title": "6pm IG Follow Session", "time": "6:00 PM", "details": "Followed 3 accounts from cbum's followers with full engagement (2 likes each). Source: cbum. ~80% of accounts were private - needs different source." }
   ],
   "stats": {
-    "following": 341,
+    "following": 344,
     "followers": 192,
-    "ratio": "1.78",
+    "ratio": "1.79",
     "pendingUnfollows": 0,
-    "trackedFollows": 15
+    "trackedFollows": 18
   },
-  "weeklyCompleted": 5,
-  "lastUpdated": "2026-02-04T14:35:00+10:30"
+  "weeklyCompleted": 6,
+  "lastUpdated": "2026-02-04T18:15:00+10:30"
 }
