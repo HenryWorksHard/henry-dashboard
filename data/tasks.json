@@ -1,9 +1,9 @@
 {
   "inProgress": null,
   "nextTask": {
-    "title": "Morning Report",
-    "description": "Daily morning report at 8am",
-    "scheduledTime": "8:00 AM (tomorrow)",
+    "title": "12pm IG Follow Session",
+    "description": "Follow ~12 accounts from fitness influencer followers",
+    "scheduledTime": "12:00 PM",
     "type": "recurring"
   },
   "tasks": [
