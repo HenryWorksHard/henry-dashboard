@@ -1,0 +1,10 @@
+{
+  "activities": [
+    {
+      "type": "dashboard",
+      "title": "Dashboard updated",
+      "description": "Added recent activity feed",
+      "timestamp": "2026-02-05T19:34:00+10:30"
+    }
+  ]
+}
