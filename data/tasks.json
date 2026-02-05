@@ -1,12 +1,50 @@
 {
-  "inProgress": null,
-  "nextTask": {
-    "title": "6:15pm IG Unfollow Check",
-    "description": "Check for accounts to unfollow (3+ days, no follow-back)",
-    "scheduledTime": "6:15 PM",
-    "type": "recurring"
+  "inProgress": {
+    "title": "Eddytrains SaaS Full QA Checklist",
+    "description": "Verify all features work for Platform Admin, Trainer, and Client accounts",
+    "type": "testing"
   },
+  "nextTask": null,
   "tasks": [
+    {
+      "id": "task-saas-qa",
+      "title": "Eddytrains SaaS Full QA Checklist",
+      "description": "Comprehensive testing of all three user types",
+      "status": "in-progress",
+      "priority": "high",
+      "created": "2026-02-05",
+      "subtasks": [
+        { "title": "PLATFORM ADMIN - Login as cmpdcollective@gmail.com", "done": false },
+        { "title": "PLATFORM ADMIN - View trainers list (no super_admin shown)", "done": false },
+        { "title": "PLATFORM ADMIN - Add new trainer with custom price", "done": false },
+        { "title": "PLATFORM ADMIN - Edit trainer monthly price", "done": false },
+        { "title": "PLATFORM ADMIN - View as trainer (impersonate)", "done": false },
+        { "title": "PLATFORM ADMIN - Back to Platform button works", "done": false },
+        { "title": "PLATFORM ADMIN - Remove trainer (with confirmation)", "done": false },
+        { "title": "PLATFORM ADMIN - MRR calculates correctly", "done": false },
+        { "title": "TRAINER - Login as eddytrains@cmpdcollective.com", "done": false },
+        { "title": "TRAINER - Dashboard shows only their clients", "done": false },
+        { "title": "TRAINER - Programs page shows only their programs", "done": false },
+        { "title": "TRAINER - Create new program (has org_id)", "done": false },
+        { "title": "TRAINER - Nutrition plans show only their plans", "done": false },
+        { "title": "TRAINER - Create nutrition plan (has org_id)", "done": false },
+        { "title": "TRAINER - Add new client", "done": false },
+        { "title": "TRAINER - Assign program to client", "done": false },
+        { "title": "TRAINER - Assign nutrition plan to client", "done": false },
+        { "title": "TRAINER - View client details", "done": false },
+        { "title": "TRAINER - Organization page shows correct org", "done": false },
+        { "title": "TRAINER - Billing page accessible", "done": false },
+        { "title": "CLIENT APP - Login as test client", "done": false },
+        { "title": "CLIENT APP - See only assigned programs", "done": false },
+        { "title": "CLIENT APP - View workout details", "done": false },
+        { "title": "CLIENT APP - Log workout completion", "done": false },
+        { "title": "CLIENT APP - View nutrition plan", "done": false },
+        { "title": "CLIENT APP - View progress/stats", "done": false },
+        { "title": "SECURITY - Anon key can't see profiles (RLS)", "done": true },
+        { "title": "SECURITY - Trainers can't see other trainer data", "done": false },
+        { "title": "SECURITY - Clients can't see other client data", "done": false }
+      ]
+    },
     {
       "id": "task-email-system",
       "title": "Complete Email System Setup",
@@ -32,7 +70,10 @@
     }
   ],
   "completedToday": [
-    { "title": "6pm IG Follow Session", "time": "6:00 PM", "details": "Followed 3 accounts from will_tennyson suggestions with full engagement (2 likes each): lphealthperformancephysio (physio/exercise scientist), mariemyalik (fitness coach Bali), elevar.fitness (fitness app)" }
+    { "title": "Security audit & RLS policies", "time": "7:05 PM", "details": "Added RLS to profiles table, created helper functions, organization_id on creates" },
+    { "title": "Trainer removal feature", "time": "7:00 PM", "details": "Platform admin can now remove trainers with full data cascade" },
+    { "title": "Custom pricing for trainers", "time": "7:02 PM", "details": "Add/edit custom monthly price, updates MRR calculation" },
+    { "title": "Back to Platform button", "time": "7:15 PM", "details": "Shows when viewing as trainer, returns to platform page" }
   ],
   "stats": {
     "following": 347,
@@ -41,6 +82,6 @@
     "pendingUnfollows": 0,
     "trackedFollows": 21
   },
-  "weeklyCompleted": 8,
-  "lastUpdated": "2026-02-05T18:15:00+10:30"
+  "weeklyCompleted": 12,
+  "lastUpdated": "2026-02-05T19:15:00+10:30"
 }
