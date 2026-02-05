@@ -8,6 +8,15 @@
   },
   "tasks": [
     {
+      "id": "task-email-system",
+      "title": "Complete Email System Setup",
+      "description": "Set up full email system for eddytrains client onboarding and communications",
+      "status": "planned",
+      "priority": "medium",
+      "created": "2026-02-05",
+      "subtasks": []
+    },
+    {
       "id": "task-ig-tracking",
       "title": "IG Growth Tracking System",
       "description": "Track follows with timestamps, unfollow after 3+ days if no follow-back",
