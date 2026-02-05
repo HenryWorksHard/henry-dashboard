@@ -46,6 +46,15 @@
       ]
     },
     {
+      "id": "task-loading-dynamic",
+      "title": "Change Loading Dynamic",
+      "description": "Update loading behavior/dynamic imports in the app",
+      "status": "planned",
+      "priority": "medium",
+      "created": "2026-02-05",
+      "subtasks": []
+    },
+    {
       "id": "task-email-system",
       "title": "Complete Email System Setup",
       "description": "Set up full email system for eddytrains client onboarding and communications",
