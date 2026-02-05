@@ -1,0 +1,26 @@
+{
+  "instagram": {
+    "account": "eddytrains",
+    "followers": 192,
+    "following": 347,
+    "ratio": 1.81,
+    "pendingFollowBacks": 21,
+    "lastUpdated": "2026-02-06T08:00:00+10:30"
+  },
+  "fitness_app": {
+    "totalTrainers": 1,
+    "totalClients": 0,
+    "mrr": 0,
+    "qaProgress": {
+      "completed": 9,
+      "total": 149,
+      "currentPhase": "A",
+      "currentStep": 9
+    }
+  },
+  "tasks": {
+    "completedThisWeek": 14,
+    "pendingTasks": 2
+  },
+  "lastUpdated": "2026-02-06T08:00:00+10:30"
+}

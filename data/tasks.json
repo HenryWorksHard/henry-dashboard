@@ -1,88 +1,54 @@
 {
   "inProgress": {
-    "title": "Eddytrains SaaS Full QA Checklist",
-    "description": "Verify all features work for Platform Admin, Trainer, and Client accounts",
+    "title": "Eddytrains SaaS Full QA Testing",
+    "description": "Phase A Step 9 - Recent Activity Feed verification",
+    "progress": "Phase A: 8/12 complete, checking step 9",
     "type": "testing"
   },
-  "nextTask": null,
+  "nextTask": {
+    "title": "Phase A Steps 10-12",
+    "scheduledTime": "After step 9",
+    "type": "testing"
+  },
   "tasks": [
     {
       "id": "task-saas-qa",
       "title": "Eddytrains SaaS Full QA Checklist",
       "description": "Comprehensive testing of all three user types",
-      "status": "in-progress",
+      "status": "in_progress",
       "priority": "high",
       "created": "2026-02-05",
       "subtasks": [
-        { "title": "PLATFORM ADMIN - Login as cmpdcollective@gmail.com", "done": false },
-        { "title": "PLATFORM ADMIN - View trainers list (no super_admin shown)", "done": false },
-        { "title": "PLATFORM ADMIN - Add new trainer with custom price", "done": false },
-        { "title": "PLATFORM ADMIN - Edit trainer monthly price", "done": false },
-        { "title": "PLATFORM ADMIN - View as trainer (impersonate)", "done": false },
-        { "title": "PLATFORM ADMIN - Back to Platform button works", "done": false },
-        { "title": "PLATFORM ADMIN - Remove trainer (with confirmation)", "done": false },
-        { "title": "PLATFORM ADMIN - MRR calculates correctly", "done": false },
-        { "title": "TRAINER - Login as eddytrains@cmpdcollective.com", "done": false },
-        { "title": "TRAINER - Dashboard shows only their clients", "done": false },
-        { "title": "TRAINER - Programs page shows only their programs", "done": false },
-        { "title": "TRAINER - Create new program (has org_id)", "done": false },
-        { "title": "TRAINER - Nutrition plans show only their plans", "done": false },
-        { "title": "TRAINER - Create nutrition plan (has org_id)", "done": false },
-        { "title": "TRAINER - Add new client", "done": false },
-        { "title": "TRAINER - Assign program to client", "done": false },
-        { "title": "TRAINER - Assign nutrition plan to client", "done": false },
-        { "title": "TRAINER - View client details", "done": false },
-        { "title": "TRAINER - Organization page shows correct org", "done": false },
-        { "title": "TRAINER - Billing page accessible", "done": false },
-        { "title": "CLIENT APP - Login as test client", "done": false },
-        { "title": "CLIENT APP - See only assigned programs", "done": false },
-        { "title": "CLIENT APP - View workout details", "done": false },
-        { "title": "CLIENT APP - Log workout completion", "done": false },
-        { "title": "CLIENT APP - View nutrition plan", "done": false },
-        { "title": "CLIENT APP - View progress/stats", "done": false },
-        { "title": "SECURITY - Anon key can't see profiles (RLS)", "done": true },
-        { "title": "SECURITY - Trainers can't see other trainer data", "done": false },
-        { "title": "SECURITY - Clients can't see other client data", "done": false }
+        { "title": "A1-8: Super Admin basics (login, session, stats)", "done": true },
+        { "title": "A9: Recent activity feed shows events", "done": false },
+        { "title": "A10-12: Trainer management (list, search, view)", "done": false },
+        { "title": "Phase B: Trainer Signup & Onboarding (15 tests)", "done": false },
+        { "title": "Phase C: Billing & Subscriptions (14 tests)", "done": false },
+        { "title": "Phase D-M: Remaining phases", "done": false }
       ]
     },
     {
-      "id": "task-loading-dynamic",
-      "title": "Change Loading Dynamic",
-      "description": "Update loading behavior/dynamic imports in the app",
-      "status": "planned",
-      "priority": "medium",
-      "created": "2026-02-05",
-      "subtasks": []
-    },
-    {
-      "id": "task-email-system",
-      "title": "Complete Email System Setup",
-      "description": "Set up full email system for eddytrains client onboarding and communications",
-      "status": "planned",
-      "priority": "medium",
-      "created": "2026-02-05",
-      "subtasks": []
-    },
-    {
-      "id": "task-ig-tracking",
-      "title": "IG Growth Tracking System",
-      "description": "Track follows with timestamps, unfollow after 3+ days if no follow-back",
+      "id": "task-strategy",
+      "title": "Competitor Research & Marketing Strategy",
+      "description": "Research competitors, create $0→$1M marketing roadmap",
       "status": "completed",
       "priority": "high",
-      "created": "2026-02-03",
+      "created": "2026-02-06",
       "subtasks": [
-        { "title": "Create instagram/ directory structure", "done": true },
-        { "title": "Set up follow-log.json", "done": true },
-        { "title": "Set up unfollow-queue.json", "done": true },
-        { "title": "Document system in README.md", "done": true }
+        { "title": "Research Trainerize, TrueCoach, PT Distinction, Everfit", "done": true },
+        { "title": "Create feature comparison table", "done": true },
+        { "title": "Document competitor marketing strategies", "done": true },
+        { "title": "Create $0→$1M marketing roadmap", "done": true },
+        { "title": "Add to CMPD SaaS Dashboard", "done": true },
+        { "title": "Note: Trainer payments feature", "done": true }
       ]
     }
   ],
   "completedToday": [
-    { "title": "Security audit & RLS policies", "time": "7:05 PM", "details": "Added RLS to profiles table, created helper functions, organization_id on creates" },
-    { "title": "Trainer removal feature", "time": "7:00 PM", "details": "Platform admin can now remove trainers with full data cascade" },
-    { "title": "Custom pricing for trainers", "time": "7:02 PM", "details": "Add/edit custom monthly price, updates MRR calculation" },
-    { "title": "Back to Platform button", "time": "7:15 PM", "details": "Shows when viewing as trainer, returns to platform page" }
+    { "title": "Strategy tab added to SaaS Dashboard", "time": "10:15 AM" },
+    { "title": "Competitor analysis complete", "time": "1:00 AM" },
+    { "title": "Marketing roadmap created", "time": "1:00 AM" },
+    { "title": "Morning report sent", "time": "8:01 AM" }
   ],
   "stats": {
     "following": 347,
@@ -91,6 +57,6 @@
     "pendingUnfollows": 0,
     "trackedFollows": 21
   },
-  "weeklyCompleted": 12,
-  "lastUpdated": "2026-02-05T19:15:00+10:30"
+  "weeklyCompleted": 16,
+  "lastUpdated": "2026-02-06T10:15:00+10:30"
 }
