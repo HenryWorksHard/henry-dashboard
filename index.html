@@ -1177,6 +1177,292 @@
       color: #6e7681;
       white-space: nowrap;
     }
+
+    /* HubFit Competitive Analysis Styles */
+    .hubfit-card {
+      background: linear-gradient(135deg, #161b22 0%, #1a1f29 100%);
+      border: 1px solid #30363d;
+    }
+
+    .hubfit-badge {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      color: #fff;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .hubfit-overview {
+      background: rgba(88, 166, 255, 0.05);
+      border: 1px solid rgba(88, 166, 255, 0.2);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .competitor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .competitor-info h3 {
+      font-size: 1.25rem;
+      color: #f0f6fc;
+      margin-bottom: 0.25rem;
+    }
+
+    .competitor-tagline {
+      font-size: 0.8rem;
+      color: #8b949e;
+    }
+
+    .competitor-stats {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .stat-pill {
+      background: #21262d;
+      border: 1px solid #30363d;
+      padding: 0.375rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: #8b949e;
+    }
+
+    .stat-pill span {
+      color: #58a6ff;
+      font-weight: 600;
+    }
+
+    .hubfit-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #f0f6fc;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Pricing Grid */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+
+    .pricing-column {
+      background: #21262d;
+      border-radius: 8px;
+      padding: 0.75rem;
+      border: 1px solid #30363d;
+    }
+
+    .pricing-column.eddytrains { border-color: #3fb950; }
+    .pricing-column.hubfit { border-color: #f97316; }
+
+    .pricing-header {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .pricing-column.eddytrains .pricing-header { color: #3fb950; }
+    .pricing-column.hubfit .pricing-header { color: #f97316; }
+
+    .pricing-tier {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.375rem 0;
+      font-size: 0.75rem;
+      border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+    }
+
+    .pricing-tier:last-child { border-bottom: none; }
+
+    .tier-name { color: #c9d1d9; font-weight: 500; }
+    .tier-price { color: #58a6ff; font-weight: 600; }
+    .tier-clients { color: #8b949e; font-size: 0.7rem; }
+
+    .pricing-note {
+      font-size: 0.75rem;
+      color: #d29922;
+      margin-top: 0.75rem;
+      padding: 0.5rem;
+      background: rgba(210, 153, 34, 0.1);
+      border-radius: 4px;
+    }
+
+    /* Feature Comparison */
+    .feature-comparison {
+      background: #21262d;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #30363d;
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.75rem;
+      border-bottom: 1px solid #30363d;
+      align-items: center;
+    }
+
+    .feature-row:last-child { border-bottom: none; }
+
+    .feature-row.header {
+      background: #161b22;
+      font-weight: 600;
+      color: #8b949e;
+      text-transform: uppercase;
+      font-size: 0.65rem;
+      letter-spacing: 0.5px;
+    }
+
+    .feature-row.done { background: rgba(63, 185, 80, 0.05); }
+    .feature-row.gap { background: rgba(248, 81, 73, 0.05); }
+
+    .feature-name { color: #c9d1d9; }
+    .feature-eddy, .feature-hub { text-align: center; }
+    .feature-priority { text-align: center; }
+
+    .feature-priority.done { color: #3fb950; }
+    .feature-priority.high { color: #f85149; font-weight: 600; }
+    .feature-priority.medium { color: #d29922; }
+    .feature-priority.low { color: #8b949e; }
+
+    /* Priority List */
+    .priority-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .priority-item {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      background: #21262d;
+      border-radius: 8px;
+      border-left: 3px solid #30363d;
+    }
+
+    .priority-item.high { border-left-color: #f85149; }
+    .priority-item.medium { border-left-color: #d29922; }
+
+    .priority-num {
+      width: 24px;
+      height: 24px;
+      background: #30363d;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #f0f6fc;
+      flex-shrink: 0;
+    }
+
+    .priority-item.high .priority-num { background: #f85149; }
+    .priority-item.medium .priority-num { background: #d29922; }
+
+    .priority-content { flex: 1; }
+
+    .priority-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #f0f6fc;
+      margin-bottom: 0.25rem;
+    }
+
+    .priority-desc {
+      font-size: 0.75rem;
+      color: #8b949e;
+      margin-bottom: 0.375rem;
+    }
+
+    .priority-meta {
+      font-size: 0.65rem;
+      color: #6e7681;
+    }
+
+    .priority-meta .effort { color: #58a6ff; }
+    .priority-meta .impact { color: #3fb950; }
+
+    /* Insights */
+    .insights-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .insight-item {
+      font-size: 0.8rem;
+      color: #c9d1d9;
+      padding: 0.5rem 0.75rem;
+      background: #21262d;
+      border-radius: 6px;
+    }
+
+    .insight-item strong { color: #f0f6fc; }
+
+    /* Advantages */
+    .advantages-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .advantage-item {
+      background: rgba(63, 185, 80, 0.1);
+      border: 1px solid rgba(63, 185, 80, 0.3);
+      padding: 0.5rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: #3fb950;
+    }
+
+    /* Footer */
+    .hubfit-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid #30363d;
+      margin-top: 0.5rem;
+    }
+
+    .analysis-date {
+      font-size: 0.7rem;
+      color: #6e7681;
+    }
+
+    .hubfit-link {
+      font-size: 0.75rem;
+      color: #58a6ff;
+      text-decoration: none;
+    }
+
+    .hubfit-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -1328,6 +1614,149 @@
         </div>
         <div class="activity-list" id="activityList">
           <p class="no-current-task" style="font-size: 0.8rem;">No recent activity</p>
+        </div>
+      </div>
+
+      <!-- HubFit Competitive Analysis -->
+      <div class="card hubfit-card" style="grid-column: 1 / -1;">
+        <div class="card-header">
+          <span class="card-title">🏋️ HubFit Competitive Analysis</span>
+          <span class="hubfit-badge">Competitor Intel</span>
+        </div>
+        
+        <!-- Competitor Overview -->
+        <div class="hubfit-overview">
+          <div class="competitor-header">
+            <div class="competitor-info">
+              <h3>HubFit</h3>
+              <span class="competitor-tagline">#1 Coaching Platform</span>
+            </div>
+            <div class="competitor-stats">
+              <div class="stat-pill"><span>50,000+</span> users</div>
+              <div class="stat-pill"><span>4.9</span> app rating</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing Comparison -->
+        <div class="hubfit-section">
+          <h4 class="section-label">💰 Pricing Comparison</h4>
+          <div class="pricing-grid">
+            <div class="pricing-column eddytrains">
+              <div class="pricing-header">eddytrains</div>
+              <div class="pricing-tier"><span class="tier-name">Starter</span> <span class="tier-price">$39</span> <span class="tier-clients">25 clients</span></div>
+              <div class="pricing-tier"><span class="tier-name">Pro</span> <span class="tier-price">$79</span> <span class="tier-clients">75 clients</span></div>
+              <div class="pricing-tier"><span class="tier-name">Studio</span> <span class="tier-price">$149</span> <span class="tier-clients">150 clients</span></div>
+              <div class="pricing-tier"><span class="tier-name">Gym</span> <span class="tier-price">$299</span> <span class="tier-clients">Unlimited</span></div>
+            </div>
+            <div class="pricing-column hubfit">
+              <div class="pricing-header">HubFit</div>
+              <div class="pricing-tier"><span class="tier-name">Standard</span> <span class="tier-price">$39</span> <span class="tier-clients">50 clients</span></div>
+              <div class="pricing-tier"><span class="tier-name">Premium</span> <span class="tier-price">$69</span> <span class="tier-clients">100 clients</span></div>
+              <div class="pricing-tier"><span class="tier-name">Ultimate</span> <span class="tier-price">$119</span> <span class="tier-clients">Unlimited</span></div>
+              <div class="pricing-tier"><span class="tier-name">Business</span> <span class="tier-price">$299</span> <span class="tier-clients">White-label</span></div>
+            </div>
+          </div>
+          <p class="pricing-note">⚠️ HubFit offers more clients per dollar at lower tiers (50 vs 25 at $39)</p>
+        </div>
+
+        <!-- Feature Comparison -->
+        <div class="hubfit-section">
+          <h4 class="section-label">📊 Feature Comparison</h4>
+          <div class="feature-comparison" id="featureComparison">
+            <div class="feature-row header">
+              <span class="feature-name">Feature</span>
+              <span class="feature-eddy">eddytrains</span>
+              <span class="feature-hub">HubFit</span>
+              <span class="feature-priority">Priority</span>
+            </div>
+            <div class="feature-row done"><span class="feature-name">Workout Builder</span><span class="feature-eddy">✅</span><span class="feature-hub">✅</span><span class="feature-priority done">Done</span></div>
+            <div class="feature-row done"><span class="feature-name">Exercise Library</span><span class="feature-eddy">102</span><span class="feature-hub">5000+</span><span class="feature-priority high">High</span></div>
+            <div class="feature-row gap"><span class="feature-name">Check-Ins System</span><span class="feature-eddy">❌</span><span class="feature-hub">✅</span><span class="feature-priority high">High</span></div>
+            <div class="feature-row gap"><span class="feature-name">In-App Messaging</span><span class="feature-eddy">❌</span><span class="feature-hub">✅</span><span class="feature-priority high">High</span></div>
+            <div class="feature-row gap"><span class="feature-name">Nutrition Planning</span><span class="feature-eddy">❌</span><span class="feature-hub">✅</span><span class="feature-priority high">High</span></div>
+            <div class="feature-row gap"><span class="feature-name">Progress Photos</span><span class="feature-eddy">❌</span><span class="feature-hub">✅</span><span class="feature-priority high">High</span></div>
+            <div class="feature-row gap"><span class="feature-name">Habit Tracking</span><span class="feature-eddy">❌</span><span class="feature-hub">✅</span><span class="feature-priority medium">Medium</span></div>
+            <div class="feature-row gap"><span class="feature-name">Wearable Integration</span><span class="feature-eddy">❌</span><span class="feature-hub">✅</span><span class="feature-priority medium">Medium</span></div>
+            <div class="feature-row gap"><span class="feature-name">AI Features</span><span class="feature-eddy">❌</span><span class="feature-hub">✅</span><span class="feature-priority medium">Medium</span></div>
+            <div class="feature-row gap"><span class="feature-name">Custom Branding</span><span class="feature-eddy">❌</span><span class="feature-hub">✅</span><span class="feature-priority medium">Medium</span></div>
+          </div>
+        </div>
+
+        <!-- Priority Improvements -->
+        <div class="hubfit-section">
+          <h4 class="section-label">🎯 Priority Improvements to Match/Exceed HubFit</h4>
+          <div class="priority-list">
+            <div class="priority-item high">
+              <span class="priority-num">1</span>
+              <div class="priority-content">
+                <div class="priority-title">Check-Ins System</div>
+                <div class="priority-desc">Daily/weekly check-ins with photo comparison. Critical for accountability.</div>
+                <div class="priority-meta"><span class="effort">Medium effort</span> • <span class="impact">High impact</span></div>
+              </div>
+            </div>
+            <div class="priority-item high">
+              <span class="priority-num">2</span>
+              <div class="priority-content">
+                <div class="priority-title">In-App Messaging</div>
+                <div class="priority-desc">Coach-client messaging with attachments. Eliminates WhatsApp dependency.</div>
+                <div class="priority-meta"><span class="effort">High effort</span> • <span class="impact">High impact</span></div>
+              </div>
+            </div>
+            <div class="priority-item high">
+              <span class="priority-num">3</span>
+              <div class="priority-content">
+                <div class="priority-title">Expanded Exercise Library</div>
+                <div class="priority-desc">Scale from 102 to 500+ exercises with video content.</div>
+                <div class="priority-meta"><span class="effort">Medium effort</span> • <span class="impact">High impact</span></div>
+              </div>
+            </div>
+            <div class="priority-item high">
+              <span class="priority-num">4</span>
+              <div class="priority-content">
+                <div class="priority-title">Nutrition/Meal Planning</div>
+                <div class="priority-desc">Basic meal plan builder with macro targets for nutrition coaches.</div>
+                <div class="priority-meta"><span class="effort">High effort</span> • <span class="impact">High impact</span></div>
+              </div>
+            </div>
+            <div class="priority-item medium">
+              <span class="priority-num">5</span>
+              <div class="priority-content">
+                <div class="priority-title">Habit Tracking</div>
+                <div class="priority-desc">Daily habit checklist (water, sleep, steps). Simple but high engagement.</div>
+                <div class="priority-meta"><span class="effort">Low effort</span> • <span class="impact">Medium impact</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Insights -->
+        <div class="hubfit-section">
+          <h4 class="section-label">💡 Key Strategic Insights</h4>
+          <div class="insights-list">
+            <div class="insight-item">🎯 <strong>Niche Focus:</strong> Don't compete feature-for-feature. Double down on Hyrox/inline fitness specialization.</div>
+            <div class="insight-item">⚡ <strong>Table Stakes:</strong> Check-ins and in-app messaging are non-negotiable features we need ASAP.</div>
+            <div class="insight-item">📚 <strong>Content Gap:</strong> Exercise library (102 vs 5000+) is significant but can be addressed incrementally.</div>
+            <div class="insight-item">🤖 <strong>AI Differentiator:</strong> Consider AI features as a differentiator, not a catch-up item.</div>
+            <div class="insight-item">💵 <strong>Value Proposition:</strong> Adjust client limits or add more value at each tier to compete on pricing.</div>
+          </div>
+        </div>
+
+        <!-- Our Advantages -->
+        <div class="hubfit-section">
+          <h4 class="section-label">💪 Our Competitive Advantages</h4>
+          <div class="advantages-grid">
+            <div class="advantage-item">🏃 Hyrox-specific training focus</div>
+            <div class="advantage-item">🎿 Inline fitness specialization</div>
+            <div class="advantage-item">👤 Personal brand (Eddy)</div>
+            <div class="advantage-item">🇦🇺 Australian market focus</div>
+            <div class="advantage-item">✨ Simpler, less overwhelming UX</div>
+          </div>
+        </div>
+
+        <div class="hubfit-footer">
+          <span class="analysis-date">Analysis: Feb 7, 2026</span>
+          <a href="https://hubfit.com" target="_blank" class="hubfit-link">Visit HubFit →</a>
         </div>
       </div>
 
