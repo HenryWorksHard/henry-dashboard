@@ -45,6 +45,7 @@
     }
   ],
   "completedToday": [
+    { "title": "IG Follow Session - 12 accounts from zacperna followers", "time": "3:07 PM" },
     { "title": "IG Engagement - 4 comments on big influencers", "time": "2:15 PM" },
     { "title": "Strategy tab added to SaaS Dashboard", "time": "10:15 AM" },
     { "title": "Competitor analysis complete", "time": "1:00 AM" },
@@ -52,12 +53,12 @@
     { "title": "Morning report sent", "time": "8:01 AM" }
   ],
   "stats": {
-    "following": 347,
+    "following": 359,
     "followers": 192,
-    "ratio": "1.81",
-    "pendingUnfollows": 0,
-    "trackedFollows": 21
+    "ratio": "1.87",
+    "pendingUnfollows": 12,
+    "trackedFollows": 33
   },
-  "weeklyCompleted": 17,
-  "lastUpdated": "2026-02-06T14:15:00+10:30"
+  "weeklyCompleted": 18,
+  "lastUpdated": "2026-02-06T15:07:00+10:30"
 }
