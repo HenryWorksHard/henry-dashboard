@@ -41,6 +41,7 @@
     }
   ],
   "completedToday": [
+    { "title": "IG Follow Session (10am) - 8 follows from stevecook", "time": "10:30 AM" },
     { "title": "User Feedback: Monday-first calendars (Eddy)", "time": "10:21 PM" },
     { "title": "Exercise migration to Supabase (102 exercises)", "time": "10:10 PM" },
     { "title": "Superset bug fix (type=button)", "time": "9:50 PM" },
@@ -50,12 +51,12 @@
     { "title": "Morning report sent", "time": "8:01 AM" }
   ],
   "stats": {
-    "following": 375,
+    "following": 383,
     "followers": 192,
-    "ratio": "1.95",
+    "ratio": "1.99",
     "pendingUnfollows": 20,
-    "trackedFollows": 49
+    "trackedFollows": 45
   },
-  "weeklyCompleted": 23,
-  "lastUpdated": "2026-02-06T22:21:00+10:30"
+  "weeklyCompleted": 24,
+  "lastUpdated": "2026-02-07T10:30:00+10:30"
 }
