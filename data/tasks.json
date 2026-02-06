@@ -1,13 +1,13 @@
 {
   "inProgress": {
-    "title": "Eddytrains SaaS Full QA Testing",
-    "description": "Phase A Step 9 - Recent Activity Feed verification",
-    "progress": "Phase A: 8/12 complete, checking step 9",
-    "type": "testing"
+    "title": "Monitoring CMPD User Testing Server",
+    "description": "Watching for user feedback on eddytrains app",
+    "progress": "Active monitoring",
+    "type": "support"
   },
   "nextTask": {
-    "title": "Phase A Steps 10-12",
-    "scheduledTime": "After step 9",
+    "title": "Eddytrains SaaS QA - Continue Phase A",
+    "scheduledTime": "Next session",
     "type": "testing"
   },
   "tasks": [
@@ -26,33 +26,27 @@
         { "title": "Phase C: Billing & Subscriptions (14 tests)", "done": false },
         { "title": "Phase D-M: Remaining phases", "done": false }
       ]
-    },
+    }
+  ],
+  "userFeedback": [
     {
-      "id": "task-strategy",
-      "title": "Competitor Research & Marketing Strategy",
-      "description": "Research competitors, create $0→$1M marketing roadmap",
+      "id": "fb-001",
+      "user": "Eddy (duard1.)",
+      "source": "Discord - CMPD User Testing",
+      "feedback": "Change program settings so Monday is first day of week, not Sunday",
       "status": "completed",
-      "priority": "high",
-      "created": "2026-02-06",
-      "subtasks": [
-        { "title": "Research Trainerize, TrueCoach, PT Distinction, Everfit", "done": true },
-        { "title": "Create feature comparison table", "done": true },
-        { "title": "Document competitor marketing strategies", "done": true },
-        { "title": "Create $0→$1M marketing roadmap", "done": true },
-        { "title": "Add to CMPD SaaS Dashboard", "done": true },
-        { "title": "Note: Trainer payments feature", "done": true }
-      ]
+      "dateReceived": "2026-02-06",
+      "dateResolved": "2026-02-06",
+      "resolution": "Updated all calendars in admin & client apps to Monday-first"
     }
   ],
   "completedToday": [
-    { "title": "IG Engagement Session (9pm) - 0 likes (most target accounts private)", "time": "9:30 PM" },
-    { "title": "IG Follow Session (6pm) - 8 accounts from will_tennyson suggestions", "time": "6:15 PM" },
-    { "title": "IG Follow Session (6pm) - 8 accounts from zacperna followers", "time": "6:00 PM" },
-    { "title": "IG Follow Session (12pm) - 12 accounts from zacperna followers", "time": "3:07 PM" },
-    { "title": "IG Engagement - 4 comments on big influencers", "time": "2:15 PM" },
-    { "title": "Strategy tab added to SaaS Dashboard", "time": "10:15 AM" },
-    { "title": "Competitor analysis complete", "time": "1:00 AM" },
-    { "title": "Marketing roadmap created", "time": "1:00 AM" },
+    { "title": "User Feedback: Monday-first calendars (Eddy)", "time": "10:21 PM" },
+    { "title": "Exercise migration to Supabase (102 exercises)", "time": "10:10 PM" },
+    { "title": "Superset bug fix (type=button)", "time": "9:50 PM" },
+    { "title": "Barbell Forearm Curls added", "time": "9:45 PM" },
+    { "title": "IG Engagement Session (9pm)", "time": "9:30 PM" },
+    { "title": "IG Follow Session (6pm)", "time": "6:15 PM" },
     { "title": "Morning report sent", "time": "8:01 AM" }
   ],
   "stats": {
@@ -62,6 +56,6 @@
     "pendingUnfollows": 20,
     "trackedFollows": 49
   },
-  "weeklyCompleted": 20,
-  "lastUpdated": "2026-02-06T21:30:00+10:30"
+  "weeklyCompleted": 23,
+  "lastUpdated": "2026-02-06T22:21:00+10:30"
 }
