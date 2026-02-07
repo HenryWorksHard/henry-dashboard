@@ -41,6 +41,7 @@
     }
   ],
   "completedToday": [
+    { "title": "IG Follow Session (10am) - 2 follows from zacperna (limited by private accounts)", "time": "10:00 AM" },
     { "title": "IG Follow Session (10am) - 8 follows from stevecook", "time": "10:30 AM" },
     { "title": "User Feedback: Monday-first calendars (Eddy)", "time": "10:21 PM" },
     { "title": "Exercise migration to Supabase (102 exercises)", "time": "10:10 PM" },
@@ -51,12 +52,12 @@
     { "title": "Morning report sent", "time": "8:01 AM" }
   ],
   "stats": {
-    "following": 383,
+    "following": 385,
     "followers": 192,
-    "ratio": "1.99",
+    "ratio": "2.01",
     "pendingUnfollows": 20,
-    "trackedFollows": 45
+    "trackedFollows": 48
   },
-  "weeklyCompleted": 24,
-  "lastUpdated": "2026-02-07T10:30:00+10:30"
+  "weeklyCompleted": 25,
+  "lastUpdated": "2026-02-08T10:00:00+10:30"
 }
