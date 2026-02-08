@@ -41,6 +41,7 @@
     }
   ],
   "completedToday": [
+    { "title": "IG Engagement Session (9pm) - 2 accounts, 5 posts liked", "time": "9:00 PM" },
     { "title": "IG Follow Session (6pm) - 12 accounts (6 followed, 6 requested)", "time": "6:00 PM" },
     { "title": "IG Unfollow Session (6pm) - 1 account unfollowed", "time": "6:15 PM" },
     { "title": "IG Follow Session (10am) - 2 follows from zacperna (limited by private accounts)", "time": "10:00 AM" },
@@ -49,7 +50,6 @@
     { "title": "Exercise migration to Supabase (102 exercises)", "time": "10:10 PM" },
     { "title": "Superset bug fix (type=button)", "time": "9:50 PM" },
     { "title": "Barbell Forearm Curls added", "time": "9:45 PM" },
-    { "title": "IG Engagement Session (9pm)", "time": "9:30 PM" },
     { "title": "IG Follow Session (6pm)", "time": "6:15 PM" },
     { "title": "Morning report sent", "time": "8:01 AM" }
   ],
@@ -60,6 +60,15 @@
     "pendingUnfollows": 0,
     "trackedFollows": 12
   },
-  "weeklyCompleted": 27,
-  "lastUpdated": "2026-02-08T18:00:00+10:30"
+  "engagement": {
+    "lastSession": "2026-02-08 21:00",
+    "accountsEngaged": 2,
+    "postsLiked": 5,
+    "targets": [
+      "@haydenwbailey (Deniliquin NSW) - 3 likes",
+      "@konnahmorgan (Newcastle) - 2 likes"
+    ]
+  },
+  "weeklyCompleted": 28,
+  "lastUpdated": "2026-02-08T21:30:00+10:30"
 }
