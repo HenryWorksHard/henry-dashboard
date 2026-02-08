@@ -41,6 +41,7 @@
     }
   ],
   "completedToday": [
+    { "title": "IG Follow Session (6pm) - 12 accounts (6 followed, 6 requested)", "time": "6:00 PM" },
     { "title": "IG Unfollow Session (6pm) - 1 account unfollowed", "time": "6:15 PM" },
     { "title": "IG Follow Session (10am) - 2 follows from zacperna (limited by private accounts)", "time": "10:00 AM" },
     { "title": "IG Follow Session (10am) - 8 follows from stevecook", "time": "10:30 AM" },
@@ -53,12 +54,12 @@
     { "title": "Morning report sent", "time": "8:01 AM" }
   ],
   "stats": {
-    "following": 283,
+    "following": 295,
     "followers": 221,
-    "ratio": "1.28",
+    "ratio": "1.33",
     "pendingUnfollows": 0,
-    "trackedFollows": 0
+    "trackedFollows": 12
   },
-  "weeklyCompleted": 26,
-  "lastUpdated": "2026-02-08T18:15:00+10:30"
+  "weeklyCompleted": 27,
+  "lastUpdated": "2026-02-08T18:00:00+10:30"
 }
