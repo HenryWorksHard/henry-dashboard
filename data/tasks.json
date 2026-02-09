@@ -41,6 +41,7 @@
     }
   ],
   "completedToday": [
+    { "title": "IG Follow Session (noon) - 12 accounts from zacperna followers", "time": "12:00 PM" },
     { "title": "IG Unfollow Session (noon) - Queue empty, no unfollows needed", "time": "12:15 PM" },
     { "title": "IG Engagement Session (9pm) - 2 accounts, 5 posts liked", "time": "9:00 PM" },
     { "title": "IG Follow Session (6pm) - 12 accounts (6 followed, 6 requested)", "time": "6:00 PM" },
@@ -55,11 +56,11 @@
     { "title": "Morning report sent", "time": "8:01 AM" }
   ],
   "stats": {
-    "following": 295,
+    "following": 307,
     "followers": 221,
-    "ratio": "1.33",
-    "pendingUnfollows": 0,
-    "trackedFollows": 12
+    "ratio": "1.39",
+    "pendingUnfollows": 12,
+    "trackedFollows": 24
   },
   "engagement": {
     "lastSession": "2026-02-08 21:00",
@@ -70,6 +71,6 @@
       "@konnahmorgan (Newcastle) - 2 likes"
     ]
   },
-  "weeklyCompleted": 28,
-  "lastUpdated": "2026-02-09T12:15:00+10:30"
+  "weeklyCompleted": 29,
+  "lastUpdated": "2026-02-09T12:30:00+10:30"
 }
