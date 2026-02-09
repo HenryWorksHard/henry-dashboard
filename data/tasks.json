@@ -41,36 +41,23 @@
     }
   ],
   "completedToday": [
-    { "title": "IG Follow Session (noon) - 12 accounts from zacperna followers", "time": "12:00 PM" },
-    { "title": "IG Unfollow Session (noon) - Queue empty, no unfollows needed", "time": "12:15 PM" },
-    { "title": "IG Engagement Session (9pm) - 2 accounts, 5 posts liked", "time": "9:00 PM" },
-    { "title": "IG Follow Session (6pm) - 12 accounts (6 followed, 6 requested)", "time": "6:00 PM" },
-    { "title": "IG Unfollow Session (6pm) - 1 account unfollowed", "time": "6:15 PM" },
-    { "title": "IG Follow Session (10am) - 2 follows from zacperna (limited by private accounts)", "time": "10:00 AM" },
-    { "title": "IG Follow Session (10am) - 8 follows from stevecook", "time": "10:30 AM" },
-    { "title": "User Feedback: Monday-first calendars (Eddy)", "time": "10:21 PM" },
-    { "title": "Exercise migration to Supabase (102 exercises)", "time": "10:10 PM" },
-    { "title": "Superset bug fix (type=button)", "time": "9:50 PM" },
-    { "title": "Barbell Forearm Curls added", "time": "9:45 PM" },
-    { "title": "IG Follow Session (6pm)", "time": "6:15 PM" },
-    { "title": "Morning report sent", "time": "8:01 AM" }
+    { "title": "IG Follow Session (6pm) - 1 quality follow with engagement (davidvrdz.fitness)", "time": "6:00 PM", "note": "Most jeffnippard followers are private or have 0 posts" }
   ],
   "stats": {
-    "following": 307,
+    "following": 308,
     "followers": 221,
     "ratio": "1.39",
     "pendingUnfollows": 12,
-    "trackedFollows": 24
+    "trackedFollows": 57
   },
   "engagement": {
-    "lastSession": "2026-02-08 21:00",
-    "accountsEngaged": 2,
-    "postsLiked": 5,
+    "lastSession": "2026-02-09 18:00",
+    "accountsEngaged": 1,
+    "postsLiked": 2,
     "targets": [
-      "@haydenwbailey (Deniliquin NSW) - 3 likes",
-      "@konnahmorgan (Newcastle) - 2 likes"
+      "@davidvrdz.fitness (OCR & Strength Training) - 2 likes + follow"
     ]
   },
-  "weeklyCompleted": 29,
-  "lastUpdated": "2026-02-09T12:30:00+10:30"
+  "weeklyCompleted": 30,
+  "lastUpdated": "2026-02-09T18:15:00+10:30"
 }
