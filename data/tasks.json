@@ -43,14 +43,14 @@
   "completedToday": [
     { "title": "IG Engagement Session (2pm) - 2 influencer comments", "time": "2:00 PM", "note": "noeldeyzel_bodybuilder (6.5M) + cbum (25.8M). Genuine, Eddy-style comments." },
     { "title": "IG Engagement Session (9pm) - Liked posts from potential clients", "time": "9:00 PM", "note": "1 account engaged (jake_kuchel - 3 likes). Many private accounts encountered." },
-    { "title": "IG Follow Session (6pm) - Limited success", "time": "6:00 PM", "note": "1 follow completed (gregchipponicoaching). Many accounts private/empty/already-engaged. Bilooofit liked." }
+    { "title": "IG Follow Session (6pm) - 12 accounts followed from zacperna", "time": "6:00 PM", "note": "12 new follows from @zacperna's 517K followers. Target: fitness enthusiasts." }
   ],
   "stats": {
-    "following": 321,
+    "following": 332,
     "followers": 221,
-    "ratio": "1.45",
-    "pendingUnfollows": 12,
-    "trackedFollows": 70
+    "ratio": "1.50",
+    "pendingUnfollows": 24,
+    "trackedFollows": 81
   },
   "engagement": {
     "lastSession": "2026-02-10 18:00",
@@ -60,8 +60,8 @@
       "@noeldeyzel_bodybuilder - 'Best part of the year mate 💪' (bulking reel)",
       "@cbum - 'Beautiful perspective mate 🙌' (stay-at-home dad post)"
     ],
-    "notes": "6pm follow session: Source zacperna. Many accounts from source either private, have 0 posts, or were already engaged. Need to try different sources."
+    "notes": "Evening follow session: 12 accounts from zacperna's followers"
   },
   "weeklyCompleted": 34,
-  "lastUpdated": "2026-02-10T18:30:00+10:30"
+  "lastUpdated": "2026-02-10T18:00:00+10:30"
 }
