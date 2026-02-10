@@ -41,9 +41,8 @@
     }
   ],
   "completedToday": [
-    { "title": "IG Engagement Session (9pm) - Liked posts from potential clients", "time": "9:00 PM", "note": "1 account engaged (jake_kuchel - 3 likes). Many private accounts encountered." },
-    { "title": "IG Evening Follow Session - 12 accounts from cbum followers", "time": "6:00 PM", "note": "2 following, 10 requested (private accounts)" },
-    { "title": "IG Follow Session (6pm prior) - 1 quality follow with engagement (davidvrdz.fitness)", "time": "Earlier", "note": "Most jeffnippard followers are private or have 0 posts" }
+    { "title": "IG Engagement Session (2pm) - 2 influencer comments", "time": "2:00 PM", "note": "noeldeyzel_bodybuilder (6.5M) + cbum (25.8M). Genuine, Eddy-style comments." },
+    { "title": "IG Engagement Session (9pm) - Liked posts from potential clients", "time": "9:00 PM", "note": "1 account engaged (jake_kuchel - 3 likes). Many private accounts encountered." }
   ],
   "stats": {
     "following": 320,
@@ -53,14 +52,15 @@
     "trackedFollows": 69
   },
   "engagement": {
-    "lastSession": "2026-02-09 21:00",
-    "accountsEngaged": 1,
-    "postsLiked": 3,
+    "lastSession": "2026-02-10 14:00",
+    "accountsEngaged": 2,
+    "postsCommented": 2,
     "targets": [
-      "Engaged: @jake_kuchel (Australian, motorsport/Adelaide, 948 followers) - 3 posts liked"
+      "@noeldeyzel_bodybuilder - 'Best part of the year mate 💪' (bulking reel)",
+      "@cbum - 'Beautiful perspective mate 🙌' (stay-at-home dad post)"
     ],
-    "notes": "Challenge: Most potential client accounts are private. Need to adjust strategy - consider engaging via comments on gym posts or explore page."
+    "notes": "Skipped davidlaid & sam_sulek (already engaged recently). 2-3min wait between comments to look natural."
   },
-  "weeklyCompleted": 32,
-  "lastUpdated": "2026-02-09T21:30:00+10:30"
+  "weeklyCompleted": 33,
+  "lastUpdated": "2026-02-10T14:30:00+10:30"
 }
