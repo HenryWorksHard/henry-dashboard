@@ -1,13 +1,13 @@
 {
   "inProgress": {
-    "title": "IG Follow Session (12pm) - Completed",
-    "description": "Followed 12 accounts from zacperna followers",
-    "progress": "12 new follows/requests",
+    "title": "IG Follow Session (6pm) - Completed",
+    "description": "Followed 8 accounts from cbum followers",
+    "progress": "8 new follows/requests",
     "type": "ig-growth"
   },
   "nextTask": {
     "title": "IG Unfollow Session",
-    "scheduledTime": "12:15pm",
+    "scheduledTime": "6:15pm",
     "type": "ig-growth"
   },
   "tasks": [
@@ -41,36 +41,33 @@
     }
   ],
   "completedToday": [
+    { "title": "IG Follow Session (6pm) - 8 accounts from cbum followers", "time": "6:20 PM", "note": "jacoboscars, carinazzl, __steph__cr, jcarrillo.23, calvinnthegreat, cecace12 (public), harsshmotiyani, arshitverma_" },
     { "title": "IG Follow Session (12pm) - 12 accounts from zacperna followers", "time": "1:00 PM", "note": "gage_collazo2, jacksonryan03, jamie.rigden, mikekarstendiek, broden.vk, masesmith20, nickst_fit, joshrallakis, ethan_.cassar, toryn.huntley, vladigalagan, danella.sweeney" },
     { "title": "IG Follow Session (10am) - 6 accounts from will_tennyson", "time": "10:00 AM", "note": "elljrose, skye_hopkins, rhysrebuilds, jordyjfay, rosullivan__, builtbyquaddy" }
   ],
   "stats": {
-    "following": 350,
+    "following": 358,
     "followers": 221,
-    "ratio": "1.58",
+    "ratio": "1.62",
     "pendingUnfollows": 24,
-    "trackedFollows": 82
+    "trackedFollows": 90
   },
   "engagement": {
-    "lastSession": "2026-02-11 13:00",
-    "accountsEngaged": 12,
+    "lastSession": "2026-02-11 18:20",
+    "accountsEngaged": 8,
     "postsLiked": 0,
     "targets": [
-      "@gage_collazo2 - Gage (requested)",
-      "@jacksonryan03 - Jackson Ryan (requested)",
-      "@jamie.rigden - Jamie Rigden (requested)",
-      "@mikekarstendiek - Mike Karstendiek (requested)",
-      "@broden.vk - Broden Vossekuil (requested)",
-      "@masesmith20 - Mase Smith (requested)",
-      "@nickst_fit - Nick Staffa (requested)",
-      "@joshrallakis - Josh Rallakis (requested)",
-      "@ethan_.cassar - Ethan Cassar (requested)",
-      "@toryn.huntley - Toryn Huntley (requested)",
-      "@vladigalagan - Vladislava Galagan (followed - verified)",
-      "@danella.sweeney - Danella (fitness/motherhood)"
+      "@jacoboscars - Jacob Oscarsson (requested)",
+      "@carinazzl - Carina (requested)",
+      "@__steph__cr - Steph Richards (requested)",
+      "@jcarrillo.23 - Jesse Carrillo (requested)",
+      "@calvinnthegreat - cal (requested)",
+      "@cecace12 - cesar (followed - public)",
+      "@harsshmotiyani - Harssh Motiyani (requested)",
+      "@arshitverma_ - Arshit Verma (requested)"
     ],
-    "notes": "Source: zacperna followers (517K). Mixed private/public accounts. 11 requested, 1 instant follow."
+    "notes": "Source: cbum followers (25.8M). Most accounts private - skipped engagement step. 7 requested, 1 instant follow."
   },
-  "weeklyCompleted": 36,
-  "lastUpdated": "2026-02-11T13:00:00+10:30"
+  "weeklyCompleted": 44,
+  "lastUpdated": "2026-02-11T18:20:00+10:30"
 }
