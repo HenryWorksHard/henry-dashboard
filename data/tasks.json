@@ -1,8 +1,8 @@
 {
   "inProgress": {
-    "title": "IG Follow Session (10am) - Completed",
-    "description": "Followed 6 accounts from will_tennyson suggested",
-    "progress": "8/8 daily follows reached",
+    "title": "IG Follow Session (12pm) - Completed",
+    "description": "Followed 12 accounts from zacperna followers",
+    "progress": "12 new follows/requests",
     "type": "ig-growth"
   },
   "nextTask": {
@@ -41,29 +41,36 @@
     }
   ],
   "completedToday": [
+    { "title": "IG Follow Session (12pm) - 12 accounts from zacperna followers", "time": "1:00 PM", "note": "gage_collazo2, jacksonryan03, jamie.rigden, mikekarstendiek, broden.vk, masesmith20, nickst_fit, joshrallakis, ethan_.cassar, toryn.huntley, vladigalagan, danella.sweeney" },
     { "title": "IG Follow Session (10am) - 6 accounts from will_tennyson", "time": "10:00 AM", "note": "elljrose, skye_hopkins, rhysrebuilds, jordyjfay, rosullivan__, builtbyquaddy" }
   ],
   "stats": {
-    "following": 338,
+    "following": 350,
     "followers": 221,
-    "ratio": "1.53",
+    "ratio": "1.58",
     "pendingUnfollows": 24,
-    "trackedFollows": 70
+    "trackedFollows": 82
   },
   "engagement": {
-    "lastSession": "2026-02-11 10:00",
-    "accountsEngaged": 6,
-    "postsLiked": 12,
+    "lastSession": "2026-02-11 13:00",
+    "accountsEngaged": 12,
+    "postsLiked": 0,
     "targets": [
-      "@elljrose - Elliot Rose (8 posts, 143 followers)",
-      "@skye_hopkins - Skye Hopkins (206 posts, 2,025 followers)",
-      "@rhysrebuilds - Rhys Luxford (77 posts, 577 followers - Ironman/ultras)",
-      "@jordyjfay - Jordy Fay (23 posts, 461 followers - fitness)",
-      "@rosullivan__ - R O (8 posts, 32 followers - AMRAP workouts)",
-      "@builtbyquaddy - ASHAN QUADDY PARANA (8 posts, 229 followers - trainer)"
+      "@gage_collazo2 - Gage (requested)",
+      "@jacksonryan03 - Jackson Ryan (requested)",
+      "@jamie.rigden - Jamie Rigden (requested)",
+      "@mikekarstendiek - Mike Karstendiek (requested)",
+      "@broden.vk - Broden Vossekuil (requested)",
+      "@masesmith20 - Mase Smith (requested)",
+      "@nickst_fit - Nick Staffa (requested)",
+      "@joshrallakis - Josh Rallakis (requested)",
+      "@ethan_.cassar - Ethan Cassar (requested)",
+      "@toryn.huntley - Toryn Huntley (requested)",
+      "@vladigalagan - Vladislava Galagan (followed - verified)",
+      "@danella.sweeney - Danella (fitness/motherhood)"
     ],
-    "notes": "Source: will_tennyson (private account) - used suggested accounts"
+    "notes": "Source: zacperna followers (517K). Mixed private/public accounts. 11 requested, 1 instant follow."
   },
-  "weeklyCompleted": 35,
-  "lastUpdated": "2026-02-11T10:30:00+10:30"
+  "weeklyCompleted": 36,
+  "lastUpdated": "2026-02-11T13:00:00+10:30"
 }
